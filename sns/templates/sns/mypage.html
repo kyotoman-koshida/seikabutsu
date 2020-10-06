@@ -1,0 +1,10 @@
+{% extends 'sns/layout.html' %}
+
+{% block title %}My Page{% endblock%}
+
+{% block header %}
+<h1>my page</h1>
+<p class="caption">{{name}}</p>
+<a href="{% url 'dm' %}">DM</a>
+<a href="{% url 'settings' %}">設定</a>
+{% endblock %}

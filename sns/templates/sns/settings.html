@@ -1,0 +1,10 @@
+{% extends 'sns/layout.html' %}
+
+{% block title%}{{name}}さんの設定{% endblock %}
+
+{% block header %}
+<h1>設定</h1>
+登録情報の変更するためのリンクをここに
+<a href="{% url 'blocks' %}">ブロックしたアカウント一覧</a>
+<a href="{% url 'goods' %}">自分がGoodした履歴</a>
+{% endblock %}

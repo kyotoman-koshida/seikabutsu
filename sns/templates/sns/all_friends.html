@@ -1,0 +1,47 @@
+{% extends 'sns/layout.html' %}
+
+{% block title %}登録フレンド一覧{% endblock %}
+
+{% block header %}
+<h1>登録しているフレンド</h1>
+{% endblock %}
+
+
+{% block content %}
+
+<body class="container">
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="mode" value="__groups_form__">
+<form action="{% url 'all_friends' %}" method="post">
+   {{groups_form}}
+  <button>select members</button>
+</form>
+<hr>
+{% if gpname != '-' %}
+  <h1 class="dispay-4 text-primary">{{group}}のフレンド</h1> 
+    <table class="table">
+      <tr>
+        <th>NAME</th>
+      </tr>
+    {% for member in friends %}  
+      <tr>
+        <td>{{member.user}}</td>
+      </tr>
+    {% endfor %}  
+    </table>
+{% else %}
+  <h1 class="display-4 text-primary">すべてのフレンド</h1>
+    <table class="table">
+      <tr>
+        <th>NAME</th>
+      </tr>  
+    {% for member in friends %}
+      <tr>
+        <td>{{member.user}}</td>
+      <tr>
+    {% endfor %}
+    </table>
+{% endif %}
+</body>    
+{% endblock %}
