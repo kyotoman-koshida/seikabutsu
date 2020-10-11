@@ -3,8 +3,7 @@
 {% block title %}マイページ{% endblock%}
 
 {% block header %}
-<h1>my page</h1>
+<h1>{{name}}さんのマイページ</h1>
 <p class="caption">{{name}}</p>
-<a href="{% url 'dm' %}">DM</a>
-<a href="{% url 'settings' %}">設定</a>
+"{{name}}"(<a href="{% url 'dm' %}?name={{name}}">DMする</a>)
 {% endblock %}

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .models import Message,Friend,Group,Good,DM
+from .models import Message,Friend,Group,Good,Dm
 from .forms import GroupCheckForm,GroupSelectForm,\
         SearchForm,FriendsForm,CreateGroupForm,PostForm,DMForm
 
@@ -226,7 +226,7 @@ def post(request):
 def share(request, share_id):
     # シェアするMessageの取得
     share = Message.objects.get(id=share_id)
-    
+    print(share)
     # POST送信時の処理
     if request.method == 'POST':
         # 送信内容を取得
@@ -285,27 +285,57 @@ def good(request, good_id):
     messages.success(request, 'メッセージにGoodしました！')
     return redirect(to='/sns')
 
+#自分のマイページを表示
 @login_required(login_url='/admin/login/')
 def mypage(request):
     params = {
          'name':request.user,
     }
-    return render(request, "sns/mypage.html", params)   
+    return render(request, "sns/mypage.html", params)
 
+@login_required(login_url='/admin/login/')
+def otherspage(request):
+    #マイページを開きたいFriendの情報を取得
+    fri_name = request.GET['name']
+    fri_user = User.objects.filter(username=fri_name).first()
+    params = {    
+         'name':fri_user,
+    }       
+    return render(request, "sns/otherspage.html", params)
+
+#DMのための処理
+@login_required(login_url='/admin/login/')
 def dm(request):
-    if request.method == "POST":
-        form = DMForm()
-    else:
-        form = DMForm()
-    # フォローしている人の名前をセレクトできるようにformに入れる
-    flw = Friend.objects.filter(owner=request.user)#FollowからFriendに置き換え
-    form.fields["user"].choices = [
-        ("----", "----")
-    ] + [
-        (item.user, item.user) for item in flw
-    ]
+    #DMフォームを記入して送信するときの操作
+    if request.method == "POST":    
+        obj = Dm()
+        dms = DMForm(request.POST, instance=obj)
+        if dms.is_valid():
+           dms.save()
+
+    #Friendのマイページからとんできた場合
+    if request.GET['name']:
+       fri_name = request.GET['name']
+       fri_user = User.objects.filter(username=fri_name).first()
+       form = DMForm(dm_user=fri_user)
+    else:           
+        form = DMForm()    
+        #DMでやりとりした内容を取得    
+        dialogs = Dm.objects.filter(owner=request.user)    
+        #自分が追加したFriendの名前を選択できるようにformに入れる
+        myfri = Friend.objects.filter(owner=request.user)
+
+        form.fields["user"].choices = [
+            ("----", "----")
+            ] + [
+            (item.user, item.user) for item in myfri
+               ]
+    
     params = {
-        "form":form,
+        "dialogs":glist,
+        "dm_form":form,
+        "user":myfri,
+        
     }
     return render(request, "sns/dm.html", params)
 
@@ -338,8 +368,6 @@ def blocks(request):
 #自分の登録しているフレンドを列挙するページ
 @login_required(login_url='/admin/login/')
 def all_friends(request):
-    # 自分が登録したFriendを取得
-    friends = Friend.objects.filter(owner=request.user)
 
     if request.method == 'POST':
         # Groupsメニュー選択肢の処理
@@ -352,14 +380,14 @@ def all_friends(request):
 
             # Groupに含まれるFriendを取得（デフォルトは全フレンドの表示）
             if sel_group == '-':
-               fds =Friend.objects.all()
+               myfri =Friend.objects.all()
             else:
-                fds = Friend.objects.filter(owner=request.user) \
+                myfri = Friend.objects.filter(owner=request.user) \
                 .filter(group=gp)
               
             # FriendのUserをリストにまとめる
             vlist = []
-            for item in fds:
+            for item in myfri:
                 vlist.append(item.user.username)
 
             
@@ -371,14 +399,14 @@ def all_friends(request):
         # フォームの用意
         groupsform = GroupSelectForm(request.user,request.POST)
         gp = Group.objects.all()
-        fds = Friend.objects.all()
+        myfri = Friend.objects.filter(owner=request.user)
         sel_group = '-'
     
 
     params = {
             'groups_form':groupsform,
             'group':gp,
-            'friends':fds,
+            'friends':myfri,
             'gpname':sel_group,
         }
 
@@ -423,5 +451,7 @@ def get_public():
     public_group = Group.objects.filter \
             (owner=public_user).first()
     return (public_user, public_group)
+
+    
 
 # Create your views here.

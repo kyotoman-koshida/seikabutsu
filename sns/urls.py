@@ -11,6 +11,7 @@ urlpatterns = [
     path('good/<int:good_id>', views.good, name='good'),
     path('notifications', views.notifications, name='notifications'),
     path('mypage', views.mypage, name='mypage'),
+    path('otherspage', views.otherspage, name='otherspage'),
     path('dm', views.dm, name='dm'),
     path('settings', views.settings, name='settings'), #アプリ登録などを行うsettingsフォルダとは無関係
     path('blocks', views.blocks, name='blocks'),

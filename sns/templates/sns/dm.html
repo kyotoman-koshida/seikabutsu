@@ -1,8 +1,23 @@
 {% extends 'sns/layout.html' %}
 
-{% block title %}Direct Messages{% endblock %}
+{% block title %}ダイレクトメッセージ{% endblock %}
 
 {% block header %}
-<h1>Direct Messages</h1>
+<h1>ダイレクトメッセージ</h1>
+
+<form action="{% url 'dm' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="mode" value="__dm_form__">
+   {{dm_form}}
+<button>送信</button>
+</form>
+<hr>
+{% if dialogs %}
+{% for item in dialogs %}
+ここ{{item}}
+{% endfor %}
+{% else %}
+a
+{% endif %}
 
 {% endblock %}

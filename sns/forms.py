@@ -1,5 +1,5 @@
 from django import forms
-from.models import Message,Group,Friend,Good, DM
+from.models import Message,Group,Friend,Good, Dm
 from django.contrib.auth.models import User
 
 # Messageのフォーム（未使用）
@@ -79,5 +79,6 @@ class DMForm(forms.ModelForm):
     # 後から 選択肢を追加
     user = forms.fields.ChoiceField(widget=forms.widgets.Select)
     class Meta:
-        model = DM
-        fields = ["content"]        
+        model = Dm
+        fields = ['content']
+       

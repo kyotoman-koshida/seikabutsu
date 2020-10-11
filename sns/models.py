@@ -51,21 +51,14 @@ class Friend(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='グループ')
     place = models.CharField(max_length=100, verbose_name='居住地')
     introduce = models.CharField(max_length=250, verbose_name='自己紹介', null=True)
-
-    def senbetu(value):
-        if value<150.0 or value>169.9:
-            raise ValidationError('身長は150.0cm以上、169.9cm以下でご記入下さい')
+    height =models.FloatField(verbose_name='身長')
     
-    men = True
-    def gencheck(self):
-        if self.gender == 2:
-           men = False
+    
+    def clean(self):
+        if self.gender == 1:
+            if self.height < 150.0 or self.height > 169.9:
+                raise ValidationError('身長が170cm以上の男性はご遠慮ください')
 
-    height =models.FloatField(editable=men, validators=[senbetu], verbose_name='身長')
-
-    def __str__(self):
-        GENDER = {1:'男性', 2:'女性',}
-        return str(self.user) + ' (性別:"' + GENDER[self.gender] + '")'
 
 # Goodクラス
 class Good(models.Model):
@@ -77,7 +70,7 @@ class Good(models.Model):
         return 'good for "' + str(self.message) + '" (by ' + \
                 str(self.owner) + ')'
 
-class DM(models.Model):
+class Dm(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dm_owner")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dm_user")
     content = models.CharField(max_length=250)
