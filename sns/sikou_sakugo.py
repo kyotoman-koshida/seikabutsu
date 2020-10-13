@@ -58,3 +58,17 @@ class DMForm(forms.ModelForm):
     class Meta:
         model = Dm
         fields = ['content']
+        
+#models.pyの中にあるDMモデル
+class Dm(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dm_owner")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="dm_user")
+    content = models.CharField(max_length=250)
+    dm_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.owner) + " が " + str(self.user) + " にDMしました " + \
+            str(self.dm_at.month) + "/" + str(self.dm_at.day) + ")"
+
+    class Meta:
+        ordering = ["-dm_at"]
