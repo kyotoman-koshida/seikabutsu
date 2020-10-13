@@ -1,10 +1,11 @@
 #マッチングアプリでDMを送るための関数を作りたいのですが、そのDMをデータベースに保存することができません。
 #DMを送るパターンは二種類想定していて、一つはフレンド一覧からDMを送る相手を先に決めてからDMをする場合と、
 #もう一つは先にDMページに行って、プルダウンメニューでDMを送る相手を決めてDMを送る場合です。
-#いずれの場合も"The Dm could not be created because the data didn't validate."となってエラーとなってしまいます。
+#いずれの場合もdm関数内のdms.save()で引っかかり、"The Dm could not be created because the data didn't validate."となってエラーとなってしまいます。
+#エラー文を読むと、バリデーションされていないからエラーが起きたことが分かりますが、何をどうバリデートするのかが分かりません。
 
-#以下views.py下にある該当のdm関数のコード
 
+#views.py下にある該当のdm関数のコード
 #DMのための処理
 @login_required(login_url='/admin/login/')
 def dm(request):
@@ -49,3 +50,11 @@ def dm(request):
         
     }
     return render(request, "sns/dm.html", params)
+
+#form.pyの中にあるDMする相手をプルダウンで選ぶときに使うフォーム
+class DMForm(forms.ModelForm):
+    #選択肢の中からDMの送信先を決定
+    user = forms.fields.ChoiceField(widget=forms.widgets.Select)
+    class Meta:
+        model = Dm
+        fields = ['content']
