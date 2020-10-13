@@ -24,13 +24,15 @@
       <tr>
         <th>名前</th>
         <th>居住地</th>
+        <th>生年月日</th>
         <th>身長</th>
       </tr>
     {% for member in friends %}  
       <tr>
       <span class="float-right">
-     <td>{{member.owner}}(<a href="{% url 'otherspage' %}?name={{member.owner}}">マイページ</a>)</td>
+     <td>{{member.user}}(<a href="{% url 'otherspage' %}?name={{member.user}}">マイページ</a>)</td>
      <td>{{member.place}}</td>
+     <td>{{member.birthday}}</td>
      <td>{{member.height}}</td>
      
       </span>
@@ -43,6 +45,7 @@
       <tr>
         <th>名前</th>
         <th>居住地</th>
+        <th>生年月日</th>
         <th>身長</th>
       </tr>  
     {% for member in friends %}
@@ -50,6 +53,7 @@
       <span class="float-right">
         <td>{{member.user}}(<a href="{% url 'otherspage' %}?name={{member.user}}">マイページ</a>)</td>
         <td>{{member.place}}</td>
+        <th>{{member.birthday}}</th>
         <td>{{member.height}}</td>
       </span>
         <tr>
