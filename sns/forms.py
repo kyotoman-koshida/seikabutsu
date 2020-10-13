@@ -75,10 +75,13 @@ class PostForm(forms.Form):
                      filter(owner__in=[user,public])],
         )
 
+#DMする相手をプルダウンで選ぶときに使うフォーム
 class DMForm(forms.ModelForm):
-    # 後から 選択肢を追加
+    #選択肢の中からDMの送信先を決定
     user = forms.fields.ChoiceField(widget=forms.widgets.Select)
     class Meta:
         model = Dm
         fields = ['content']
+
+
        

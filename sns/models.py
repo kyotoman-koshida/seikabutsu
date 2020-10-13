@@ -1,6 +1,5 @@
 
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import ValidationError
 from django.contrib.auth.models import User
 
@@ -35,6 +34,8 @@ class Group(models.Model):
     def __str__(self):
         return self.title
 
+      
+
 # Friendクラス
 class Friend(models.Model):
 
@@ -51,10 +52,12 @@ class Friend(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='グループ')
     place = models.CharField(max_length=100, verbose_name='居住地')
     introduce = models.CharField(max_length=250, verbose_name='自己紹介', null=True)
-    height =models.FloatField(verbose_name='身長')
-    
+    birthday = models.DateTimeField(blank=True, null=True, verbose_name='生年月日')
+    height =models.FloatField(verbose_name='身長') 
     
     def clean(self):
+        if self.user == 'dst':#'dst'はDMの送り方を識別するために使うので予約語としておく。
+            raise ValidationError("'dstは名前に使えません'")
         if self.gender == 1:
             if self.height < 150.0 or self.height > 169.9:
                 raise ValidationError('身長が170cm以上の男性はご遠慮ください')
@@ -77,7 +80,7 @@ class Dm(models.Model):
     dm_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.owner) + " が " + str(self.user) + " にDM " + \
+        return str(self.owner) + " が " + str(self.user) + " にDMしました " + \
             str(self.dm_at.month) + "/" + str(self.dm_at.day) + ")"
 
     class Meta:

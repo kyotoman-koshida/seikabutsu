@@ -306,35 +306,43 @@ def otherspage(request):
 #DMのための処理
 @login_required(login_url='/admin/login/')
 def dm(request):
+    #markはDMをおくるときにプルダウンから宛先を選ぶ場合を識別するためにdm.htmlに送る値
+    mark = 0
+    #DMでやりとりした内容を取得    
+    dialogs = Dm.objects.filter(owner=request.user)    
+    #自分が追加したFriendの名前を選択できるようにformに入れる
+    myfri = Friend.objects.filter(owner=request.user)
+
     #DMフォームを記入して送信するときの操作
-    if request.method == "POST":    
+    if request.method == "POST":
         obj = Dm()
         dms = DMForm(request.POST, instance=obj)
-        if dms.is_valid():
-           dms.save()
+        dms.save()        
 
     #Friendのマイページからとんできた場合
-    if request.GET['name']:
-       fri_name = request.GET['name']
-       fri_user = User.objects.filter(username=fri_name).first()
-       form = DMForm(dm_user=fri_user)
+    elif request.GET['name'] != 'dst':#dstはdestination DMの宛先が未定のときと区別する
+        #fri_nameにとんできた元のマイページ主の情報を取得
+        fri_name = request.GET['name']
+        form = DMForm()
+        form.fields['user'].choices = [
+            (fri_name, fri_name)
+        ]
     else:           
         form = DMForm()    
-        #DMでやりとりした内容を取得    
-        dialogs = Dm.objects.filter(owner=request.user)    
-        #自分が追加したFriendの名前を選択できるようにformに入れる
-        myfri = Friend.objects.filter(owner=request.user)
-
-        form.fields["user"].choices = [
+        form.fields['user'].choices = [
             ("----", "----")
             ] + [
             (item.user, item.user) for item in myfri
-               ]
+            ]
+        #mark=1のときはプルダウンでフレンドを選ぶとき    
+        mark = 1       
     
     params = {
-        "dialogs":glist,
+        "dialogs":dialogs,
         "dm_form":form,
-        "user":myfri,
+        "name":myfri,
+        "mark": mark,
+        "atesaki": fri_name,
         
     }
     return render(request, "sns/dm.html", params)
@@ -384,15 +392,15 @@ def all_friends(request):
             else:
                 myfri = Friend.objects.filter(owner=request.user) \
                 .filter(group=gp)
-              
+
+            vlist = []  
             # FriendのUserをリストにまとめる
-            vlist = []
             for item in myfri:
                 vlist.append(item.user.username)
 
             
             #フォームの用意
-            groupsform = GroupSelectForm(request.user,request.POST)
+            groupsform = GroupSelectForm(request.user, request.POST)
       
     # GETアクセス時の処理  
     else:
