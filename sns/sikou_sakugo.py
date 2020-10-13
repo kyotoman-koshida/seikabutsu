@@ -72,3 +72,33 @@ class Dm(models.Model):
 
     class Meta:
         ordering = ["-dm_at"]
+        
+
+#templates/sns/dm.html
+        {% extends 'sns/layout.html' %}
+
+{% block title %}ダイレクトメッセージ{% endblock %}
+
+{% block header %}
+<h1>ダイレクトメッセージ</h1>
+
+<form action="{% url 'dm' %}" method="post">
+{% csrf_token %}
+{% if mark == 1 %}
+<input type="hidden" name="mode" value="__dm_form__">
+{% else %}
+<input type="hidden" name="mode" value={{atesaki}}>
+{% endif %}
+   {{dm_form}}
+<button>送信</button>
+</form>
+<hr>
+{% if dialogs %}
+  {% for item in dialogs %}
+  {{item}}
+  {% endfor %}
+{% else %}
+DM履歴はありません
+{% endif %}
+
+{% endblock %}
