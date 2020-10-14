@@ -14,7 +14,9 @@ def dm(request):
     #DMでやりとりした内容を取得    
     dialogs = Dm.objects.filter(owner=request.user)    
     #自分が追加したFriendの名前を選択できるようにformに入れる
-    myfri = Friend.objects.filter(owner=request.user)
+    myfris = Friend.objects.filter(owner=request.user
+    #エラー回避のためにさきに定義しておく
+    fri_name = ''                              
 
     #DMフォームを記入して送信するときの操作
     if request.method == "POST":
@@ -36,7 +38,7 @@ def dm(request):
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
-            (item.user, item.user) for item in myfri
+            (item.user, item.user) for item in myfris
             ]
         #mark=1のときはプルダウンでフレンドを選ぶとき    
         mark = 1       
@@ -44,7 +46,6 @@ def dm(request):
     params = {
         "dialogs":dialogs,
         "dm_form":form,
-        "name":myfri,
         "mark": mark,
         "atesaki": fri_name,
         
