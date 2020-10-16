@@ -41,14 +41,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.storage.CompressedManifestStaticFilesStorage',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    
 ]
 
 ROOT_URLCONF = 'django_app2.urls'
