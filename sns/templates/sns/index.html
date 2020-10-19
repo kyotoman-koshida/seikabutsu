@@ -31,12 +31,12 @@
 {{check_form}}
 <button>update</button>
 </form>
+[<a href="{% url 'all_friends' %}">全登録Friend</a>のタイムライン]
 {% for item in contents %}
 <hr>
 <p class="message_public">
-{% if item.group.title == 'public' %}
-[<a href="{% url 'all_friends' %}">全登録Friend</a>のタイムライン]
-{% endif %}</p>
+
+</p>
 <p class="message_content">{{item.content}}</p>
 <p class="message_date"> ({{item.pub_date}})</p>
 {% if item.share_id > 0 %}

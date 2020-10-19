@@ -309,7 +309,7 @@ def dm(request):
     #markはDMをおくるときにプルダウンから宛先を選ぶ場合を識別するためにdm.htmlに送る値
     mark = 0
     #DMでやりとりした内容を取得    
-    dialogs = Dm.objects.filter(owner=request.user)    
+    dialogs = Dm.objects.filter(Q(owner=request.user) | Q(user=request.user))    
     #自分が追加したFriendの名前を選択できるようにformに入れる
     myfris = Friend.objects.filter(owner=request.user)
     #エラー回避のためにさきに定義しておく
@@ -319,8 +319,25 @@ def dm(request):
     if request.method == "POST":
         obj = Dm()
         dms = DMForm(request.POST, instance=obj)
-        dms.save()        
-
+        dms.fields['user'].choices = [
+            ("----", "----")
+            ] + [
+            (item.user, item.user) for item in myfris
+            ]
+        #DMの受け取り主を取得
+        obj.owner = User.objects.filter(username=request.POST.get('user')).first()
+        #DMの送り主を取得
+        obj.user = User.objects.filter(username=request.user).first()
+        
+        if dms.is_valid():
+           dms.save()
+        form = DMForm()   
+        form.fields['user'].choices = [
+            ("----", "----")
+            ] + [
+            (item.user, item.user) for item in myfris
+            ]
+                            
     #Friendのマイページからとんできた場合
     elif request.GET['name'] != 'dst':#dstはdestination DMの宛先が未定のときと区別する
         #fri_nameにとんできた元のマイページ主の情報を取得
@@ -329,6 +346,9 @@ def dm(request):
         form.fields['user'].choices = [
             (fri_name, fri_name)
         ]
+        obj = Dm()
+        dms = DMForm(request.POST, instance=obj)
+          
     else:           
         form = DMForm()    
         form.fields['user'].choices = [
@@ -337,14 +357,15 @@ def dm(request):
             (item.user, item.user) for item in myfris
             ]
         #mark=1のときはプルダウンでフレンドを選ぶとき    
-        mark = 1       
+        mark = 1
+        obj = Dm()
+        dms = DMForm(request.POST, instance=obj)        
     
     params = {
         "dialogs":dialogs,
         "dm_form":form,
         "mark": mark,
         "atesaki": fri_name,
-        
     }
     return render(request, "sns/dm.html", params)
 

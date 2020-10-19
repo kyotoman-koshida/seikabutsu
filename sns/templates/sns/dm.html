@@ -17,11 +17,18 @@
 </form>
 <hr>
 {% if dialogs %}
+<table class="table">
   {% for item in dialogs %}
-  {{item}}
+  <tr>
+  <td>{{item.content}}</td>
+  <td>{{item.user}}から</td>
+  <td>{{item.owner}}へ</td>
+  <td>{{item.dm_at}}</td>
+  <tr>
   {% endfor %}
 {% else %}
 DM履歴はありません
 {% endif %}
+</table>
 
 {% endblock %}

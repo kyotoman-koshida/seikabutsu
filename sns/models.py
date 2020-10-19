@@ -80,8 +80,8 @@ class Dm(models.Model):
     dm_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.owner) + " が " + str(self.user) + " にDMしました " + \
-            str(self.dm_at.month) + "/" + str(self.dm_at.day) + ")"
+        return str(self.content) + " ----DM from " + str(self.owner) + " to " + str(self.user) + \
+            str(self.dm_at.month) + "月" + str(self.dm_at.day) + "日"  
 
     class Meta:
         ordering = ["-dm_at"]                
