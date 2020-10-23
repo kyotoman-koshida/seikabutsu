@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from django.conf import settings
 #ユーザーはカスタムユーザーに変更
 User = settings.AUTH_USER_MODEL
-from django.contrib.auth import get_user_model as user_model
-User = user_model()
+#from django.contrib.auth import get_user_model as user_model
+#User = user_model()
 
 from django.contrib import messages
 
