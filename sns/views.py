@@ -19,7 +19,6 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
 
-
 # indexのビュー関数
 @login_required(login_url='/admin/login/')
 def index(request):
