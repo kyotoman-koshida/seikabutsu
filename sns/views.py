@@ -17,6 +17,8 @@ from .forms import GroupCheckForm,GroupSelectForm,\
 
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 # indexのビュー関数
@@ -485,10 +487,5 @@ def get_your_group_message(owner, glist, find):
 # publicなUserとGroupを取得する
 def get_public():
     public_user = User.objects.filter(username='public').first()
-    public_group = Group.objects.filter \
-            (owner=public_user).first()
+    public_group = Group.objects.filter(owner=public_user).first()
     return (public_user, public_group)
-
-    
-
-# Create your views here.

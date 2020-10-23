@@ -1,6 +1,8 @@
 from django import forms
 from.models import Message,Group,Friend,Good, Dm
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Messageのフォーム（未使用）
 class MessageForm(forms.ModelForm):

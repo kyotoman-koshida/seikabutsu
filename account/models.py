@@ -17,7 +17,7 @@ class UserManager(BaseUserManager):
         if not email:
             raise ValueError('メールアドレスは設定してください')
         
-        user.set_password(password)
+        
         user=self.model(
             email = self.normalize_email(email),
             username = self.model.normalize_username(username),
@@ -26,7 +26,7 @@ class UserManager(BaseUserManager):
             place = place,
             height = height,
         )
-        
+        user.set_password(password)
         user.save(using=self._db)
         return user
     
@@ -57,16 +57,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         error_messages={
             'unique': _("そのEメールアドレスはすでに使用されています"),
         },
-        #help_text=_('150文字以下。文字と数字と @/./+/-/_ のみ。'),
         verbose_name='Eメール'
         )
     
 
     username_validator = UnicodeUsernameValidator()
     username = models.CharField(
-        max_length=150,
-        
+        max_length=150,        
         validators=[username_validator],
+        help_text=_('150文字以下。文字と数字と @/./+/-/_ のみ。'),
         verbose_name='ユーザ名'       
     )
 
@@ -147,8 +146,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     def has_module_perms(self, app_label):
         return True
 
-    @property
-    def is_staff(self):
-       return self.is_admin    
+    #@property
+    #def is_staff(self):
+    #   return self._is_admin    
 
 # Create your models here.
