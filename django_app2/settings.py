@@ -13,11 +13,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import dj_database_url
 
-import local_settings
-local_settings.path.append("/Users/heihe/Desktop/django_app2/django_app2")
 try:
-    from django_app2.local_settings import *
-except ImportError:
+    from .local_settings import *
+except:
     pass
 
 
