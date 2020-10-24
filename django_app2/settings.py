@@ -15,7 +15,8 @@ import dj_database_url
 
 try:
     from .local_settings import *
-except NameError:
+
+except ImportError:
     pass
 
 
