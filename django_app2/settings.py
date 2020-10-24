@@ -13,12 +13,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 import dj_database_url
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -142,3 +136,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
