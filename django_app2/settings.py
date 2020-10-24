@@ -14,9 +14,11 @@ import os
 import dj_database_url
 
 try:
-    from .local_settings import BASE_DIR, DATABASES
+    from .local_settings import *
 except ImportError:
     pass
+
+local_settings.path.append("\Users\heihe\Desktop\django_app2\django_app2")
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
