@@ -2,7 +2,13 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
+from django.conf import settings
+#ユーザーはカスタムユーザーに変更
+User = settings.AUTH_USER_MODEL
+#from django.contrib.auth import get_user_model as user_model
+#User = user_model()
+
 from django.contrib import messages
 
 from .models import Message,Friend,Group,Good,Dm
@@ -11,6 +17,9 @@ from .forms import GroupCheckForm,GroupSelectForm,\
 
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 
 # indexのビュー関数
 @login_required(login_url='/admin/login/')
@@ -478,10 +487,5 @@ def get_your_group_message(owner, glist, find):
 # publicなUserとGroupを取得する
 def get_public():
     public_user = User.objects.filter(username='public').first()
-    public_group = Group.objects.filter \
-            (owner=public_user).first()
+    public_group = Group.objects.filter(owner=public_user).first()
     return (public_user, public_group)
-
-    
-
-# Create your views here.
