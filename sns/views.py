@@ -2,24 +2,26 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
-#from django.contrib.auth.models import User
 from django.conf import settings
-#ユーザーはカスタムユーザーに変更
+
 User = settings.AUTH_USER_MODEL
-#from django.contrib.auth import get_user_model as user_model
-#User = user_model()
-
 from django.contrib import messages
-
 from .models import Message,Friend,Group,Good,Dm
 from .forms import GroupCheckForm,GroupSelectForm,\
-        SearchForm,FriendsForm,CreateGroupForm,PostForm,DMForm
-
+        SearchForm,FriendsForm,CreateGroupForm,PostForm,\
+            DMForm, LoginForm, UserCreateForm
+from .forms import LoginForm, UserCreateForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 User = get_user_model()
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.http import Http404, HttpResponseBadRequest
+from django.views import generic
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 
 # indexのビュー関数
 @login_required(login_url='/admin/login/')
@@ -183,7 +185,7 @@ def add(request):
     # メッセージを設定
     messages.success(request, add_user.username + ' を追加しました！\
         groupページに移動して、追加したFriendをメンバーに設定して下さい。')
-    return redirect(to='/sns')
+    return redirect(to=':sns')
 
 # グループの作成処理
 @login_required(login_url='/admin/login/')
@@ -451,6 +453,87 @@ def all_friends(request):
 
     return render(request, 'sns/all_friends.html', params)    
 
+class Top(generic.TemplateView):
+    template_name = 'sns/top.html'
+
+#ログインページ
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'sns/login.html'    
+
+#ログアウトページ
+class Logout(LogoutView):
+    template_name = 'sns/top.html'
+
+#ユーザー仮登録
+class UserCreate(generic.CreateView):
+    template_name = 'sns/user_create.html'
+    form_class = UserCreateForm
+
+    #仮登録と本登録のメール発行top
+    def form_valid(self, form):
+        # 仮登録と本登録の切り替えは、is_active属性を使うと簡単です。
+        # 退会処理も、is_activeをFalseにするだけにしておくと捗ります。
+        user = form.save(commit=False)
+        user.is_active = False
+        user.save()
+
+        # アクティベーションURLの送付
+        current_site = get_current_site(self.request)
+        domain = current_site.domain
+        params = {
+            'protocol': self.request.scheme,
+            'domain': domain,
+            'token': dumps(user.pk),
+            'user': user,
+        }
+
+        subject = render_to_string('sns/mail_template/create/subject.txt', params)
+        message = render_to_string('sns/mail_template/create/message.txt', params)
+
+        user.email_user(subject, message)
+        return redirect('sns/user_create_done')
+
+
+#仮登録の完了クラス
+class UserCreateDone(generic.TemplateView):
+    """ユーザー仮登録したよ"""
+    template_name = 'sns/user_create_done.html'
+
+#メールから本登録に進んだ時の処理
+class UserCreateComplete(generic.TemplateView):
+    template_name = 'sns/user_create_complete.html'
+    timeout_seconds = getattr(settings, 'ACTIVATION_TIMEOUT_SECONDS', 60*60*24)  # デフォルトでは1日以内
+
+    #tokrnが正しければ本登録
+    def get(self, request, **kwargs):
+        token = kwargs.get('token')
+        try:
+            user_pk = loads(token, max_age=self.timeout_seconds)
+
+        # 期限切れ
+        except SignatureExpired:
+            return HttpResponseBadRequest()
+
+        # tokenが間違っている
+        except BadSignature:
+            return HttpResponseBadRequest()
+
+        # tokenは問題なし
+        else:
+            try:
+                user = User.objects.get(pk=user_pk)
+            except User.DoesNotExist:
+                return HttpResponseBadRequest()
+            else:
+                if not user.is_active:
+                    # 問題なければ本登録とする
+                    user.is_active = True
+                    user.save()
+                    return super().get(request, **kwargs)
+
+        return HttpResponseBadRequest()        
+
 
 # これ以降はビュー関数ではなく普通の関数==================
 
@@ -489,3 +572,4 @@ def get_public():
     public_user = User.objects.filter(username='public').first()
     public_group = Group.objects.filter(owner=public_user).first()
     return (public_user, public_group)
+

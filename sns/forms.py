@@ -3,6 +3,9 @@ from.models import Message,Group,Friend,Good, Dm
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
+from django.contrib.auth.forms import (
+    AuthenticationForm, UserCreationForm
+)
 
 # Messageのフォーム（未使用）
 class MessageForm(forms.ModelForm):
@@ -85,5 +88,31 @@ class DMForm(forms.ModelForm):
         model = Dm
         fields = ['content']
 
+#ログインのためのフォーム
+class LoginForm(AuthenticationForm):
 
-       
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = field.label        
+
+#ユーザ登録用フォーム
+class UserCreateForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'birthday', 'gender', 'place', 'height')
+        
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        User.objects.filter(email=email, is_active=False).delete()
+        return email
+
+    

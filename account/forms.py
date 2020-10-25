@@ -11,6 +11,13 @@ class UserCreationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'username', 'birthday', 'gender', 'place', 'height' )
+        
+        def clean(self):
+            if self.username == 'dst':#'dst'はDMの送り方を識別するために使うので予約語としておく。
+               raise ValidationError("'dstは名前に使えません'")
+            if self.gender == 1:
+               if self.height < 150.0 or self.height > 169.9:
+                   raise ValidationError('身長が170cm以上の男性はご遠慮ください') 
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -24,7 +31,7 @@ class UserCreationForm(forms.ModelForm):
         user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
-        return user
+        return user  
 
 
 class UserChangeForm(forms.ModelForm):
@@ -33,7 +40,7 @@ class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'password', 'username', 'birthday', 'gender', 'place',
-                  'height', 'is_active', 'is_admin')
+                  'height', 'is_active', 'is_admin')              
 
     def clean_password(self):
         return self.initial["password"]

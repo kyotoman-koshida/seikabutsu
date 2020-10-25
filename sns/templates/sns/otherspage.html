@@ -5,5 +5,5 @@
 {% block header %}
 <h1>{{name}}さんのマイページ</h1>
 <p class="caption">{{name}}</p>
-"{{name}}"(<a href="{% url 'dm' %}?name={{name}}">DMする</a>)
+"{{name}}"(<a href="{% url 'sns:dm' %}?name={{name}}">DMする</a>)
 {% endblock %}

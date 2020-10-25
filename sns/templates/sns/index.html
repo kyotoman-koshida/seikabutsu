@@ -3,7 +3,7 @@
 {% block title %}Index{% endblock %}
 
 {% block header %}
-<a href="{% url 'notifications' %}">通知</a>
+<a href="{% url 'sns:notifications' %}">通知</a>
 <h1 class="display-4 text-primary">Sns</h1>
 <p class="caption">※グループのチェックをONにしてupdateすると、
 そのグループに登録されている利用者のメッセージだけが表示されます。</p>
@@ -18,20 +18,20 @@
 {% endblock %}
 
 {% block content %}
-<form action="{% url 'index' %}" method="post">
+<form action="{% url 'sns:index' %}" method="post">
 {% csrf_token %}
 <input type="hidden" name="mode" value="__search_form__">
 {{search_form}}
 <button>Search</button>
 </form>
 <hr>
-<form action="{% url 'index' %}" method="post">
+<form action="{% url 'sns:index' %}" method="post">
 {% csrf_token %}
 <input type="hidden" name="mode" value="__check_form__">
 {{check_form}}
 <button>update</button>
 </form>
-[<a href="{% url 'all_friends' %}">全登録Friend</a>のタイムライン]
+[<a href="{% url 'sns:all_friends' %}">全登録Friend</a>のタイムライン]
 {% for item in contents %}
 <hr>
 <p class="message_public">
@@ -47,10 +47,10 @@
 {% endif %}
 <p class="message_owner">
     <span class="message_counter">share={{item.share_count}} good={{item.good_count}}</span>
-    "{{item.owner}}"(<a href="{% url 'add' %}?name={{item.owner}}">
+    "{{item.owner}}"(<a href="{% url 'sns:add' %}?name={{item.owner}}">
         add friend</a>)
-    <a href="{% url 'share' item.id %}"><button>share</button></a>
-    <a href="{% url 'good' item.id %}"><button>good!</button></a>
+    <a href="{% url 'sns:share' item.id %}"><button>share</button></a>
+    <a href="{% url 'sns:good' item.id %}"><button>good!</button></a>
 </p>
 {% endfor %}
 {% endblock %}
