@@ -58,8 +58,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("そのEメールアドレスはすでに使用されています"),
         },
         verbose_name='Eメール'
-        )
-    
+        )    
 
     username_validator = UnicodeUsernameValidator()
     username = models.CharField(
@@ -80,13 +79,15 @@ class User(AbstractBaseUser, PermissionsMixin):
          (1,'男性'),
          (2,'女性'),
     )
-    gender = models.IntegerField(verbose_name='性別',choices=GENDER_CHOICES)
+    gender = models.IntegerField(verbose_name='性別', choices=GENDER_CHOICES)
     place = models.CharField(max_length=100, verbose_name='居住地', null=True)
     height =models.FloatField(help_text=_('男性は170cm未満のかた限定です。'), verbose_name='身長')
     date_joined = models.DateTimeField(default=timezone.now, verbose_name='登録日')
 
-    #男性限定の身長バリデーション
+    #男性限定の身長バリデーションとメール
     def clean(self):
+        super().clean()
+        self.email = self.__class__.objects.normalize_email(self.email)
         if self.username == 'dst':#'dst'はDMの送り方を識別するために使うので予約語としておく。
             raise ValidationError("'dstは名前に使えません'")
         if self.gender == 1:
@@ -111,11 +112,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     #    verbose_name_plural = _('users')
     #   #abstract = True # ここを削除しないといけないことを忘れない！！！！！！！！！！
     #    swappable = 'AUTH_USER_MODEL'
-      
-
-    def clean(self):
-        super().clean()
-        self.email = self.__class__.objects.normalize_email(self.email)
 
     def email_user(self, subject, message, from_email=None, **kwargs):
         """Send an email to this user."""
