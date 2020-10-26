@@ -18,9 +18,15 @@
     </div>
 </form>
 
-<div class="card col-md-6">
+<div class="card col-md-3 offset-md-4">
         <div class="card-body">
-            <a href="{% url 'sns:user_create' %}" class="btn btn-success btn-lg btn-block" >会員登録</a>
+            <a href="{% url 'sns:user_create' %}" class="btn btn-success btn-lg btn-block" >新規会員登録</a>
         </div>
     </div>
+
+<div align="center">
+        <button type="button" class="button"
+        onclick="location.href='{% url 'social:begin' 'twitter' %}?next={{ next }}'">
+        Twitter でログイン</button>
+    </div>    
 {% endblock %}

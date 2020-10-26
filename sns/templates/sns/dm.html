@@ -5,7 +5,7 @@
 {% block header %}
 <h1>ダイレクトメッセージ</h1>
 
-<form action="{% url 'dm' %}" method="post">
+<form action="{% url 'sns:dm' %}" method="post">
 {% csrf_token %}
 {% if mark == 1 %}
 <input type="hidden" name="mode" value="__dm_form__">

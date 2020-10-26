@@ -24,7 +24,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 
 # indexのビュー関数
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def index(request):
     # publicのuserを取得
     (public_user, public_group) = get_public()
@@ -81,7 +81,7 @@ def index(request):
         }
     return render(request, 'sns/index.html', params)
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def groups(request):
     # 自分が登録したFriendを取得
     friends = Friend.objects.filter(owner=request.user)
@@ -155,7 +155,7 @@ def groups(request):
     return render(request, 'sns/groups.html', params)
 
 # Friendの追加処理
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def add(request):
     # 追加するUserを取得
     add_name = request.GET['name']
@@ -188,7 +188,7 @@ def add(request):
     return redirect(to=':sns')
 
 # グループの作成処理
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def creategroup(request):
     # Groupを作り、Userとtitleを設定して保存する
     gp = Group()
@@ -199,7 +199,7 @@ def creategroup(request):
     return redirect(to='/sns/groups')
 
 # メッセージのポスト処理
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def post(request):
     # POST送信の処理
     if request.method == 'POST':
@@ -233,7 +233,7 @@ def post(request):
     return render(request, 'sns/post.html', params)
 
 # 投稿をシェアする
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def share(request, share_id):
     # シェアするMessageの取得
     share = Message.objects.get(id=share_id)
@@ -272,7 +272,7 @@ def share(request, share_id):
     return render(request, 'sns/share.html', params)
 
 # goodボタンの処理
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def good(request, good_id):
     # goodするMessageを取得
     good_msg = Message.objects.get(id=good_id)
@@ -297,14 +297,16 @@ def good(request, good_id):
     return redirect(to='/sns')
 
 #自分のマイページを表示
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def mypage(request):
+    #自分の情報を表示
+    me = User.objects.filter(email=request.user).first()
     params = {
-         'name':request.user,
+         'my_user':me,
     }
     return render(request, "sns/mypage.html", params)
 
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def otherspage(request):
     #マイページを開きたいFriendの情報を取得
     fri_name = request.GET['name']
@@ -315,7 +317,7 @@ def otherspage(request):
     return render(request, "sns/otherspage.html", params)
 
 #DMのための処理
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def dm(request):
     #markはDMをおくるときにプルダウンから宛先を選ぶ場合を識別するためにdm.htmlに送る値
     mark = 0
@@ -381,7 +383,7 @@ def dm(request):
     return render(request, "sns/dm.html", params)
 
 #通知ページを表示
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def notifications(request):
     params = {
         'note':request.user,
@@ -389,7 +391,7 @@ def notifications(request):
     return render(request, "sns/notifications.html", params)
 
 #自身の設定ページを表示
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def settings(request):
     params = {
           'name':request.user,
@@ -397,17 +399,17 @@ def settings(request):
     return render(request, "sns/settings.html", params)
 
 #グッドしたものの一覧を表示
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def goods(request):
     return(request, 'sns/goods.html')
 
 #ブロックしたフレンドを表示
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def blocks(request):
     return('sns/blocks.html')       
 
 #自分の登録しているフレンドを列挙するページ
-@login_required(login_url='/admin/login/')
+@login_required(login_url='/sns/login/')
 def all_friends(request):
 
     if request.method == 'POST':
@@ -497,7 +499,6 @@ class UserCreate(generic.CreateView):
 
 #仮登録の完了クラス
 class UserCreateDone(generic.TemplateView):
-    """ユーザー仮登録したよ"""
     template_name = 'sns/user_create_done.html'
 
 #メールから本登録に進んだ時の処理
