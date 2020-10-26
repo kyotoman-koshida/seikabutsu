@@ -22,6 +22,7 @@ from django.views import generic
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
+from social_django.models import UserSocialAuth
 
 # indexのビュー関数
 @login_required(login_url='/sns/login/')
@@ -453,10 +454,16 @@ def all_friends(request):
             'gpname':sel_group,
         }
 
-    return render(request, 'sns/all_friends.html', params)    
+    return render(request, 'sns/all_friends.html', params)
 
-class Top(generic.TemplateView):
-    template_name = 'sns/top.html'
+@login_required
+def top_page(request):
+    user = UserSocialAuth.objects.get(user_id=request.user.id)
+
+    return render(request,'sns/top.html',{'user': user})        
+
+#class Top(generic.TemplateView):
+#    template_name = 'sns/top.html'
 
 #ログインページ
 class Login(LoginView):

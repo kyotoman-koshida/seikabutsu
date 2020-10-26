@@ -10,7 +10,8 @@
                     {{ field.errors }}
                     <hr>
                 {% endfor %}
-                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
+                <!--<button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>-->
+                <button type="submit" class="btn btn-primary btn-lg">ログイン</button>
                 <input type="hidden" name="next" value="{{ next }}" />
                 {% csrf_token %}
             </div>
@@ -25,8 +26,11 @@
     </div>
 
 <div align="center">
+        {% comment %}
         <button type="button" class="button"
         onclick="location.href='{% url 'social:begin' 'twitter' %}?next={{ next }}'">
         Twitter でログイン</button>
+        {% endcomment%}
+         <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterログイン</button>
     </div>    
 {% endblock %}

@@ -71,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends', 
                 'social_django.context_processors.login_redirect',
-            ],
+            ]
         },
     },
 ]
@@ -112,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#登録するアカウントはここから使用
+#カスタムユーザを使用
 AUTH_USER_MODEL = 'account.User'
 
 # メールをコンソールに表示する
@@ -122,7 +122,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'heiheibonbon20120426@gmail.com'
-EMAIL_HOST_PASSWORD = 'kyo18to97'
+EMAIL_HOST_PASSWORD = 'uuyygzezzdskquvz'
 EMAIL_USE_TLS = True
 
 # Internationalization
@@ -150,11 +150,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'top'
 
+#soxial-auth-app-django用
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.twitter.TwitterOAuth',    
     'django.contrib.auth.backends.ModelBackend',    
 ]
+
+LANGUAGE_CODE = 'ja'
+TIME_ZONE = 'Asia/Tokyo'
+
+SOCIAL_AUTH_TWITTER_KEY = 'lksk257aPbzDzabhbV100BlIj' # Consumer Key (API Key)
+SOCIAL_AUTH_TWITTER_SECRET = 'GFkDQ55l0LXhFo3cWfGX7NZAvlkN0L3r8PMGCnNGaFJZAvPFxh' # Consumer Secret (API Secret)
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/user/top' # リダイレクトURL
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)

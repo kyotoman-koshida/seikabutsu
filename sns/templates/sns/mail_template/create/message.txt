@@ -5,3 +5,5 @@
 
 本登録用URL
 {{ protocol}}://{{ domain }}{% url 'sns:user_create_complete' token %}
+
+なお、本メールは送信専用ですので、返信はできません。
