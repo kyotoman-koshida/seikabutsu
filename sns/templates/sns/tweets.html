@@ -1,0 +1,40 @@
+
+{% block body %}
+   <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form action="" method="get" class="form-group">
+          <label><input type="text" size="60" name="words" class="form-control" placeholder="ツイート"></label>
+          <input type="submit" class="btn btn-primary" value="送信">
+          <input type="button" class="btn btn-warning" value="リロード" onclick="location.reload();" />
+        </form>
+         {% if Words %}
+        <p>「{{ Words }}」 とツイートしました。</p>
+        {% endif %}
+        <p class="error-message">{{ Error_message }}</p>
+        <p><span class="status">API-Limit:{{ API_limit }}</p>
+    </dv>
+      <div class="col-md-6">
+        {% if API_limit %}
+        
+        <dl>
+          <dt><span class="reply"><img class="users-img" src="{{ Img }}">{{ User }}/{{ Name }}</span><span class="d-time">{{ Created_at }}</span></dt>
+          <dd>{{ Text }}</dd>
+        </dl>
+      
+        <ul id="output"></ul>
+        {% endif %}
+        </div>
+  </div>
+  {% endblock %}
+
+<div>
+    <div>
+      <p><b>ScreenName</b>:{{ user.access_token.screen_name }}</p>
+        <p><b>UserId</b>:{{ user.access_token.user_id }}</p>
+        <p><b>OAuthTokenSecret</b>:{{ user.access_token.oauth_token_secret }}</p>
+        <p><b>OAuthToken</b>:{{ user.access_token.oauth_token }}</p>
+        <p><b>AuthTime</b>:{{ user.extra_data.auth_time }}</p>
+    </div>
+</div>
+{{number}}

@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.core.validators import ValidationError
 from django.contrib.auth.models import User
@@ -44,6 +43,8 @@ class Friend(models.Model):
             related_name='friend_user')
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name='グループ')
 
+    def __str__(self):
+        return str(self.user) + ' (group: "' + str(self.group) + '")'
 
 # Goodクラス
 class Good(models.Model):

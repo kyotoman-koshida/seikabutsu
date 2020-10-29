@@ -1,0 +1,75 @@
+{% extends 'sns/layout.html' %}
+
+{% block title %}ユーザ一覧{% endblock %}
+
+{% block header %}
+<h1>ユーザー</h1>
+{% endblock %}
+
+
+{% block content %}
+
+<body class="container">
+
+{% comment %}
+<form action="{% url 'sns:groups' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="mode" value="__usersform__">
+<!--<form action="{% url 'sns:all_users' %}" method="post">-->
+   {{usersform}}
+  <button>select members</button>
+</form>
+{% endcomment %}
+
+<hr>
+  <h1 class="dispay-4 text-primary">ユーザー</h1> 
+      {% if me.gender == 1%}
+      <table class="table">
+      <tr>
+        <th>名前</th>
+        <th>居住地</th>
+        <th>生年月日</th>
+        <th>性別</th>
+        <th>身長</th>
+      </tr> 
+      {% for member in women %}
+      <tr>
+      <span class="float-right">
+     <td>{{member.username}}→(<a href="{% url 'sns:otherspage' %}?name={{member.username}}">マイページ</a>)</td>
+     <td>{{member.place}}</td>
+     <td>{{member.birthday}}</td>
+     <td>男性</td>
+     <td>{{member.height}}</td>
+     "{{member}}"(<a href="{% url 'sns:add' %}?name={{member}}">add friend</a>)
+     </span>
+     </tr>
+     {% endfor %}
+     </table>
+
+     {% else %}
+     
+    
+     <table class="table">
+      <tr>
+        <th>名前</th>
+        <th>居住地</th>
+        <th>生年月日</th>
+        <th>性別</th>
+        <th>身長</th>
+      </tr> 
+      {% for member in men %}
+      <tr>
+       <span class="float-right">
+     <td>{{member.username}}→(<a href="{% url 'sns:otherspage' %}?name={{member.username}}">マイページ</a>)</td>
+     <td>{{member.place}}</td>
+     <td>{{member.birthday}}</td>
+     <td>女性</td>
+     <td>{{member.height}}</td>
+     </span>
+     {% endfor %}
+     </table>
+     {% endif %}
+      </span>
+      </tr>
+</body>    
+{% endblock %}

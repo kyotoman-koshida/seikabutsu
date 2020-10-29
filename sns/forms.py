@@ -43,6 +43,15 @@ class GroupCheckForm(forms.Form):
             widget=forms.CheckboxSelectMultiple(),
         )
 
+# ユーザー選択のためのチェックボックスフォーム（未使用）
+class UserCheckForm(forms.Form):
+    def __init__(self, user, *args, **kwargs):
+        super(UserCheckForm, self).__init__(*args, **kwargs)
+        self.fields['users'] = forms.MultipleChoiceField(
+            choices=[(item.username, item.username) for item in User.objects.all()],
+            widget=forms.CheckboxSelectMultiple(),
+        )        
+
 # Groupの選択メニューフォーム
 class GroupSelectForm(forms.Form):
     def __init__(self, user, *args, **kwargs):
@@ -68,8 +77,10 @@ class CreateGroupForm(forms.Form):
 
 # 投稿フォーム
 class PostForm(forms.Form):
-    content = forms.CharField(max_length=500, \
-            widget=forms.Textarea)
+    content = forms.CharField(max_length=280, \
+            widget=forms.Textarea, \
+            help_text='280文字までです。'
+                )
     
     def __init__(self, user, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
@@ -80,7 +91,8 @@ class PostForm(forms.Form):
                      filter(owner__in=[user,public])],
         )
 
-#DMする相手をプルダウンで選ぶときに使うフォーム
+
+#DMのためのフォーム
 class DMForm(forms.ModelForm):
     #選択肢の中からDMの送信先を決定
     user = forms.fields.ChoiceField(widget=forms.widgets.Select)

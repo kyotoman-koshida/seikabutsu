@@ -32,8 +32,10 @@
 <button>set members</button>
 </form>
 <hr>
+<a href="{% url 'sns:all_users' %}">新しいフレンドを見つける</a>
+<hr>
 <p>※新しいGroupの登録</p>
-<form action="{% url 'snscreategroup' %}" method="post">
+<form action="{% url 'sns:creategroup' %}" method="post">
 {% csrf_token %}
 {{create_form}}
 <button>create new group</button>
