@@ -10,17 +10,6 @@
 {% block content %}
 
 <body class="container">
-
-{% comment %}
-<form action="{% url 'sns:groups' %}" method="post">
-{% csrf_token %}
-<input type="hidden" name="mode" value="__usersform__">
-<!--<form action="{% url 'sns:all_users' %}" method="post">-->
-   {{usersform}}
-  <button>select members</button>
-</form>
-{% endcomment %}
-
 <form action="" method="get">
         <input name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit">ユーザを検索する</button>
@@ -57,7 +46,6 @@
     </table>
     {% endif %}
 
-
 <hr>
   <h1 class="dispay-4 text-primary">ユーザー</h1> 
       {% if me.gender == 1%}
@@ -82,10 +70,8 @@
      </tr>
      {% endfor %}
      </table>
-
-     {% else %}
+      {% else %}
      
-    
      <table class="table">
       <tr>
         <th>名前</th>

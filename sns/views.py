@@ -359,7 +359,6 @@ def dm(request):
             ]
             obj.owner = User.objects.filter(username=fri_name).first()
 
-        #raise ValueError
         #DMの送り主を取得
         obj.user = User.objects.filter(email=request.user).first()
         
@@ -376,22 +375,10 @@ def dm(request):
                 
     #Friendのマイページからとんできた場合
     elif request.GET['name'] != 'dst' :#dstはdestination DMの宛先が未定のときと区別する
-        #obj = Dm()
-        #dms = DMForm(request.POST, instance=obj)
-            #fri_nameにとんできた元のマイページ主の情報を取得
         fri_name = request.GET['name']
         form.fields['user'].choices = [
             (fri_name, fri_name)
         ]
-        
-            #DMの受け取り主を取得
-        #obj.owner = User.objects.filter(email=request.POST.get('user')).first()
-            #DMの送り主を取得
-        #obj.user = User.objects.filter(email=request.user).first()
-
-               
-        #if form.is_valid():
-        #    form.save()
           
     else:           
           
@@ -401,9 +388,7 @@ def dm(request):
             (item.user, item.user) for item in myfris
             ]
         #mark=1のときはプルダウンでフレンドを選ぶとき    
-        mark = 1
-        #obj = Dm()
-        #dms = DMForm(request.POST, instance=obj)        
+        mark = 1       
     
     params = {
         "dialogs":dialogs,
@@ -519,10 +504,8 @@ def all_friends(request):
         # フォームの用意
         groupsform = GroupSelectForm(request.user,request.POST)
         gp = Group.objects.all()
-        
         sel_group = '-'
     
-
     params = {
             'groups_form':groupsform,
             'group':gp,
@@ -619,7 +602,7 @@ def YmdHMS(created_at):
     time_local = time.localtime(unix_time)
     return int(time.strftime('%Y%m%d%H%M%S', time_local))
 
-
+#トップページを表示
 @login_required(login_url='/sns/login/')
 def top_page(request):
     user = UserSocialAuth.objects.get(user_id=request.user.id)
@@ -629,12 +612,12 @@ def top_page(request):
 #class Top(generic.TemplateView):
 #    template_name = 'sns/top.html'
 
-#ログインページ
+#ログインページを表示
 class Login(LoginView):
     form_class = LoginForm
     template_name = 'sns/login.html'    
 
-#ログアウトページ
+#ログアウトページを表示
 class Logout(LogoutView):
     template_name = 'sns/logout.html'
 

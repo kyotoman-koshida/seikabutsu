@@ -10,7 +10,6 @@
 {% block content %}
 
 <body class="container">
-
 <form action="" method="get">
         <input name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit">ユーザを検索する</button>
@@ -46,8 +45,6 @@
     </table>
     {% endif %}
 
-
-
 <form method="post">
 {% csrf_token %}
 <input type="hidden" name="mode" value="__groups_form__">
@@ -55,7 +52,6 @@
    {{groups_form}}
   <button>select group</button>
 </form>
-
 
 <hr>
 {% if gpname != '-' %}

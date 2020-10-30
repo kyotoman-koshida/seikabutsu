@@ -28,7 +28,7 @@ class GoodForm(forms.ModelForm):
         model = Good
         fields = ['owner', 'message']
 
-# 検索フォーム
+# 検索フォーム(未使用)
 class SearchForm(forms.Form):
     search = forms.CharField(max_length=100)
 
@@ -90,7 +90,6 @@ class PostForm(forms.Form):
                      for item in Group.objects. \
                      filter(owner__in=[user,public])],
         )
-
 
 #DMのためのフォーム
 class DMForm(forms.ModelForm):

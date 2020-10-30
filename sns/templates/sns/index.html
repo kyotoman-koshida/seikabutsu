@@ -4,14 +4,9 @@
 
 {% block header %}
 
-{% comment %}
-<a href="{% url 'sns:notifications' %}">通知</a>
-{% endcomment %}
-
 <a href="{% url 'sns:twitter' %}">tweets</a>
 <button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterを紐付けてログイン</button>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<!--<h1 class="display-4 text-primary">Sns</h1>-->
 <p class="caption">※グループのチェックをONにしてupdateすると、
 そのグループに登録されている利用者のメッセージだけが表示されます。</p>
 {% if messages %}
