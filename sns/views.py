@@ -534,7 +534,7 @@ def all_friends(request):
     return render(request, 'sns/all_friends.html', params)
 
 def twitter(request):
-    try:
+    
         msg = request.GET.get('words')
 
         C_KEY = conf_settings.SOCIAL_AUTH_TWITTER_KEY
@@ -611,10 +611,7 @@ def twitter(request):
             Error = {
                 'Error_message': 'API制限中',
             }
-            return render(request, 'sns/tweets.html', Error)
-
-    except:
-        return render(request, 'sns/error.html')            
+            return render(request, 'sns/tweets.html', Error)           
 
 def YmdHMS(created_at):
     time_utc = time.strptime(created_at, '%a %b %d %H:%M:%S +0000 %Y')
@@ -668,7 +665,7 @@ class UserCreate(generic.CreateView):
         message = render_to_string('sns/mail_template/create/message.txt', params)
 
         user.email_user(subject, message)
-        return redirect('sns/user_create_done')
+        return redirect('sns/user_create_done.html')
 
 
 #仮登録の完了クラス
