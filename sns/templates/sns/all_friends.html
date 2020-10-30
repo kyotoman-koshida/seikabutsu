@@ -13,8 +13,39 @@
 
 <form action="" method="get">
         <input name="query" value="{{ request.GET.query }}" type="text">
-        <button type="submit">検索する</button>
-    </form>
+        <button type="submit">ユーザを検索する</button>
+</form>
+
+{% if request.GET.query %}
+<h1 class="dispay-4 text-primary">該当するフレンド</h1> 
+    <table class="table">
+      <tr>
+        <th>名前</th>
+        <th>居住地</th>
+        <th>性別</th>
+        <th>生年月日</th>
+        <th>身長</th>
+      </tr>
+    {% for member in friends %}
+       {% if member.username == request.GET.query %}  
+      <tr>
+      <span class="float-right">
+     <td>{{member.username}}(<a href="{% url 'sns:otherspage' %}?name={{member.user}}">マイページ</a>)</td>
+     <td>{{member.place}}</td>
+      {% if me.gender == 2 %}
+     <td>男性</td>
+     {% else %}
+     <td>女性</td>
+     {% endif %}
+      <th>{{member.birthday}}</th>
+      <td>{{member.height}}</td>
+      </span>
+      </tr>
+      {% endif %}
+    {% endfor %}  
+    </table>
+    {% endif %}
+
 
 
 <form method="post">
@@ -22,7 +53,7 @@
 <input type="hidden" name="mode" value="__groups_form__">
 <form action="{% url 'sns:all_friends' %}" method="post">
    {{groups_form}}
-  <button>select members</button>
+  <button>select group</button>
 </form>
 
 
@@ -42,7 +73,7 @@
       <span class="float-right">
      <td>{{member.username}}(<a href="{% url 'sns:otherspage' %}?name={{member.user}}">マイページ</a>)</td>
      <td>{{member.place}}</td>
-      {% if my_user.gender == 1%}
+      {% if me.gender == 2%}
      <td>男性</td>
      {% else %}
      <td>女性</td>
@@ -68,7 +99,7 @@
       <span class="float-right">
         <td>{{member.username}}(<a href="{% url 'sns:otherspage' %}?name={{member.username}}">マイページ</a>)</td>
         <td>{{member.place}}</td>
-        {% if my_user.gender == 1%}
+        {% if me.gender == 2%}
      <td>男性</td>
      {% else %}
      <td>女性</td>

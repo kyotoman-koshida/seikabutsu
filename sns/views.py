@@ -459,17 +459,17 @@ def all_users(request):
     else:
         # フォームの用意
         usersform = UserCheckForm(request.user,request.POST)
-        me = User.objects.filter(email=request.user)     
-        #全男性ユーザを取得
-        men = User.objects.filter(gender=2)
-        #全女性ユーザを取得 
-        women = User.objects.filter(gender=1)
+        me = User.objects.filter(email=request.user).first()     
+        #全異性ユーザを取得
+        if me.gender == 1:
+            users = User.objects.filter(gender=2)
+        else:
+            users = User.objects.filter(gender=1)
 
     params = {
         'usersform':usersform,
+        'users':users,
         'me':me,
-        'men':men,
-        'women':women,
     }
     return render(request, 'sns/all_users.html', params)          
 
@@ -477,7 +477,7 @@ def all_users(request):
 @login_required(login_url='/sns/login/')
 def all_friends(request):
     fri_user_list = []
-    
+    me = User.objects.filter(email=request.user).first()
     if request.method == 'POST':
         # Groupsメニュー選択肢の処理
         if request.POST['mode'] == '__groups_form__':
@@ -498,7 +498,10 @@ def all_friends(request):
             # FriendのUserをリストにまとめる
             
             for item in myfri:
-                fri_user = User.objects.filter(email=item.user).first()
+                if me.gender == 1:
+                    fri_user = User.objects.filter(email=item.user).filter(gender=2).first()
+                else:
+                    fri_user = User.objects.filter(email=item.user).filter(gender=1).first()
                 fri_user_list.append(fri_user)
             #フォームの用意
             groupsform = GroupSelectForm(request.user, request.POST)
@@ -508,12 +511,15 @@ def all_friends(request):
         myfri = Friend.objects.filter(owner=request.user)
         # FriendのUserをリストにまとめる    
         for item in myfri:
-            fri_user = User.objects.filter(email=item.user).first()
+            if me.gender == 1:
+                fri_user = User.objects.filter(email=item.user).filter(gender=2).first()
+            else:
+                fri_user = User.objects.filter(email=item.user).filter(gender=1).first()
             fri_user_list.append(fri_user)
         # フォームの用意
         groupsform = GroupSelectForm(request.user,request.POST)
         gp = Group.objects.all()
-        myfri = Friend.objects.filter(owner=request.user)
+        
         sel_group = '-'
     
 
@@ -522,6 +528,7 @@ def all_friends(request):
             'group':gp,
             'friends':fri_user_list,
             'gpname':sel_group,
+            'me':me,
         }
 
     return render(request, 'sns/all_friends.html', params)
@@ -740,4 +747,19 @@ def get_public():
     public_user = User.objects.filter(username='public').first()
     all_fri__group = Group.objects.filter(owner=public_user).first()
     return (public_user, all_fri__group)
+
+#ユーザ検索のための関数(未使用)
+def get_queryset(self):
+        q_word = self.request.GET.get('query')
+ 
+        if q_word:
+            object_list = User.objects.filter(
+                Q(title__icontains=q_word) | Q(author__icontains=q_word))
+        else:
+            object_list = User.objects.all()
+        params = {
+            'objects_list':object_list,
+            'q_word':q_word,
+        }    
+        return params
 
