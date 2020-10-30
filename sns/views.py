@@ -537,8 +537,8 @@ def twitter(request):
     
         msg = request.GET.get('words')
 
-        C_KEY = conf_settings.SOCIAL_AUTH_TWITTER_KEY
-        C_SECRET = conf_settings.SOCIAL_AUTH_TWITTER_SECRET
+        C_KEY = conf_settings.TWITTER_CONSUMER_KEY
+        C_SECRET = conf_settings.TWITTER_CONSUMER_SECRET
         A_KEY = conf_settings.AUTHENTICATION_TOKEN
         A_SECRET = conf_settings.AUTHENTICATION_SECRET
 
