@@ -3,8 +3,15 @@
 {% block title %}Index{% endblock %}
 
 {% block header %}
+
+{% comment %}
 <a href="{% url 'sns:notifications' %}">通知</a>
-<h1 class="display-4 text-primary">Sns</h1>
+{% endcomment %}
+
+<a href="{% url 'sns:twitter' %}">tweets</a>
+<button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterを紐付けてログイン</button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<!--<h1 class="display-4 text-primary">Sns</h1>-->
 <p class="caption">※グループのチェックをONにしてupdateすると、
 そのグループに登録されている利用者のメッセージだけが表示されます。</p>
 {% if messages %}
@@ -31,7 +38,11 @@
 {{check_form}}
 <button>update</button>
 </form>
-[<a href="{% url 'sns:all_friends' %}">全登録Friend</a>のタイムライン]
+
+<!--<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sunsets don&#39;t get much better than this one over <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">May 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>-->
+[<a href="{% url 'sns:all_friends' %}">全登録Friend</a>]
+<hr>
+<h1>タイムライン</h1>
 {% for item in contents %}
 <hr>
 <p class="message_public">
@@ -42,7 +53,6 @@
 {% if item.share_id > 0 %}
     <hr class="share_line">
     <p class="share_item_content">{{item.get_share}}</P>
-    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Sunsets don&#39;t get much better than this one over <a href="https://twitter.com/GrandTetonNPS?ref_src=twsrc%5Etfw">@GrandTetonNPS</a>. <a href="https://twitter.com/hashtag/nature?src=hash&amp;ref_src=twsrc%5Etfw">#nature</a> <a href="https://twitter.com/hashtag/sunset?src=hash&amp;ref_src=twsrc%5Etfw">#sunset</a> <a href="http://t.co/YuKy2rcjyU">pic.twitter.com/YuKy2rcjyU</a></p>&mdash; US Department of the Interior (@Interior) <a href="https://twitter.com/Interior/status/463440424141459456?ref_src=twsrc%5Etfw">May 5, 2014</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endif %}
 <p class="message_owner">
     <span class="message_counter">share={{item.share_count}} good={{item.good_count}}</span>

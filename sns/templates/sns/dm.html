@@ -4,13 +4,16 @@
 
 {% block header %}
 <h1>ダイレクトメッセージ</h1>
+{% endblock %}
 
+<body>
+{% block content %}
 <form action="{% url 'sns:dm' %}" method="post">
 {% csrf_token %}
 {% if mark == 1 %}
 <input type="hidden" name="mode" value="__dm_form__">
 {% else %}
-<input type="hidden" name="mode" value={{atesaki}}>
+<input type="hidden" name="mode" value="{{atesaki}}">
 {% endif %}
    {{dm_form}}
 <button>送信</button>
@@ -30,5 +33,5 @@
 DM履歴はありません
 {% endif %}
 </table>
-
 {% endblock %}
+</body>

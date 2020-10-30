@@ -9,11 +9,12 @@
 (<a href="{% url 'sns:add' %}?name={{friend.username}}">add friend</a>)
 {% endblock %}
 
+
+<body>
 {% block content %}
 <table class="table">
       <tr>
         <th>名前</th>
-        <th>メール</th>
         <th>生年月日</th>
         <th>性別</th>
         <th>居住地</th>
@@ -22,7 +23,6 @@
       <tr>
       <span class="float-right">
      <td>{{friend.username}}</td>
-     <td>{{friend.email}}</td>
      <td>{{friend.birthday}}</td>
      {% if friend.gender == 1%}
      <td>男性</td>
@@ -35,3 +35,4 @@
       </tr>
 </table>
 {% endblock %}
+</body>

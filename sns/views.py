@@ -36,6 +36,7 @@ sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 # indexのビュー関数
 @login_required(login_url='/sns/login/')
 def index(request):
+    
     # publicのuserを取得
     (public_user, public_group) = get_public()
 
@@ -165,7 +166,7 @@ def groups(request):
 def add(request):
     # 追加するUserを取得
     add_name = request.GET['name']
-    add_user = User.objects.filter(email=add_name).first()
+    add_user = User.objects.filter(username=add_name).first()
     # Userが本人だった場合の処理
     if add_user == request.user:
         messages.info(request, "自分自身をFriendに追加することは\
@@ -191,7 +192,7 @@ def add(request):
     # メッセージを設定
     messages.success(request, add_user.username + ' を追加しました！\
         groupページに移動して、追加したFriendをメンバーに設定して下さい。')
-    return redirect(to=':sns')
+    return redirect(to='/sns')
 
 # グループの作成処理
 @login_required(login_url='/sns/login/')
@@ -335,54 +336,65 @@ def dm(request):
     #エラー回避のためにさきに定義しておく
     fri_name = ''
 
+    form = DMForm()  
+
     #DMフォームを記入して送信するときの操作
     if request.method == "POST":
+        
         obj = Dm()
         dms = DMForm(request.POST, instance=obj)
-        dms.fields['user'].choices = [
-            ("----", "----")
-            ] + [
-            (item.user, item.user) for item in myfris
+        if request.POST.get('mode') == '__dm_form__':#'mode'の値が__dm_form__のときはDMのあてさきがプルダウンからされた場合。
+            dms.fields['user'].choices = [
+                ("----", "----")
+                ] + [
+                (item.user, item.user) for item in myfris
+               ]
+            #DMの受け取り主を取得
+            obj.owner = User.objects.filter(email=request.POST.get('user')).first()   
+            
+        else:       
+            fri_name = request.POST.get('mode')#'mode'の値はDMのあてさきが入っている。
+            dms.fields['user'].choices = [
+                (fri_name, fri_name)
             ]
-        #DMの受け取り主を取得
-        obj.owner = User.objects.filter(email=request.POST.get('user')).first()
+            obj.owner = User.objects.filter(username=fri_name).first()
+
+        #raise ValueError
         #DMの送り主を取得
         obj.user = User.objects.filter(email=request.user).first()
         
+        
         if dms.is_valid():
            dms.save()
-        form = DMForm()   
+        
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
             (item.user, item.user) for item in myfris
             ]
-        #group = form.save(commit=False)
-        #group.create_user = request.user        
-
-    #Friendのマイページからとんできた場合
-    elif request.GET['name'] != 'dst':#dstはdestination DMの宛先が未定のときと区別する
-        obj = Dm()
-        dms = DMForm(request.POST, instance=obj)
-        #fri_nameにとんできた元のマイページ主の情報を取得
-        fri_name = request.GET['name']
         
-        dms.fields['user'].choices = [
+                
+    #Friendのマイページからとんできた場合
+    elif request.GET['name'] != 'dst' :#dstはdestination DMの宛先が未定のときと区別する
+        #obj = Dm()
+        #dms = DMForm(request.POST, instance=obj)
+            #fri_nameにとんできた元のマイページ主の情報を取得
+        fri_name = request.GET['name']
+        form.fields['user'].choices = [
             (fri_name, fri_name)
         ]
+        
+            #DMの受け取り主を取得
+        #obj.owner = User.objects.filter(email=request.POST.get('user')).first()
+            #DMの送り主を取得
+        #obj.user = User.objects.filter(email=request.user).first()
 
-        #DMの受け取り主を取得
-        obj.owner = User.objects.filter(username=fri_name).first()
-        #DMの送り主を取得
-        obj.user = User.objects.filter(username=request.user).first()
-        
-        if dms.is_valid():
-           dms.save()
-        
-        form = DMForm()
+               
+        #if form.is_valid():
+        #    form.save()
           
     else:           
-        form = DMForm()    
+          
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
@@ -390,8 +402,8 @@ def dm(request):
             ]
         #mark=1のときはプルダウンでフレンドを選ぶとき    
         mark = 1
-        obj = Dm()
-        dms = DMForm(request.POST, instance=obj)        
+        #obj = Dm()
+        #dms = DMForm(request.POST, instance=obj)        
     
     params = {
         "dialogs":dialogs,
@@ -401,7 +413,7 @@ def dm(request):
     }
     return render(request, "sns/dm.html", params)
 
-#通知ページを表示
+#通知ページを表示(未使用)
 @login_required(login_url='/sns/login/')
 def notifications(request):
     params = {
@@ -409,7 +421,7 @@ def notifications(request):
     }
     return render(request, "sns/notifications.html", params)
 
-#自身の設定ページを表示
+#自身の設定ページを表示(未使用)
 @login_required(login_url='/sns/login/')
 def settings(request):
     params = {
@@ -417,12 +429,12 @@ def settings(request):
     }   
     return render(request, "sns/settings.html", params)
 
-#グッドしたものの一覧を表示
+#グッドしたものの一覧を表示(未使用)
 @login_required(login_url='/sns/login/')
 def goods(request):
     return(request, 'sns/goods.html')
 
-#ブロックしたフレンドを表示
+#ブロックしたフレンドを表示（未使用）
 @login_required(login_url='/sns/login/')
 def blocks(request):
     return('sns/blocks.html')
@@ -464,7 +476,8 @@ def all_users(request):
 #自分の登録しているフレンドを列挙する
 @login_required(login_url='/sns/login/')
 def all_friends(request):
-
+    fri_user_list = []
+    
     if request.method == 'POST':
         # Groupsメニュー選択肢の処理
         if request.POST['mode'] == '__groups_form__':
@@ -481,17 +494,22 @@ def all_friends(request):
                 myfri = Friend.objects.filter(owner=request.user) \
                 .filter(group=gp)
 
-            vlist = []  
-            # FriendのUserをリストにまとめる
-            for item in myfri:
-                vlist.append(item.user.username)
-
             
+            # FriendのUserをリストにまとめる
+            
+            for item in myfri:
+                fri_user = User.objects.filter(email=item.user).first()
+                fri_user_list.append(fri_user)
             #フォームの用意
             groupsform = GroupSelectForm(request.user, request.POST)
       
     # GETアクセス時の処理  
     else:
+        myfri = Friend.objects.filter(owner=request.user)
+        # FriendのUserをリストにまとめる    
+        for item in myfri:
+            fri_user = User.objects.filter(email=item.user).first()
+            fri_user_list.append(fri_user)
         # フォームの用意
         groupsform = GroupSelectForm(request.user,request.POST)
         gp = Group.objects.all()
@@ -502,81 +520,94 @@ def all_friends(request):
     params = {
             'groups_form':groupsform,
             'group':gp,
-            'friends':myfri,
+            'friends':fri_user_list,
             'gpname':sel_group,
         }
 
     return render(request, 'sns/all_friends.html', params)
 
 def twitter(request):
+    try:
+        msg = request.GET.get('words')
 
-    msg = request.GET.get('words')
+        C_KEY = conf_settings.SOCIAL_AUTH_TWITTER_KEY
+        C_SECRET = conf_settings.SOCIAL_AUTH_TWITTER_SECRET
+        A_KEY = conf_settings.AUTHENTICATION_TOKEN
+        A_SECRET = conf_settings.AUTHENTICATION_SECRET
 
-    C_KEY = conf_settings.SOCIAL_AUTH_TWITTER_KEY
-    C_SECRET = conf_settings.SOCIAL_AUTH_TWITTER_SECRET
-    A_KEY = conf_settings.AUTHENTICATION_TOKEN
-    A_SECRET = conf_settings.AUTHENTICATION_SECRET
+        url = 'https://api.twitter.com/1.1/statuses/update.json'
+        params = {
+            'status': msg,
+            'lang': 'ja'
+            }
+        tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
+        req = tw.post(url, params = params)
 
-    url = 'https://api.twitter.com/1.1/statuses/update.json'
-    params = {
-        'status': msg,
-        'lang': 'ja'
-        }
-    tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
-    req = tw.post(url, params = params)
+        url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
+        params = {'count': 3}
+        req = tw.get(url, params = params)
 
-    url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
-    params = {'count': 1}
-    req = tw.get(url, params = params)
-
-    if req.status_code == 200:
-        timeline = json.loads(req.text)
-        limit = req.headers['x-rate-limit-remaining']
-
-        for tweet in timeline:
-            Text = (tweet['text'])
-            twi_User = (tweet['user']['screen_name'])
-            Name = (tweet['user']['name'])
-            Img = (tweet['user']['profile_image_url'])
-            Created_at = YmdHMS(tweet['created_at'])
-
+        if req.status_code == 200:
+            timeline = json.loads(req.text)
+            limit = req.headers['x-rate-limit-remaining']
+        
             user = UserSocialAuth.objects.get(user_id=request.user.id)
-            
+        
+            #tweet情報をリストにまとめる
+            Textlist = []
+            Userlist = []
+            Namelist = []
+            Imglist = []
+            Cre_at_list = []
+
+            for tweet in timeline:
+                Text = (tweet['text'])
+                Textlist.append(Text)
+                twi_User = (tweet['user']['screen_name'])
+                Userlist.append(twi_User)
+                Name = (tweet['user']['name'])
+                Namelist.append(Name)
+                Img = (tweet['user']['profile_image_url'])
+                Imglist.append(Img)
+                Created_at = YmdHMS(tweet['created_at'])
+                Cre_at_list.append(Created_at)
+                   
+                #tweetの保存されるグループを指定
+                gr_name = 'public'
+                group = Group.objects.filter(owner=request.user) \
+                    .filter(title=gr_name).first()
+                if group == None:
+                    (pub_user, group) = get_public()
+
+                #tweetをデータベースにMessageとして保存する
+                msg = Message()
+                msg.content = Text
+                msg.owner = User.objects.filter(email=user).first()
+                msg.group = group
+                msg.save()
+        
             #tweet情報のまとめ
             message = {
                 'Words': msg,
                 'timeline': timeline,
                 'API_limit': limit,
-                'Text': Text,
-                'User': twi_User,
-                'Name': Name,
-                'Img': Img,
-                'Created_at': Created_at,
-                'number': 1234567,
+                'Text': Textlist,
+                'User': Userlist,
+                'Name': Namelist,
+                'Img': Imglist,
+                'Created_at': Cre_at_list,
                 'user': user,
-            }
-
-            #tweetの保存されるグループを指定
-            gr_name = 'all_fri_group'
-            group = Group.objects.filter(owner=request.user) \
-                .filter(title=gr_name).first()
-            if group == None:
-                (pub_user, group) = get_public()
-
-            #tweetをデータベースにMessageとして保存する
-            msg = Message()
-            msg.content = Text
-            msg.owner = User.objects.filter(email=user).first()
-            msg.group = group
-            msg.save()
-
+                }
             return render(request, 'sns/tweets.html', message)
 
-    else:
-        Error = {
-            'Error_message': 'API制限中',
-        }
-        return render(request, 'sns/tweets.html', Error)    
+        else:
+            Error = {
+                'Error_message': 'API制限中',
+            }
+            return render(request, 'sns/tweets.html', Error)
+
+    except:
+        return render(request, 'sns/error.html')            
 
 def YmdHMS(created_at):
     time_utc = time.strptime(created_at, '%a %b %d %H:%M:%S +0000 %Y')

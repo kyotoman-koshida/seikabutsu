@@ -1,4 +1,7 @@
+{% extends 'sns/layout.html' %}
+{% block title %}最近のタイムライン{% endblock %}
 
+{% comment %}
 {% block body %}
    <div class="container">
     <div class="row">
@@ -11,20 +14,27 @@
          {% if Words %}
         <p>「{{ Words }}」 とツイートしました。</p>
         {% endif %}
+  
         <p class="error-message">{{ Error_message }}</p>
         <p><span class="status">API-Limit:{{ API_limit }}</p>
     </dv>
+    {% endcomment %}
+{% block content %}
+    {% for tweet in timeline %}
       <div class="col-md-6">
         {% if API_limit %}
+        
         
         <dl>
           <dt><span class="reply"><img class="users-img" src="{{ Img }}">{{ User }}/{{ Name }}</span><span class="d-time">{{ Created_at }}</span></dt>
           <dd>{{ Text }}</dd>
         </dl>
       
+
         <ul id="output"></ul>
         {% endif %}
         </div>
+        {% endfor %}
   </div>
   {% endblock %}
 

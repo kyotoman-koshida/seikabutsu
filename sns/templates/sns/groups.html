@@ -4,8 +4,7 @@
 
 {% block header %}
 <h1>Group</h1>
-<p class="caption">※グループを選択してselect memberすると、そのグループに登録されている利用者がONになります。
-利用者のチェックをONにしてset memberすると、ONにしてある利用者がグループに追加されます。</p>
+<p class="caption">※利用者のチェックをONにしてset memberすると、ONにしてある利用者がグループに追加されます。</p>
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -18,11 +17,15 @@
 
 {% block content %}
 
+{% comment %}
+<form actions = "{ url 'sns:groups'}" method='post'>
 {% csrf_token %}
 <input type="hidden" name="mode" value="__groups_form__">
 {{groups_form}}
 <button>select members</button>
 </form>
+{% endcomment %}
+
 <hr>
 <form action="{% url 'sns:groups' %}" method="post">
 {% csrf_token %}

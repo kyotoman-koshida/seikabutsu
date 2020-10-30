@@ -4,6 +4,9 @@
 
 {% block header %}
 <h1>my page</h1>
+{% endblock %}
+<body>
+{% block content%}
 <p class="caption">{{name}}</p>
 <h1 class="dispay-4 text-primary">ユーザー情報</h1> 
     <table class="table">
@@ -30,5 +33,10 @@
       </span>
       </tr>
     </table>
+
+{% comment %}    
 <a href="{% url 'sns:settings' %}">設定</a>
+{% endcomment %}
+
 {% endblock %}
+</body>
