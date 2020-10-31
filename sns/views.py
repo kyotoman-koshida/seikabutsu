@@ -518,83 +518,83 @@ def all_friends(request):
 
 def twitter(request):
     
-        msg = request.GET.get('words')
+    msg = request.GET.get('words')
 
-        C_KEY = conf_settings.TWITTER_CONSUMER_KEY
-        C_SECRET = conf_settings.TWITTER_CONSUMER_SECRET
-        A_KEY = conf_settings.AUTHENTICATION_TOKEN
-        A_SECRET = conf_settings.AUTHENTICATION_SECRET
+    C_KEY = conf_settings.SOCIAL_AUTH_TWITTER_KEY
+    C_SECRET = conf_settings.SOCIAL_AUTH_TWITTER_SECRET
+    A_KEY = conf_settings.AUTHENTICATION_TOKEN
+    A_SECRET = conf_settings.AUTHENTICATION_SECRET
 
-        url = 'https://api.twitter.com/1.1/statuses/update.json'
-        params = {
-            'status': msg,
-            'lang': 'ja'
-            }
-        tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
-        req = tw.post(url, params = params)
+    url = 'https://api.twitter.com/1.1/statuses/update.json'
+    params = {
+        'status': msg,
+        'lang': 'ja'
+        }
+    tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
+    req = tw.post(url, params = params)
 
-        url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
-        params = {'count': 3}
-        req = tw.get(url, params = params)
+    url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
+    params = {'count': 3}
+    req = tw.get(url, params = params)
 
-        if req.status_code == 200:
-            timeline = json.loads(req.text)
-            limit = req.headers['x-rate-limit-remaining']
+    if req.status_code == 200:
+        timeline = json.loads(req.text)
+        limit = req.headers['x-rate-limit-remaining']
         
-            user = UserSocialAuth.objects.get(user_id=request.user.id)
+        user = UserSocialAuth.objects.get(user_id=request.user.id)
         
-            #tweet情報をリストにまとめる
-            Textlist = []
-            Userlist = []
-            Namelist = []
-            Imglist = []
-            Cre_at_list = []
+        #tweet情報をリストにまとめる
+        Textlist = []
+        Userlist = []
+        Namelist = []
+        Imglist = []
+        Cre_at_list = []
 
-            for tweet in timeline:
-                Text = (tweet['text'])
-                Textlist.append(Text)
-                twi_User = (tweet['user']['screen_name'])
-                Userlist.append(twi_User)
-                Name = (tweet['user']['name'])
-                Namelist.append(Name)
-                Img = (tweet['user']['profile_image_url'])
-                Imglist.append(Img)
-                Created_at = YmdHMS(tweet['created_at'])
-                Cre_at_list.append(Created_at)
+        for tweet in timeline:
+            Text = (tweet['text'])
+            Textlist.append(Text)
+            twi_User = (tweet['user']['screen_name'])
+            Userlist.append(twi_User)
+            Name = (tweet['user']['name'])
+            Namelist.append(Name)
+            Img = (tweet['user']['profile_image_url'])
+            Imglist.append(Img)
+            Created_at = YmdHMS(tweet['created_at'])
+            Cre_at_list.append(Created_at)
                    
-                #tweetの保存されるグループを指定
-                gr_name = 'public'
-                group = Group.objects.filter(owner=request.user) \
+            #tweetの保存されるグループを指定
+            gr_name = 'public'
+            group = Group.objects.filter(owner=request.user) \
                     .filter(title=gr_name).first()
-                if group == None:
-                    (pub_user, group) = get_public()
+            if group == None:
+                (pub_user, group) = get_public()
 
-                #tweetをデータベースにMessageとして保存する
-                msg = Message()
-                msg.content = Text
-                msg.owner = User.objects.filter(email=user).first()
-                msg.group = group
-                msg.save()
+            #tweetをデータベースにMessageとして保存する
+            msg = Message()
+            msg.content = Text
+            msg.owner = User.objects.filter(email=user).first()
+            msg.group = group
+            msg.save()
         
-            #tweet情報のまとめ
-            message = {
-                'Words': msg,
-                'timeline': timeline,
-                'API_limit': limit,
-                'Text': Textlist,
-                'User': Userlist,
-                'Name': Namelist,
-                'Img': Imglist,
-                'Created_at': Cre_at_list,
-                'user': user,
-                }
-            return render(request, 'sns/tweets.html', message)
-
-        else:
-            Error = {
-                'Error_message': 'API制限中',
+        #tweet情報のまとめ
+        message = {
+            'Words': msg,
+            'timeline': timeline,
+            'API_limit': limit,
+            'Text': Textlist,
+            'User': Userlist,
+            'Name': Namelist,
+            'Img': Imglist,
+            'Created_at': Cre_at_list,
+            'user': user,
             }
-            return render(request, 'sns/tweets.html', Error)           
+        return render(request, 'sns/tweets.html', message)
+
+    else:
+        Error = {
+            'Error_message': 'API制限中',
+        }
+        return render(request, 'sns/tweets.html', Error)           
 
 def YmdHMS(created_at):
     time_utc = time.strptime(created_at, '%a %b %d %H:%M:%S +0000 %Y')
