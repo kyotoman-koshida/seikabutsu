@@ -174,4 +174,8 @@ except ImportError:
 
 if not DEBUG:    
    SECRET_KEY = os.environ['SECRET_KEY']
-   django_heroku.settings(locals())
+   SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
+   SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
+   AUTHENTICATION_TOKEN = os.environ['AUTHENTICATION_TOKEN']
+   AUTHENTICATION_SECRET = os.environ['AUTHENTICATION_SECRET']
+   django_heroku.settings(locals()) = os.environ['SECRET_KEY']
