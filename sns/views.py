@@ -518,7 +518,7 @@ def all_friends(request):
 
 def twitter(request):
     
-    #msg = request.GET.get('words')
+    msg = request.GET.get('words')
 
     C_KEY = conf_settings.SOCIAL_AUTH_TWITTER_KEY
     C_SECRET = conf_settings.SOCIAL_AUTH_TWITTER_SECRET
