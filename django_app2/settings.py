@@ -126,7 +126,7 @@ EMAIL_USE_TLS = True
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -144,7 +144,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'top'
+LOGIN_REDIRECT_URL = 'index'
 
 #soxial-auth-app-django用
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
