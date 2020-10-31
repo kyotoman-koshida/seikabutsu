@@ -4,7 +4,7 @@
 
 {% block header %}
 
-<a href="{% url 'sns:twitter' %}">tweets</a>
+<a href="{% url 'social:begin' 'sns:twitter' %}">tweets</a>
 <button type="button" onclick="location.href='{% url 'social:begin' 'sns:twitter' %}'">Twitterを紐付けてログイン</button>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <p class="caption">※グループのチェックをONにしてupdateすると、
