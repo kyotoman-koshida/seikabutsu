@@ -29,7 +29,7 @@
        {% if member.username == request.GET.query %}  
       <tr>
       <span class="float-right">
-     <td>{{member.username}}(<a href="{% url 'sns:otherspage' %}?name={{member.user}}">マイページ</a>)</td>
+     <td>{{member.username}}(<a href="{% url 'otherspage' %}?name={{member.user}}">マイページ</a>)</td>
      <td>{{member.place}}</td>
       {% if me.gender == 2 %}
      <td>男性</td>
