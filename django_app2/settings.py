@@ -114,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #カスタムユーザを使用
 AUTH_USER_MODEL = 'account.User'
 
-# メールをコンソールに表示する
+# メール送信の設定
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -125,9 +125,9 @@ EMAIL_USE_TLS = True
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'Asia/Tokyo'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -153,9 +153,6 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.twitter.TwitterOAuth',    
     'django.contrib.auth.backends.ModelBackend',    
 ]
-
-LANGUAGE_CODE = 'ja'
-TIME_ZONE = 'Asia/Tokyo'
 
 """
 #twitterのapi利用関係、あとで隠す
