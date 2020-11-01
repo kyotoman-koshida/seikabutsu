@@ -119,7 +119,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'heiheibonbon20120426@gmail.com'
-EMAIL_HOST_PASSWORD = 'uuyygzezzdskquvz'
+#EMAIL_HOST_PASSWORD = 'uuyygzezzdskquvz'
 EMAIL_USE_TLS = True
 #エラーの内容を送信
 ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
@@ -178,6 +178,7 @@ except ImportError:
 
 if not DEBUG:    
    SECRET_KEY = os.environ['SECRET_KEY']
+   EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
    SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
    SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
    AUTHENTICATION_TOKEN = os.environ['AUTHENTICATION_TOKEN']
