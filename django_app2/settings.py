@@ -125,7 +125,7 @@ EMAIL_USE_TLS = True
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'ja'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
