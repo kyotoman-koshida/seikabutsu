@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
+    #'social_django.middleware.SocialAuthExceptionMiddleware',
     
 ]
 
