@@ -47,12 +47,6 @@
           <li>
             <a class="nav-item nav-link" href="{% url 'sns:logout' %}">ログアウト</a>
           </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-item nav-link" href="{% url 'sns:login' %}">
-            ようこそ、ゲスト！ログインはこちら
-          </a>
-          </li>
           {% endif %}
         </ul>
       </div>

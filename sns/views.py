@@ -534,7 +534,7 @@ def twitter(request):
     req = tw.post(url, params = params)
 
     url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
-    params = {'count': 3}
+    params = {'count': 5}
     req = tw.get(url, params = params)
 
     if req.status_code == 200:
@@ -542,7 +542,7 @@ def twitter(request):
         limit = req.headers['x-rate-limit-remaining']
         
         user = UserSocialAuth.objects.get(user_id=request.user.id)
-        
+        """
         #tweet情報をリストにまとめる
         Textlist = []
         Userlist = []
@@ -561,7 +561,7 @@ def twitter(request):
             Imglist.append(Img)
             Created_at = YmdHMS(tweet['created_at'])
             Cre_at_list.append(Created_at)
-                   
+                
             #tweetの保存されるグループを指定
             gr_name = 'public'
             group = Group.objects.filter(owner=request.user) \
@@ -575,17 +575,17 @@ def twitter(request):
             msg.owner = User.objects.filter(email=user).first()
             msg.group = group
             msg.save()
-        
+        """
         #tweet情報のまとめ
         message = {
             'Words': msg,
             'timeline': timeline,
             'API_limit': limit,
-            'Text': Textlist,
-            'User': Userlist,
-            'Name': Namelist,
-            'Img': Imglist,
-            'Created_at': Cre_at_list,
+            #'Text': Textlist,
+            #'User': Userlist,
+            #'Name': Namelist,
+            #'Img': Imglist,
+            #'Created_at': Cre_at_list,
             'user': user,
             }
         return render(request, 'sns/tweets.html', message)
