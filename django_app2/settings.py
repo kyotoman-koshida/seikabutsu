@@ -114,6 +114,10 @@ AUTH_PASSWORD_VALIDATORS = [
 #カスタムユーザを使用
 AUTH_USER_MODEL = 'account.User'
 
+ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
+MANAGERS = ADMINSEMAIL_HOST = 'host'
+SEND_BROKEN_LINK_EMAILS=True
+
 # メール送信の設定
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
