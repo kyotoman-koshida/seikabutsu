@@ -602,15 +602,12 @@ def YmdHMS(created_at):
     time_local = time.localtime(unix_time)
     return int(time.strftime('%Y%m%d%H%M%S', time_local))
 
-#トップページを表示
+#トップページを表示(未使用)
 @login_required(login_url='/sns/login/')
 def top_page(request):
     user = UserSocialAuth.objects.get(user_id=request.user.id)
 
     return render(request,'sns/top.html',{'user': user})        
-
-#class Top(generic.TemplateView):
-#    template_name = 'sns/top.html'
 
 #ログインページを表示
 class Login(LoginView):
@@ -648,8 +645,7 @@ class UserCreate(generic.CreateView):
         message = render_to_string('sns/mail_template/create/message.txt', params)
 
         user.email_user(subject, message)
-        return redirect('sns/user_create_done.html')
-
+        return redirect('sns:user_create_done')
 
 #仮登録の完了クラス
 class UserCreateDone(generic.TemplateView):
