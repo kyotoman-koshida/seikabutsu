@@ -5,8 +5,8 @@ from django.conf.urls import url
 
 urlpatterns = [
     #/login/twitter/, /complete/twitter/, /disconnect/twitter/に対応
-    path('', include('social_django.urls')),
+    url('', include('social_django.urls', namespace='social')),
     url('admin/', admin.site.urls),    
     url('sns/',include('sns.urls', namespace='sns')),
-    url('', index, name='top'),
+    url('', index, name='index'),
     ]

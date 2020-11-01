@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    #'social_django.middleware.SocialAuthExceptionMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
     
 ]
 
@@ -149,7 +149,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'top'
+LOGIN_REDIRECT_URL = 'index'
 
 #soxial-auth-app-django用
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
@@ -166,7 +166,7 @@ AUTHENTICATION_TOKEN = '1083019157627523082-KM6pJQEDpkj9ah9Os4G5Yv4HAG3Bpc'
 AUTHENTICATION_SECRET = '321NJ7WIhF0JQX3PuN8UMR8WqC1VL3QbPITdGTUau6rjB'
 """
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/user/index' # リダイレクトURL
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index' # リダイレクトURL
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
