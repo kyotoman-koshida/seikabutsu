@@ -114,10 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
 #カスタムユーザを使用
 AUTH_USER_MODEL = 'account.User'
 
-ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
-MANAGERS = ADMINSEMAIL_HOST = 'host'
-SEND_BROKEN_LINK_EMAILS=True
-
 # メール送信の設定
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -125,6 +121,10 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'heiheibonbon20120426@gmail.com'
 EMAIL_HOST_PASSWORD = 'uuyygzezzdskquvz'
 EMAIL_USE_TLS = True
+#エラーの内容を送信
+ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
+MANAGERS = ADMINSEMAIL_HOST = 'host'
+SEND_BROKEN_LINK_EMAILS=True
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
