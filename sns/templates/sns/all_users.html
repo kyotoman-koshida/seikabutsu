@@ -32,9 +32,9 @@
      <td>{{member.username}}(<a href="{% url 'sns:otherspage' %}?name={{member.user}}">マイページ</a>)</td>
      <td>{{member.place}}</td>
       {% if my_user.gender == 1 %}
-     <td>男性</td>
-     {% else %}
      <td>女性</td>
+     {% else %}
+     <td>男性</td>
      {% endif %}
       <th>{{member.birthday}}</th>
       <td>{{member.height}}</td>
