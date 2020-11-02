@@ -542,7 +542,7 @@ def twitter(request):
         limit = req.headers['x-rate-limit-remaining']
         
         user = UserSocialAuth.objects.get(user_id=request.user.id)
-        """
+        
         #tweet情報をリストにまとめる
         Textlist = []
         Userlist = []
@@ -561,7 +561,7 @@ def twitter(request):
             Imglist.append(Img)
             Created_at = YmdHMS(tweet['created_at'])
             Cre_at_list.append(Created_at)
-            """    
+    
             #tweetの保存されるグループを指定
         gr_name = 'public'
         group = Group.objects.filter(owner=request.user) \
