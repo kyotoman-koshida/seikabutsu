@@ -561,21 +561,21 @@ def twitter(request):
             Imglist.append(Img)
             Created_at = YmdHMS(tweet['created_at'])
             Cre_at_list.append(Created_at)
-                
+            """    
             #tweetの保存されるグループを指定
-            gr_name = 'public'
-            group = Group.objects.filter(owner=request.user) \
+        gr_name = 'public'
+        group = Group.objects.filter(owner=request.user) \
                     .filter(title=gr_name).first()
-            if group == None:
-                (pub_user, group) = get_public()
-                """
+        if group == None:
+            (pub_user, group) = get_public()
+            
 
             #tweetをデータベースにMessageとして保存する
-            msg = Message()
-            msg.content = Text
-            msg.owner = User.objects.filter(email=user).first()
-            msg.group = group
-            msg.save()
+        msg = Message()
+        msg.content = Text
+        msg.owner = User.objects.filter(email=user).first()
+        msg.group = group
+        msg.save()
         
         #tweet情報のまとめ
         message = {
