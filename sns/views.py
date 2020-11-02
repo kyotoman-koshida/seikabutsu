@@ -568,6 +568,7 @@ def twitter(request):
                     .filter(title=gr_name).first()
             if group == None:
                 (pub_user, group) = get_public()
+                """
 
             #tweetをデータベースにMessageとして保存する
             msg = Message()
@@ -575,17 +576,12 @@ def twitter(request):
             msg.owner = User.objects.filter(email=user).first()
             msg.group = group
             msg.save()
-        """
+        
         #tweet情報のまとめ
         message = {
             'Words': msg,
             'timeline': timeline,
             'API_limit': limit,
-            #'Text': Textlist,
-            #'User': Userlist,
-            #'Name': Namelist,
-            #'Img': Imglist,
-            #'Created_at': Cre_at_list,
             'user': user,
             }
         return render(request, 'sns/tweets.html', message)
