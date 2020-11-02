@@ -530,9 +530,10 @@ def twitter(request):
         'status': msg,
         'lang': 'ja'
         }
-    tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
-    req = tw.post(url, params = params)
 
+    #req = tw.post(url, params = params)
+    
+    tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
     url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
     params = {'count': 5}
     req = tw.get(url, params = params)
