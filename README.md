@@ -28,8 +28,13 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 * twitterが紐付けられている場合に最近のtwitterタイムラインを反映させるページへのリンクが含まれています。(紐付けられていない場合にはエラーとなります。)
 
 ![インデックス画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_index.png)
+
 タイムラインについて詳しく見ていきます。
+タイムラインには先述のとおり、紐付けたtwitterのtweetやアプリ内で投稿したメッセージが表示されます。デフォルトでは、「public」という名前のグループが表示されています。
 ![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline.png)
+
+タイムラインの上にはグループのチェックボックスがあります。自分の好きなグループを選択してupdateボタンを押すと、そのグループのタイムラインを表示します。例えば、ここで自分で作成した「test_group」という名前のグループを選択すると以下のように、「test_group」のタイムラインが表示されます。
+![タイムライン２](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline2.png)
 
 
 # Features
