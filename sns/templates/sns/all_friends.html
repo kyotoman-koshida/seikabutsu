@@ -10,6 +10,9 @@
 {% block content %}
 
 <body class="container">
+<hr>
+<a href="{% url 'sns:all_users' %}">新しいフレンドを見つける</a>
+<hr>
 <form action="" method="get">
         <input name="query" value="{{ request.GET.query }}" type="text">
         <button type="submit">ユーザを検索する</button>
