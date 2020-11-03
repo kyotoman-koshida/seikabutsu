@@ -39,7 +39,12 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 次にタイムライン上のメッセージについて、「good」「shre」「add friend」機能について紹介します。
 以下のメッセージについてみることにします。
 ![メッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_message.png)
-![メッセージ２](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_share.png)
+
+* まず「share」機能についてみます。
+このメッセージを「test_group2」にshareします。shareの時には自分のコメントを付加できます。
+![メッセージシェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_share.png)
+「share!」のボタンを押すと以下のようにタイムラインに新たに表示されます。
+![メッセージシェア２](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_share2.png)
 
 # Features
 
