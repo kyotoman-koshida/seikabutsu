@@ -532,8 +532,9 @@ def twitter(request):
         }
 
     #req = tw.post(url, params = params)
-    
-    tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
+    user = UserSocialAuth.objects.get(user_id=request.user.id)
+    tw = OAuth1Session(C_KEY,C_SECRET,user.access_token['oauth_token'],user.access_token['oauth_token_secret'])
+    #tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
     url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
     params = {'count': 5}
     req = tw.get(url, params = params)
@@ -542,7 +543,7 @@ def twitter(request):
         timeline = json.loads(req.text)
         limit = req.headers['x-rate-limit-remaining']
         
-        user = UserSocialAuth.objects.get(user_id=request.user.id)
+        
         
         #tweet情報をリストにまとめる
         Textlist = []
@@ -584,6 +585,7 @@ def twitter(request):
             'timeline': timeline,
             'API_limit': limit,
             'user': user,
+            'req':req.text,
             }
         return render(request, 'sns/tweets.html', params)
 
