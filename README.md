@@ -36,6 +36,10 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 タイムラインの上にはグループのチェックボックスがあります。自分の好きなグループを選択してupdateボタンを押すと、そのグループのタイムラインを表示します。例えば、ここで自分で作成した「test_group」という名前のグループを選択すると以下のように、「test_group」のタイムラインが表示されます。
 ![タイムライン２](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline2.png)
 
+次にタイムライン上のメッセージについて、「good」「shre」「add friend」機能について紹介します。
+以下のメッセージについてみることにします。
+![メッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_message.png)
+
 
 # Features
 
