@@ -2,14 +2,15 @@
 
 低身長男性用マッチングアプリ
 
-身長170cm未満の男性と身長不問の女性が交流できるように設計したウェブアプリケーションです。
+身長170cm未満の男性と身長不問の女性が交流できるように設計したウェブアプリケーションです。メールアドレスとパスワード、またはすでにtwitterを紐付けている場合にはtwitterでログインをすることができます。twitterを紐付けていない状態でログインをするとエラーになりますのでご注意ください。
 
 # DEMO
 https://kyotoman-app.herokuapp.com/　より「short」のページに進めます。
 
 ![ログイン画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_login.png)
 
-メールアドレスとパスワード、またはすでにtwitterを紐付けている場合にはtwitterでログインをすることができます。twitterを紐付けていない状態でログインをするとエラーになりますのでご注意ください。
+
+新規会員登録のボタンを押すと、以下の画面に遷移します。性別に「男性」を選び、なおかつ身長を170cm以上にして登録を行おうとすると「身長170cm以上の男性はご遠慮ください」と表示され、エラーとなります。（女性の身長は170cm以上であってもエラーになりません。）
 ![新規会員登録画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_register.png)
 
 
