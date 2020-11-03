@@ -9,6 +9,10 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 
 ![ログイン画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_login.png)
 
+メールアドレスとパスワード、またはすでにtwitterを紐付けている場合にはtwitterでログインをすることができます。twitterを紐付けていない状態でログインをするとエラーになりますのでご注意ください。
+![新規会員登録画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_register.png)
+
+
 # Features
 
 会員登録の必須入力項目に身長欄が設けられており、そこで男性は170cm未満に限定されます。普段は低い身長のゆえにハンデを負っている男性も、ここではそれを気にする必要はありません！
