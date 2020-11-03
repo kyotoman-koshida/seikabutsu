@@ -25,9 +25,11 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 * 自分の登録しているフレンドを管理しやすくするためのグループ作成ページへのリンク
 * 自分の登録している全てのフレンドを確認するページへのリンク
 * twitterアカウントを紐付けるボタン
-* twitterが紐付けられている場合に、最近のtwitterタイムラインを反映させるページへのリンク
-が含まれています。
+* twitterが紐付けられている場合に最近のtwitterタイムラインを反映させるページへのリンクが含まれています。(紐付けられていない場合にはエラーとなります。)
+
 ![インデックス画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_index.png)
+タイムラインについて詳しく見ていきます。
+![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline.png)
 
 
 # Features
