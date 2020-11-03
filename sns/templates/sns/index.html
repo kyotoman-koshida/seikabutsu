@@ -25,7 +25,7 @@
 <a href="{% url 'sns:twitter' %}">最近のtweetを反映する</a>
 <hr>
 <p class="caption">※グループのチェックをONにしてupdateすると、
-そのグループに登録されている利用者のメッセージだけが表示されます。</p>
+そのグループに登録されている利用者のメッセージだけがタイムラインに表示されます。</p>
 <form action="{% url 'sns:index' %}" method="post">
 {% csrf_token %}
 <input type="hidden" name="mode" value="__check_form__">
