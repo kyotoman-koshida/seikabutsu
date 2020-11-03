@@ -5,9 +5,9 @@
 身長170cm未満の男性と身長不問の女性が交流できるように設計したウェブアプリケーションです。
 
 # DEMO
+https://kyotoman-app.herokuapp.com/　より「short」のページに進めます。
 
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
-![ログイン画面](https://github.com/kyotoman-koshida/image_files/short_login.png)
+![ログイン画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_login.png)
 
 # Features
 
@@ -52,14 +52,6 @@
 * whitenoise==3.3.1
 * wrapt==1.12.1
 * psycopg2==2.8.6
-
-# Installation
-
-Requirementで列挙したライブラリなどのインストール方法を説明する
-
-```bash
-pip install huga_package
-```
 
 # Usage
 
