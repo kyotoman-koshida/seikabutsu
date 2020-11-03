@@ -45,6 +45,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![メッセージシェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_share.png)
 「share!」のボタンを押すと以下のようにタイムラインに新たに表示されます。
 ![メッセージシェア２](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_share2.png)
+* このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
+![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_good.png)
 
 # Features
 
