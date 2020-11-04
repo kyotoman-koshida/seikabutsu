@@ -48,8 +48,10 @@
 {% endif %}
 <p class="message_owner">
     <span class="message_counter">share={{item.share_count}} good={{item.good_count}}</span>
+    {% comment %}
     "{{item.owner}}"(<a href="{% url 'sns:add' %}?name={{item.owner}}">
         add friend</a>)
+    {% endcomment %}
     <a href="{% url 'sns:share' item.id %}"><button>share</button></a>
     <a href="{% url 'sns:good' item.id %}"><button>good!</button></a>
 </p>
