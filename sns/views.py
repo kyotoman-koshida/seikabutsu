@@ -534,7 +534,6 @@ def twitter(request):
     #req = tw.post(url, params = params)
     user = UserSocialAuth.objects.get(user_id=request.user.id)
     tw = OAuth1Session(C_KEY,C_SECRET,user.access_token['oauth_token'],user.access_token['oauth_token_secret'])
-    #tw = OAuth1Session(C_KEY,C_SECRET,A_KEY,A_SECRET)
     url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
     params = {'count': 5}
     req = tw.get(url, params = params)

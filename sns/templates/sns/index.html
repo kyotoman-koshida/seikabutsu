@@ -4,10 +4,6 @@
 
 {% block header %}
 
-
-<button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterを紐付け</button>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -22,7 +18,12 @@
 <hr>
 <a href="{% url 'sns:all_friends' %}">全登録Friend</a>
 <hr>
+
+<p>
 <a href="{% url 'sns:twitter' %}">最近のtweetを反映する</a>
+<button type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterを紐付け</button>
+</p>
+
 <hr>
 <p class="caption">※グループのチェックをONにしてupdateすると、
 そのグループに登録されている利用者のメッセージだけがタイムラインに表示されます。</p>
