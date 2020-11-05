@@ -1,0 +1,14 @@
+#g_menu {
+    /*中略*/
+    transition: right 0.5s;
+    position: fixed;
+    top: 1;
+    }
+  
+  #g_menu:not(:target) {
+      left: -100%;
+  }
+  
+  #g_menu:target {
+      left: 0;
+  }
