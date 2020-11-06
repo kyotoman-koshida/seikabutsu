@@ -56,6 +56,11 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
 ![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
 
+タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
+![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
+
+
+
 
 
 # Features
