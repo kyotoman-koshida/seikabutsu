@@ -59,8 +59,12 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
 ![投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
 
-*　「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。
+*　「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。ここでは上から五人を「test_group3」に加えて作成しています。
 ![グループ作成](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
+
+ユーザーを探して新しくフレンドに加えることもできます。上の画像に「新しいフレンドを見つける」というリンクがあるので、それをクリックしてみて下さい。すべての（異性の）ユーザーが表示されます。
+![全ユーザー](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
+ここで各レコードの隣にある「add friend」を押すと新しくフレンドに登録することができます。
 
 
 
