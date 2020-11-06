@@ -50,7 +50,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 
 
 さて今度はタイムラインへの投稿についてみていきます。画面左上のハンバーガーメニューをクリックしてください。
-「index」「post」「group」「message」「DM」の項目があります。「index」を押すとはトップページへ戻ります。
+「index」「post」「group」「mypage」「DM」の項目があります。「index」を押すとはトップページへ戻ります。
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
 * 「post」機能について。タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
@@ -66,6 +66,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![全ユーザー](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
 ここで各レコードの隣にある「add friend」を押すと新しくフレンドに登録することができます。
 
+フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
+![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
 
 
 
