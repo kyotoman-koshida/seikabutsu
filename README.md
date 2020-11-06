@@ -45,7 +45,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 タイムラインの上にはグループのチェックボックスがあります。自分の好きなグループを選択してupdateボタンを押すと、そのグループのタイムラインを表示します。例えば、ここで自分で作成した「test_group」という名前のグループを選択すると以下のように、「test_group」のタイムラインが表示されます。
 ![タイムライン２](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline2.png)
 
-* このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
+*このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
 
 
@@ -53,13 +53,13 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 「index」「post」「group」「mypage」「DM」の項目があります。「index」を押すとはトップページへ戻ります。
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
-* 「post」機能について。タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
+*「post」機能について。タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
 ![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
 
 タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
 ![投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
 
-*　「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。ここでは上から五人を「test_group3」に加えて作成しています。
+*「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。ここでは上から五人を「test_group3」に加えて作成しています。
 ![グループ作成](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 ユーザーを探して新しくフレンドに加えることもできます。上の画像に「新しいフレンドを見つける」というリンクがあるので、それをクリックしてみて下さい。すべての（異性の）ユーザーが表示されます。
@@ -69,10 +69,10 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
 ![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
 
-* 「マイページ」について。もちろん自分自身のマイページをみることもできます。先ほどのメニューから「mypage」をクリックしてみると、以下のようなマイページをみることができます。
+*「マイページ」について。もちろん自分自身のマイページをみることもできます。先ほどのメニューから「mypage」をクリックしてみると、以下のようなマイページをみることができます。
 ![マイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
 
-*　「DM」について。自分のフレンド登録をしているユーザーとやり取りをすることができます。
+*「DM」について。自分のフレンド登録をしているユーザーとやり取りをすることができます。
 ![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
 
 
