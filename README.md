@@ -50,15 +50,17 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 
 
 さて今度はタイムラインへの投稿についてみていきます。画面左上のハンバーガーメニューをクリックしてください。
-「index」「post」「group」「message」「DM」の項目があります。
+「index」「post」「group」「message」「DM」の項目があります。「index」を押すとはトップページへ戻ります。
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
-タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
+* 「post」機能について。タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
 ![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
 
 タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
-![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
+![投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
 
+*　「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。
+![グループ作成](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 
 
