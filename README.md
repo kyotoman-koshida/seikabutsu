@@ -54,7 +54,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
 タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
-![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
+![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
 
 
 
