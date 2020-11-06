@@ -33,9 +33,6 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 タイムラインには先述のとおり、紐付けたtwitterのtweetやアプリ内で投稿したメッセージが表示されます。デフォルトでは、「public」という名前のグループが表示されています。
 ![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline.png)
 
-タイムラインの上にはグループのチェックボックスがあります。自分の好きなグループを選択してupdateボタンを押すと、そのグループのタイムラインを表示します。例えば、ここで自分で作成した「test_group」という名前のグループを選択すると以下のように、「test_group」のタイムラインが表示されます。
-![タイムライン２](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline2.png)
-
 次にタイムライン上のメッセージについて、「good」「shre」「add friend」機能について紹介します。
 以下のメッセージについてみることにします。
 ![メッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_message.png)
@@ -45,6 +42,9 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![メッセージシェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_share.png)
 「share!」のボタンを押すと以下のようにタイムラインに新たに表示されます。
 ![メッセージシェア２](https://github.com/kyotoman-koshida/image_files/blob/main/short_share_done.png)
+タイムラインの上にはグループのチェックボックスがあります。自分の好きなグループを選択してupdateボタンを押すと、そのグループのタイムラインを表示します。例えば、ここで自分で作成した「test_group」という名前のグループを選択すると以下のように、「test_group」のタイムラインが表示されます。
+![タイムライン２](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline2.png)
+
 * このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
 
