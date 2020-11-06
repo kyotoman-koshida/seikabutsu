@@ -38,7 +38,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![メッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_message.png)
 
 * まず「share」機能についてみます。
-このメッセージを「test_group2」にshareします。shareの時には自分のコメントを付加できます。
+このメッセージを「test_group」にshareします。shareの時には自分のコメントを付加できます。
 ![メッセージシェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_share.png)
 「share!」のボタンを押すと以下のようにタイムラインに新たに表示されます。
 ![メッセージシェア２](https://github.com/kyotoman-koshida/image_files/blob/main/short_share_done.png)
