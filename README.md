@@ -59,7 +59,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
 ![投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
 
-*　「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。
+*　「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。
 ![グループ作成](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 
