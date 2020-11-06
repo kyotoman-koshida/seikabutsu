@@ -48,6 +48,16 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 * このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
 
+
+さて今度はタイムラインへの投稿についてみていきます。画面左上のハンバーガーメニューをクリックしてください。
+「index」「post」「group」「message」「DM」の項目があります。
+![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
+
+タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
+![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
+
+
+
 # Features
 
 会員登録の必須入力項目に身長欄が設けられており、そこで男性は170cm未満に限定されます。普段は低い身長のゆえにハンデを負っている男性も、ここではそれを気にする必要はありません！
