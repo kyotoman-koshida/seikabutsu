@@ -85,7 +85,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
 
 Twitterとの紐付けについて。トップページ（index）の上方に「Twitterと紐付け」のボタンがあります。それをクリックすると、以下のようなページとなり認証を求められます。
-![ツイッター認証](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_ninsyo.png)
+![ツイッター認証](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_ninsho.png)
 
 
 
