@@ -72,7 +72,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 実際に登録しているフレンドのうち「まり」さんを検索すると、「該当するユーザー」に表示されて以下のようになる。
 ![ユーザー検索](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_search.png)
 
-またグループごとにフレンドを表示したい場合は、Group:に調べたいグループ名をいれて「Select Group」を押すことで表示させることができます。
+またグループごとにフレンドを表示したい場合は、プルダウンメニューから目的のグループ名をいれて「Select Group」を押すことで表示させることができます。
 ![ユーザーグループ表示](https://github.com/kyotoman-koshida/image_files/blob/main/short_friend_group.png)
 
 フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
@@ -83,6 +83,9 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 
 *「DM」について。自分のフレンド登録をしているユーザーとやり取りをすることができます。
 ![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
+
+Twitterとの紐付けについて。トップページ（index）の上方に「Twitterと紐付け」のボタンがあります。それをクリックすると、以下のようなページとなり認証を求められます。
+![ツイッター認証](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_ninsyo.png)
 
 
 
