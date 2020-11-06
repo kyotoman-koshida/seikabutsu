@@ -72,6 +72,9 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 実際に登録しているフレンドのうち「まり」さんを検索すると、「該当するユーザー」に表示されて以下のようになる。
 ![ユーザー検索](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_search.png)
 
+またグループごとにフレンドを表示したい場合は、
+![ユーザーグループ表示](https://github.com/kyotoman-koshida/image_files/blob/main/short_friend_group.png)
+
 フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
 ![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
 
