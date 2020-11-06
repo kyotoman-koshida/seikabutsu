@@ -67,7 +67,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ここで各レコードの隣にある「add friend」を押すと新しくフレンドに登録することができます。
 
 自分の登録しているフレンドの一覧をみることもできます。
-![全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriends.png)
+![全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
 
 フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
 ![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
