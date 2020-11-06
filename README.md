@@ -69,6 +69,9 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
 ![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
 
+もちろん自分自身のマイページをみることもできます。先ほどのメニューから「mypage」をクリックしてみると、以下のようなマイページをみることができます。
+![マイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
+
 
 
 # Features
