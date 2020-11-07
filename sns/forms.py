@@ -65,8 +65,15 @@ class GroupSelectForm(forms.Form):
 class FriendsForm(forms.Form):
     def __init__(self, user, friends=[], vals=[], *args, **kwargs):
         super(FriendsForm, self).__init__(*args, **kwargs)
+        #自分のフレンドのemailが見えないようにユーザー名に変換
+        friends=Friend.objects.filter(owner=user)
+        fri_mail=[]
+        for item in friends:
+            fri_mail.append(item.user)
         self.fields['friends'] = forms.MultipleChoiceField(
-            choices=[(item.user, item.user) for item in friends],
+            #choices=[(item.user, item.user) for item in friends],
+            choices=[(item.username, item.username) \
+                    for item in User.objects.filter(email__in = fri_mail)],
             widget=forms.CheckboxSelectMultiple(),
             initial=vals
         )
