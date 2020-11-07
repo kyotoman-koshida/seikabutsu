@@ -335,7 +335,11 @@ def dm(request):
     dialogs = Dm.objects.filter(Q(owner=request.user) | Q(user=request.user))    
     #自分が追加したFriendの名前を選択できるようにformに入れる
     myfris = Friend.objects.filter(owner=request.user)
-    #myfris2 = User.objects.filter(username=myfris.user)
+    #myfrisのままではemailが他人に見えてしまうことになるからUserモデルに変換
+    fri_mail=[]
+    for item in myfris:
+        fri_mail.append(item.user)
+    my_fri_user = User.objects.filter(email__in = fri_mail)        
     #エラー回避のためにさきに定義しておく
     fri_name = ''
 
@@ -351,7 +355,7 @@ def dm(request):
             dms.fields['user'].choices = [
                 ("----", "----")
                 ] + [
-                (item.user, item.user) for item in myfris
+                (item.username, item.username) for item in my_fri_user
                ]
             #DMの受け取り主を取得
             obj.owner = User.objects.filter(email=request.POST.get('user')).first()   
@@ -373,7 +377,7 @@ def dm(request):
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
-            (item.user, item.user) for item in myfris
+            (item.username, item.username) for item in my_fri_user
             ]
         
                 
@@ -389,7 +393,7 @@ def dm(request):
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
-            (item.user, item.user) for item in myfris
+            (item.username, item.username) for item in my_fri_user
             ]
         #mark=1のときはプルダウンでフレンドを選ぶとき    
         mark = 1       
