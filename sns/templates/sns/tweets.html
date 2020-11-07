@@ -1,19 +1,32 @@
 {% extends 'sns/layout.html' %}
 {% block title %}最近のタイムライン{% endblock %}
 
+{% block header %}
+<h1>最近のタイムライン</h1>
+<p class="caption">※ツイートを反映させたいグループのチェックをONにしてselect groupすると、ONにしてあるグループのタイムラインに投稿されます。</p>
+{% endblock %}
+
 {% block content %}
 
-  <div class="col-md-6">
-    {% if API_limit %}
-      {% for item in timeline%}
-        <dl>
-          <dt>{{item.user.screen_name}}</dt>
-          <dt>{{item.text}}</dt>
-          <dt>{{item.user.profile_image_url}}</dt>
-          <dt>{{item.created_at}}</dt>
-        </dl>
-      {% endfor %}
+<form method="post">
+{% csrf_token %}
+<input type="hidden" name="mode" value="__groups_form__">
+<form action="{% url 'sns:twitter' %}" method="post">
+   {{groups_form}}
+  <button>select group</button>
+</form>
+
+<div class="col-md-6">
+  {% if API_limit %}
+    {% for item in timeline%}
+      <dl>
+        <dt>{{item.user.screen_name}}</dt>
+        <dt>{{item.text}}</dt>
+        <dt>{{item.user.profile_image_url}}</dt>
+        <dt>{{item.created_at}}</dt>
+      </dl>
+    {% endfor %}
   <ul id="output"></ul>
-  </div>
+</div>
     {% endif %}
 {% endblock %}

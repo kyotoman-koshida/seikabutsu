@@ -94,12 +94,13 @@
     </nav>
 
     <!-- メインコンテント -->
+    <div>
+        {% block header %}{% endblock  %}
+    </div>
     <div class="container mt-3">
         {% block content %}{% endblock %}
     </div>
   
-    <div class="footer">
-    <hr>
     <footer>
         <span style="float:right">copyright 2020
             Tatsuo KOSHIDA.</span>
