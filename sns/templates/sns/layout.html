@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href='{% static "css/nav_sidebar.css" %}'>
     <script type="text/javascript" src='{% static "js/hamburger.js" %}'></script>
 
+{% comment %}
 <div class="container">
   <p>ハンバーガーメニューボタンを実装してみる</p>
   <!-- ここから -->
@@ -24,48 +25,11 @@
   </div>
   <!-- ここまで -->
 </div>
+{% endcomment%}
 
 </head>
 
-{% comment%}
-    <!-- ナビバー -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{% url 'sns:index' %}"></a>
-      
-        <span class="navbar-toggler-icon"></span>
-
-      <div class="body_content">
-    <div class="body_content_inner">
-        <table class="login_table" width="100%">
-        
-        <tr><th width="150px">login user:</th>
-            <td>"{{login_user}}"</td></tr>
-        </table>
-      <div class="header">{% block header %}
-            {% endblock %}</div>  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: right;">
-        <ul class="navbar-nav mr-auto">
-          {% if user.is_authenticated %}
-            <a class="nav-item nav-link" href="{% url 'sns:logout' %}">ログアウト</a>
-          {% endif %}
-          </ul>
-      </div>
-
-      <hr>
-      
-        <table class="login_table_inner">
-        <tr>
-        <td width="50px">menu:</td>
-        <td width="50px"><a href="{% url 'sns:index' %}">index</a></td>
-        <td width="45px"><a href="{% url 'sns:post' %}">post</a></td>
-        <td width="55px"><a href="{% url 'sns:groups' %}">group</a></td>
-        <td width="70px"><a href="{% url 'sns:mypage' %}">mypage</a></td>
-        <td width="50px"><a href="{% url 'sns:dm' %}?name=dst">DM</a></td>
-        </tr>
-        </table>
-        </td></tr>
-        {% endcomment%}
-  <body>
+<body>
     <header>
       <h1 class="display-4 text-primary">Short</h1>
   </header> 
