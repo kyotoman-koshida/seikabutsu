@@ -3,11 +3,12 @@
 {% block title %}ダイレクトメッセージ{% endblock %}
 
 {% block header %}
-<h1>ダイレクトメッセージ</h1>
+<h1>Direct Messages</h1>
 {% endblock %}
 
 <body>
 {% block content %}
+<a href="{% url 'sns:all_users' %}">新しいフレンドを見つける</a>
 <form action="{% url 'sns:dm' %}" method="post">
 {% csrf_token %}
 {% if mark == 1 %}
@@ -19,6 +20,14 @@
 <button>送信</button>
 </form>
 <hr>
+{% comment %}
+<form action="{% url 'sns:dm' %}" method="post">
+<input type="hidden" name="mode" value="__friendform__">
+{% csrf_token %}
+{{friendform}}
+<button>選択</button>
+</form>
+{% endcomment %}
 {% if dialogs %}
 <table class="table">
   {% for item in dialogs %}

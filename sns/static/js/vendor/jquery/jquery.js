@@ -11,7 +11,9 @@
  *
  * Date: 2020-05-04T22:49Z
  */
-
+$('.nav_toggle').on('click', function () {
+    $('.nav_toggle, .nav').toggleClass('show');
+});
 
 ( function( global, factory ) {
 

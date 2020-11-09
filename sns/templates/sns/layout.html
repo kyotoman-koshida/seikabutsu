@@ -10,10 +10,9 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href='{% static "css/base.css" %}'>
-    <link rel="stylesheet" type="text/css" href='{% static "css/hamburger.css" %}'>
     <link rel="stylesheet" type="text/css" href='{% static "css/nav_sidebar.css" %}'>
-    <script type="text/javascript" src='{% static "js/hamburger.js" %}'></script>
-
+    <link rel="stylesheet" type="text/css" href='{% static "css/hamburger.css" %}'>
+    
 {% comment %}
 <div class="container">
   <p>ハンバーガーメニューボタンを実装してみる</p>
@@ -30,11 +29,12 @@
 </head>
 
 <body>
+    
     <header>
       <h1 class="display-4 text-primary">Short</h1>
-  </header> 
+    </header> 
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  
 
     <div class="body_content">
     
@@ -53,6 +53,10 @@
           </ul>
      </div>
 
+     <p>
+      <button class="aline" type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterを紐付け</button>
+    </p>
+
     <div id="open" class="btn"><a href="#g_menu">三</a></div>
       <div id="g_menu">
         <div id="close" class="btn"><a href="#">×</a></div>
@@ -61,13 +65,30 @@
             <li><a href="{% url 'sns:post' %}">post</a></li>
             <li><a href="{% url 'sns:groups' %}">group</a></li>
             <li><a href="{% url 'sns:mypage' %}">mypage</a></li>
+            <li><a href="{% url 'sns:all_friends' %}">check your friends</a></li>
+            <li><a href="{% url 'sns:all_users' %}">find new friends</a></li>
             <li><a href="{% url 'sns:dm' %}?name=dst">DM</a></li>
+            <li><a href="{% url 'sns:twitter' %}">twitter timeline</a></li>
           </ul>
         </div>
   </div>   
-
-  
     </nav>
+    {% comment %}
+  <div class="w1000">
+    <p class="menubtn"><img src='{% static "img/menu.png" %}' alt="menu"></p>
+    <nav>
+        <ul>
+            <li>アバウト</li>
+            <li>メイン</li>
+            <li>ポリシー</li>
+        </ul>  
+    </nav>
+    <div class="content">
+        <p>ここにコンテンツが入ります。</p>
+        <p>ここにコンテンツが入ります。</p>
+    <!--/.content--></div>
+<!--/.w1000--></div>
+{% endcomment %}
 
     <!-- メインコンテント -->
     <div>
@@ -81,6 +102,7 @@
         <span style="float:right">copyright 2020
             Tatsuo KOSHIDA.</span>
     </footer>
-    
+    <script type="text/javascript" src='{% static "js/hamburger.js" %}'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </body>
 </html>

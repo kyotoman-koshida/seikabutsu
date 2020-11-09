@@ -78,6 +78,21 @@ class FriendsForm(forms.Form):
             initial=vals
         )
 
+# Friendのチェックボックス。複数選択ではない。
+class FriendForm(forms.Form):
+    def __init__(self, user, friends=[], vals=[],*args, **kwargs):
+        super(FriendForm, self).__init__(*args, **kwargs)
+        #自分のフレンドのemailが見えないようにユーザー名に変換
+        friends=Friend.objects.filter(owner=user)
+        fri_mail=[]
+        for item in friends:
+            fri_mail.append(item.user)
+        self.fields['friend'] = forms.ChoiceField(
+            choices=[('-','-')] + [(item.username, item.username) \
+                     for item in User.objects.filter(email__in = fri_mail)],
+            initial=vals             
+        )        
+
 # Group作成フォーム
 class CreateGroupForm(forms.Form):
     group_name = forms.CharField(max_length=50)

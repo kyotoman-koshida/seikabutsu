@@ -5,6 +5,7 @@
 {% block header %}
 <h1>Group</h1>
 <p class="caption">※利用者のチェックをONにしてset memberすると、ONにしてある利用者がグループに追加されます。</p>
+<a href="{% url 'sns:all_users' %}">新しいフレンドを見つける</a>
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -24,9 +25,7 @@
 {{friends_form}}
 <button>set members</button>
 </form>
-<hr>
-<a href="{% url 'sns:all_users' %}">新しいフレンドを見つける</a>
-<hr>
+
 <p>※新しいGroupの登録</p>
 <form action="{% url 'sns:creategroup' %}" method="post">
 {% csrf_token %}

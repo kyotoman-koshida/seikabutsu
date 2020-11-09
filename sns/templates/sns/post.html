@@ -23,14 +23,4 @@
 <tr><td></td><td><button>投稿</button></td></tr>
 </table>
 
-{%comment%}
-</form>
-<form action="{% url 'sns:twitter' %}" method="post">
-{% csrf_token %}
-<table>
-{{twe_form}}
-<tr><td></td><td><button>twitterに投稿</button></td></tr>
-</table>
-</form>
-{%endcomment%}
 {% endblock %}

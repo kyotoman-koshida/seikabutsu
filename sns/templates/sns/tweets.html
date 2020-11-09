@@ -3,7 +3,7 @@
 
 {% block header %}
 <h1>最近のタイムライン</h1>
-<p class="caption">※ツイートを反映させたいグループのチェックをONにしてselect groupすると、ONにしてあるグループのタイムラインに投稿されます。</p>
+<p class="caption">※ツイートを反映させたいグループのチェックをONにしてselect groupすると、ONにしてあるグループのタイムラインにtweetを投稿できます。</p>
 {% endblock %}
 
 {% block content %}
@@ -20,10 +20,11 @@
   {% if API_limit %}
     {% for item in timeline%}
       <dl>
-        <dt>{{item.user.screen_name}}</dt>
-        <dt>{{item.text}}</dt>
-        <dt>{{item.user.profile_image_url}}</dt>
-        <dt>{{item.created_at}}</dt>
+        <td>{{item.user.screen_name}}</td>
+        <td>{{item.text}}</td>
+        <td>{{item.user.profile_image_url}}</td>
+        <td>{{item.created_at}}</td>
+        <td><a href="{% url 'sns:addtweet' %}?group={{group}}&text={{item.text}}">選んだタイムラインに反映</a></td>
       </dl>
     {% endfor %}
   <ul id="output"></ul>

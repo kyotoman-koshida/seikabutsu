@@ -8,7 +8,7 @@ User = conf_settings.AUTH_USER_MODEL
 from django.contrib import messages
 from .models import Message,Friend,Group,Good,Dm
 from .forms import GroupCheckForm,GroupSelectForm,\
-        SearchForm,FriendsForm,CreateGroupForm,PostForm,\
+        SearchForm,FriendsForm,FriendForm, CreateGroupForm,PostForm,\
             DMForm, LoginForm, UserCreateForm, UserCheckForm,\
                 LoginForm, UserCreateForm
 from django.db.models import Q
@@ -343,14 +343,21 @@ def dm(request):
     #エラー回避のためにさきに定義しておく
     fri_name = ''
 
-    form = DMForm()  
+    # 自分が登録したFriendのDM履歴をみるため
+    friends = Friend.objects.filter(owner=request.user)
+    friendform =  FriendForm(request.user, friends=friends, vals=[]) 
+
+    form = DMForm()
 
     #DMフォームを記入して送信するときの操作
     if request.method == "POST":
         
         obj = Dm()
         dms = DMForm(request.POST, instance=obj)
-        #'mode'の値が__dm_form__のときはDMのあてさきがプルダウンからされた場合。
+        #DMの送り主を取得
+        obj.user = User.objects.filter(email=request.user).first()   
+           
+        #'mode'の値が__dm_form__のときはDMのあてさきがプルダウンからされた場合。   
         if request.POST.get('mode') == '__dm_form__':
             dms.fields['user'].choices = [
                 ("----", "----")
@@ -358,7 +365,7 @@ def dm(request):
                 (item.username, item.username) for item in my_fri_user
                ]
             #DMの受け取り主を取得
-            obj.owner = User.objects.filter(email=request.POST.get('user')).first()   
+            obj.owner = User.objects.filter(username=request.POST.get('user')).first()   
             
         else:       
             fri_name = request.POST.get('mode')#'mode'の値はDMのあてさきが入っている。
@@ -366,13 +373,10 @@ def dm(request):
                 (fri_name, fri_name)
             ]
             obj.owner = User.objects.filter(username=fri_name).first()
-
-        #DMの送り主を取得
-        obj.user = User.objects.filter(email=request.user).first()
-        
-        
+        #DMの保存
         if dms.is_valid():
            dms.save()
+        
         
         form.fields['user'].choices = [
             ("----", "----")
@@ -388,8 +392,7 @@ def dm(request):
             (fri_name, fri_name)
         ]
           
-    else:           
-          
+    else:            
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
@@ -404,6 +407,7 @@ def dm(request):
         'dm_form':form,
         'mark': mark,
         'atesaki': fri_name,
+        #'friendform':friendform,
     }
     return render(request, "sns/dm.html", params)
 
@@ -491,7 +495,6 @@ def all_friends(request):
 
             
             # FriendのUserをリストにまとめる
-            
             for item in myfri:
                 if me.gender == 1:
                     fri_user = User.objects.filter(email=item.user) \
@@ -551,9 +554,10 @@ def twitter(request):
     tw = OAuth1Session(C_KEY,C_SECRET,user.access_token['oauth_token'] \
         ,user.access_token['oauth_token_secret'])
     url = 'https://api.twitter.com/1.1/statuses/home_timeline.json'
-    count_par = {'count': 5}
+    count_par = {'count': 20}
     req = tw.get(url, params = count_par)
     Text = ''
+    group = None
     #tweetを反映させるグループのタイムラインを選ぶ
     groupsform = GroupSelectForm(request.user, request.POST)
 
@@ -580,6 +584,7 @@ def twitter(request):
                 #Imglist.append(Img)
                 Created_at = YmdHMS(tweet['created_at'])
                 #Cre_at_list.append(Created_at)
+            """    
             #tweetをデータベースにMessageとして保存する
             msg = Message()
             msg.content = Text
@@ -587,17 +592,9 @@ def twitter(request):
             msg.group = group
             msg.save()
             messages.success(request, 'ツイートをタイムラインに反映しました！')
-        
+            """
         #GET時の処理
         else:
-            """
-            #tweet情報をリストにまとめる
-            Textlist = []
-            Userlist = []
-            Namelist = []
-            Imglist = []
-            Cre_at_list = []
-            """
 
             for tweet in timeline:
                 Text = (tweet['text'])
@@ -611,7 +608,7 @@ def twitter(request):
                 Created_at = YmdHMS(tweet['created_at'])
                 #Cre_at_list.append(Created_at)
         
-    #保存するtweet情報のまとめ
+    #表示するtweet情報のまとめ
     params = {
         'login_user':request.user,
         'Words': msg,
@@ -620,6 +617,7 @@ def twitter(request):
         'user': user,
         'req':req.text,
         'groups_form':groupsform,
+        'group':group,
         }
 
     return render(request, 'sns/tweets.html', params)      
@@ -629,6 +627,28 @@ def YmdHMS(created_at):
     unix_time = calendar.timegm(time_utc)
     time_local = time.localtime(unix_time)
     return int(time.strftime('%Y%m%d%H%M%S', time_local))
+
+#タイムラインに反映させたいtweetを保存
+@login_required(login_url='/sns/login/')
+def addtweet(request):
+    #保存したいtweet情報の取得
+    Text = request.GET['text']
+    #tweetの保存されるグループを指定
+    gr_name = request.GET['group']
+    group = Group.objects.filter(owner=request.user) \
+                .filter(title=gr_name).first()
+               
+    if group == None:
+        (pub_user, group) = get_public()
+        
+    #tweetをmessageとして保存
+    msg = Message()
+    msg.content = Text
+    msg.owner = User.objects.filter(email=request.user).first()
+    msg.group = group
+    msg.save()
+    messages.success(request, group.title +'のタイムラインにツイートを反映しました！')
+    return redirect(to='/sns/tweets.html')    
 
 #トップページを表示(未使用)
 @login_required(login_url='/sns/login/')
