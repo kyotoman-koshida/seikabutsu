@@ -85,8 +85,8 @@ contentにDMの内容、userにDMをしたい相手を選ぶことで以下の�
 このリンクからフレンドのマイページに移ることができます。
 ![フレンドのマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
 
-またグループごとにフレンドを表示したい場合は、プルダウンメニューから目的のグループ名をいれて「Select Group」を押すことで表示させることができます。
-![ユーザーグループ表示](https://github.com/kyotoman-koshida/image_files/blob/main/short_friend_group.png)
+画面右側にある「DMする」のリンクからDMページに移ることができます。なおこのようにしてDMページに移った時には、DMの宛先のuserプルダウンメニューにあらかじめ遷移もとのユーザーの名前が入力されています。
+![DMのあてさき](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm_atesaki.png)
 
 フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
 ![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
