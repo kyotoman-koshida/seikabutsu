@@ -40,17 +40,13 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側のピンク色のメニューバーをクリックしてください。（→）
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
-「group」を入力すると以下のような画面に遷移します。
+「find new friends」をクリックすると以下のような画面に遷移します。新しくフレンドに加えたいユーザーに「add friend」をすると、自分のフレンドに登録されます！
+![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
 
+「group」をクリックすると以下のような画面に遷移します。新しくグループに加えたいユーザーにチェックをいれて、グループ名を入れれば新しいグループを作ることができます！
 ![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
-* まず「share」機能についてみます。
-このメッセージを「test_group」にshareします。shareの時には自分のコメントを付加できます。
-![メッセージシェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_share.png)
-「share!」のボタンを押すと以下のようにタイムラインに新たに表示されます。
-![メッセージシェア２](https://github.com/kyotoman-koshida/image_files/blob/main/short_share_done.png)
-タイムラインの上にはグループのチェックボックスがあります。自分の好きなグループを選択してupdateボタンを押すと、そのグループのタイムラインを表示します。例えば、ここで自分で作成した「test_group」という名前のグループを選択すると以下のように、「test_group」のタイムラインが表示されます。
-![タイムライン２](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline2.png)
+試しにさきほどの
 
 *このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
