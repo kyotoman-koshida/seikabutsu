@@ -27,7 +27,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![身長エラー](https://github.com/kyotoman-koshida/image_files/blob/main/short_validation.png)
 
 
-必要情報を入力して登録をすると以下の画面に遷移して、仮登録が行われます。同時に登録したメールアドレスあてに本登録用のメールが送られます。メールが届かない場合は迷惑メールに振り分けられていないかご確認ください。
+「身長」を169cmに訂正し、その他必要情報を入力して登録をすると以下の画面に遷移して、仮登録が行われます。同時に登録したメールアドレスあてに本登録用のメールが送られます。メールが届かない場合は迷惑メールに振り分けられていないかご確認ください。
 ![仮登録画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_kari_regi.png)
 
 本登録を行ったアカウントでログインすると、以下のようなトップページに移ります。このトップページには
