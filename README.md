@@ -88,8 +88,8 @@ contentにDMの内容、userにDMをしたい相手を選ぶことで以下の�
 画面右側にある「DMする」のリンクからDMページに移ることができます。なおこのようにしてDMページに移った時には、DMの宛先のuserプルダウンメニューにあらかじめ遷移もとのユーザーの名前が入力されています。
 ![DMのあてさき](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm_atesaki.png)
 
-フレンド名横にあるリンクから、各フレンドのマイページへとぶこともできます。実際にとぶと以下のようなマイページをみることができます。
-![他人のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
+メニューバーから「find new friends」をクリックしても同様にしてDMをすることができますが、この場合はフレンド登録していないユーザーにもDMをすることができます。また、自分自身のマイページを確認することもできます。メニューバーの「mypage」をクリックすると、以下のページに遷移します。
+![自分のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
 
 *「マイページ」について。もちろん自分自身のマイページをみることもできます。先ほどのメニューから「mypage」をクリックしてみると、以下のようなマイページをみることができます。
 ![マイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
