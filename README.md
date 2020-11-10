@@ -67,8 +67,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 試しに「good!」を押してみると、「good!」が4に変化したことがわかります。
 ![グッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_message_good.png)
 
-*「post」機能について。タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
-![投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
+それでは次に「share」を押してみましょう。以下のような画面になるはずです。
+![シェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_share.png)
 
 タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
 ![投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
