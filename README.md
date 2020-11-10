@@ -58,6 +58,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 次にこの新しく作成したグループのタイムラインにメッセージを投稿をします！メニューバーから「post」をクリックしてください。投稿したメッセージをcontentに、投稿したいグループをgroupsのプルダウンから選びます！
 ![メッセージ投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
 
+投稿して、表示したいグループのタイムラインをチェックボックスにいれてupdateすると、新しく作ったグループのタイムラインに無事投稿できていることがわかります！
+![メッセージ投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
 
 さて今度はタイムラインへの投稿についてみていきます。画面左上のハンバーガーメニューをクリックしてください。
 「index」「post」「group」「mypage」「DM」の項目があります。「index」を押すとはトップページへ戻ります。
