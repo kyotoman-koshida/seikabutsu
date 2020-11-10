@@ -4,7 +4,7 @@
 
 {% block header %}
 <h1>Group</h1>
-<p class="caption">※利用者のチェックをONにしてset memberすると、ONにしてある利用者がグループに追加されます。</p>
+<p class="caption">※グループを選択したうえで、フレンドのチェックをいれるとグループに追加できます。</p>
 <a href="{% url 'sns:all_users' %}">新しいフレンドを見つける</a>
 {% if messages %}
 <ul class="messages">
@@ -17,7 +17,26 @@
 {% endblock %}
 
 {% block content %}
+
+<p>※新しいGroupを作りたい場合は「create new group」してください</p>
+<form action="{% url 'sns:creategroup' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="group" value="{{group}}">
+{{create_form}}
+<button>create new group</button>
+</form>
+
 <hr>
+<p>※フレンドを登録したいグループを選択して「select member」してください</p>
+<form action="{% url 'sns:groups' %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="mode" value="__groups_form__">
+{{groups_form}}
+<button>select member</button>
+</form>
+
+<hr>
+<p>※追加したいフレンドにチェックをいれて「set member」してください</p>
 <form action="{% url 'sns:groups' %}" method="post">
 {% csrf_token %}
 <input type="hidden" name="mode" value="__friends_form__">
@@ -26,10 +45,4 @@
 <button>set members</button>
 </form>
 
-<p>※新しいGroupの登録</p>
-<form action="{% url 'sns:creategroup' %}" method="post">
-{% csrf_token %}
-{{create_form}}
-<button>create new group</button>
-</form>
 {% endblock %}

@@ -78,7 +78,7 @@ class FriendsForm(forms.Form):
             initial=vals
         )
 
-# Friendのチェックボックス。複数選択ではない。
+# Friendのチェックボックス。複数選択ではない。(未使用)
 class FriendForm(forms.Form):
     def __init__(self, user, friends=[], vals=[],*args, **kwargs):
         super(FriendForm, self).__init__(*args, **kwargs)

@@ -103,7 +103,6 @@ def groups(request):
     
     # POST送信時の処理
     if request.method == 'POST':
-        
         # Groupsメニュー選択肢の処理
         if request.POST['mode'] == '__groups_form__':
             # 選択したGroup名を取得
@@ -139,11 +138,15 @@ def groups(request):
             vlist = []
             for item in fds:
                 item.group = group_obj
-                item.save()
+                try:   
+                   item.save()
+                    # メッセージを設定
+                   messages.success(request, ' チェックされたFriendを' + \
+                    sel_group + 'に登録しました。')  
+                except :
+                    messages.error(request,'!!!グループを選択してください!!!')   
                 vlist.append(item.user.username)
-            # メッセージを設定
-            messages.success(request, ' チェックされたFriendを' + \
-                    sel_group + 'に登録しました。')
+                 
             # フォームの用意
             groupsform = GroupSelectForm(request.user, \
                     {'groups':sel_group})
