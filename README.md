@@ -40,8 +40,11 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側のピンク色のメニューバーをクリックしてください。（→）
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
-「find new friends」をクリックすると以下のような画面に遷移します。新しくフレンドに加えたいユーザーに「add friend」をすると、自分のフレンドに登録されます！
-![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
+「find new friends」をクリックすると以下のような画面に遷移します。
+![新しいフレンドを見つける](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
+
+画面右側にある、新しくフレンドに加えたいユーザーの「add friend」をすると、自分のフレンドに登録されます！
+![自分のフレンドにする](https://github.com/kyotoman-koshida/image_files/blob/main/short_addfriend.png)
 
 「group」をクリックすると以下のような画面に遷移します。新しくグループに加えたいユーザーにチェックをいれて、グループ名を入れれば新しいグループを作ることができます！
 ![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
