@@ -97,7 +97,7 @@ contentにDMの内容、userにDMをしたい相手を選ぶことで以下の�
 Twitterの紐付けを行うと、メニューバーの「Twitter timeline」から紐付けたTwitterの最近のタイムライン（２０件まで）を確認できます。このうちの好きなツイートをこの「Short」上の好きなグループのタイムラインに反映されることができます！
 ![ツイッタータイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_timeline.png)
 
-一度ツイッターを紐付ければ、次のログインからはTwitterでログインすることができます。
+一度ツイッターを紐付ければ、次のログインからは「Twitterログイン」ボタンでログインすることができます。
 ![ツイッターログイン](https://github.com/kyotoman-koshida/image_files/blob/main/short_login2.png)
 
 
