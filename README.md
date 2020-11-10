@@ -61,7 +61,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 投稿して、表示したいグループのタイムラインをチェックボックスにいれてupdateすると、新しく作ったグループのタイムラインに無事投稿できていることがわかります！
 ![メッセージ投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
 
-さて今度はpublicグループのタイムラインをみてみます。publicグループに投稿されているメッセージに対する「good」と「share」機能について説明します。
+さて今度はpublicグループのタイムラインをみてみます。publicグループに投稿されているメッセージに対する「good」と「share」機能について説明します。以下のメッセージを例にとります。現在「share」が１、「good」が３となっています。
 ![メッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_message.png)
 
 *「post」機能について。タイムラインへ投稿をしてみます。「post」のリンクをクリックしてみて下さい。すると以下のような画面になります。今回はメッセージを「test_group2」へ投稿します。
