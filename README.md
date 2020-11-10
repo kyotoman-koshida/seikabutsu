@@ -21,7 +21,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![新規会員登録画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_login2.png)
 
 以下の画面に遷移するので、必要情報を入力してください。
-![ユーザー情報登録](https://github.com/kyotoman-koshida/image_files/blob/main/short_regislation.png)
+![ユーザー情報登録](https://github.com/kyotoman-koshida/image_files/blob/main/short_register.png)
 
 必要情報を入力して登録をすると以下の画面に遷移して、仮登録が行われます。同時に登録したメールアドレスあてに本登録用のメールが送られます。メールが届かない場合は迷惑メールに振り分けられていないかご確認ください。
 ![仮登録画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_kari_regi.png)
