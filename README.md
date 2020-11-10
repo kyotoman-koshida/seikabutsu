@@ -23,7 +23,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 以下の画面に遷移するので、必要情報を入力してください。
 ![ユーザー情報登録](https://github.com/kyotoman-koshida/image_files/blob/main/short_register.png)
 
-ここで、性別に「男性」を選び、かつ「身長」を170cm以上で入力すると以下のようなエラーが発生します。
+ここで、性別に「男性」を選び、かつ「身長」を170cm以上で入力すると以下のようなエラーが発生します。（女性の身長は不問です！）
 ![身長エラー](https://github.com/kyotoman-koshida/image_files/blob/main/short_validation.png)
 
 
@@ -50,7 +50,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 試しにメニューバーの「check your friends」をクリックしてください。いま自分が追加しているフレンドの一覧が表示されます。
-![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
+![すべてのフレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
 
 *このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
