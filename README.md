@@ -70,8 +70,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 それでは次に「share」を押してみましょう。以下のような画面になるはずです。
 ![シェア](https://github.com/kyotoman-koshida/image_files/blob/main/short_share.png)
 
-タイムライン上のチェックボックスで「test_group2」にチェックをいれてupdateすると今投稿したメッセージがあるのがわかります。
-![投稿完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_post_done.png)
+この「share」をしたいグループに投稿すると以下のようになります。
+![シェア完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_share_done.png)
 
 *「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。ここでは上から五人を「test_group3」に加えて作成しています。
 ![グループ作成](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
