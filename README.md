@@ -91,11 +91,11 @@ contentにDMの内容、userにDMをしたい相手を選ぶことで以下の�
 メニューバーから「find new friends」をクリックしても同様にしてDMをすることができますが、この場合はフレンド登録していないユーザーにもDMをすることができます。また、自分自身のマイページを確認することもできます。メニューバーの「mypage」をクリックすると、以下のページに遷移します。
 ![自分のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
 
-さて、最後のTwitterとの紐付けについてみていきます。トップページ画面上方にある「Twitterを紐付け」ボタンをクリックしてください。
+さて、最後のTwitterとの紐付けについてみていきます。トップページ画面上方にある「Twitterを紐付け」ボタンをクリックしてください。以下のような画面になるので、紐付けたいTwitterアカウントのユーザー名とパスワードを入力してひもつけます。
 ![Twitter認証](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_ninsho.png)
 
-*「DM」について。自分のフレンド登録をしているユーザーとやり取りをすることができます。
-![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
+Twitterの紐付けを行うと、メニューバーの「Twitter timeline」から紐付けたTwitterの最近のタイムライン（２０件まで）を確認できます。このうちの好きなツイートをこの「Short」上の好きなグループのタイムラインに反映されることができます！
+![ツイッタータイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_timeline.png)
 
 Twitterとの紐付けについて。トップページ（index）の上方に「Twitterと紐付け」のボタンがあります。それをクリックすると、以下のようなページとなり認証を求められます。ユーザー名とパスワードを入力することでログインすることができます。
 ![ツイッター認証](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_ninsho.png)
