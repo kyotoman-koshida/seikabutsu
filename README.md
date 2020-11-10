@@ -37,7 +37,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 
 ![インデックス画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_index.png)
 
-いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側にあるピンク色のメニューバーをクリックしてください。
+いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側のピンク色のメニューバーをクリックしてください。（→）
 ![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
 次にタイムライン上のメッセージについて、「good」「shre」「add friend」機能について紹介します。
