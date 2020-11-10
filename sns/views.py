@@ -483,15 +483,14 @@ def all_friends(request):
             # フォームのメニューで選択したGroup名を取得
             sel_group = request.POST['groups']
             # Grooupを取得
-            gp = Group.objects.filter(owner=request.user) \
-                .filter(title=sel_group).first()
+            gp = Group.objects.filter(title=sel_group)\
+                .filter(owner=request.user).first()
 
             # Groupに含まれるFriendを取得（デフォルトは全フレンドの表示）
             if sel_group == '-':
                myfri =Friend.objects.all()
             else:
-                myfri = Friend.objects.filter(owner=request.user) \
-                .filter(group=gp)
+               myfri = Friend.objects.filter(owner=request.user).filter(group=gp)
 
             
             # FriendのUserをリストにまとめる
