@@ -67,7 +67,7 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
 
 さらにグループを選択するプルダウンがあるので、そこで自分の選択したグループの全フレンドを参照できます。
-![グループの全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_group_allfriend.png)
+![グループの全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_group.png)
 
 次にこの新しく作成したグループのタイムラインにメッセージを投稿をします！メニューバーから「post」をクリックしてください。投稿したメッセージをcontentに、投稿したいグループをgroupsのプルダウンから選びます！
 ![メッセージ投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
