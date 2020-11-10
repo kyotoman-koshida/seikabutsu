@@ -73,8 +73,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 この「share」をしたいグループに投稿すると以下のようになります。
 ![シェア完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_share_done.png)
 
-*「group」機能について。新しくグループを作成してみます。「group」のリンクをクリックしてみて下さい。自分が登録している好きなフレンドをグループに加えて新しいグループを作成することができます。ここでは上から五人を「test_group3」に加えて作成しています。
-![グループ作成](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
+次にDM機能について紹介します。メニューバーから「DM」を選択してみてください。
+![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
 
 ユーザーを探して新しくフレンドに加えることもできます。上の画像に「新しいフレンドを見つける」というリンクがあるので、それをクリックしてみて下さい。すべての（異性の）ユーザーが表示されます。
 ![全ユーザー](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
