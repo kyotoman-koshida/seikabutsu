@@ -91,8 +91,8 @@ contentにDMの内容、userにDMをしたい相手を選ぶことで以下の�
 メニューバーから「find new friends」をクリックしても同様にしてDMをすることができますが、この場合はフレンド登録していないユーザーにもDMをすることができます。また、自分自身のマイページを確認することもできます。メニューバーの「mypage」をクリックすると、以下のページに遷移します。
 ![自分のマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
 
-*「マイページ」について。もちろん自分自身のマイページをみることもできます。先ほどのメニューから「mypage」をクリックしてみると、以下のようなマイページをみることができます。
-![マイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_mypage.png)
+さて、最後のTwitterとの紐付けについてみていきます。トップページ画面上方にある「Twitterを紐付け」ボタンをクリックしてください。
+![Twitter認証](https://github.com/kyotoman-koshida/image_files/blob/main/short_twitter_ninsho.png)
 
 *「DM」について。自分のフレンド登録をしているユーザーとやり取りをすることができます。
 ![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
