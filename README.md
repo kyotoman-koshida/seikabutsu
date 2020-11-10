@@ -43,13 +43,14 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 「find new friends」をクリックすると以下のような画面に遷移します。
 ![新しいフレンドを見つける](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
 
-画面右側にある、新しくフレンドに加えたいユーザーの「add friend」をすると、自分のフレンドに登録されます！
+画面右側にある、新しくフレンドに加えたいユーザーの「add friend」をすると、自分のフレンドに登録されます！試しに何人か追加してみます。
 ![自分のフレンドにする](https://github.com/kyotoman-koshida/image_files/blob/main/short_addfriend.png)
 
-「group」をクリックすると以下のような画面に遷移します。新しくグループに加えたいユーザーにチェックをいれて、グループ名を入れれば新しいグループを作ることができます！
+さて、新しく追加したフレンドはデフォルトの「public」というグループに追加されます。しかし、自分で新しく他のグループを作ることもできます！さきほどのメニューバーから「group」をクリックすると以下のような画面に遷移します。新しくグループに加えたいユーザーにチェックをいれて、グループ名を入れれば新しいグループを作ることができます！
 ![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
-試しにさきほどの
+試しにメニューバーの「check your friends」をクリックしてください。いま自分が追加しているフレンドの一覧が表示されます。
+![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 *このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
