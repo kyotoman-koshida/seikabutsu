@@ -37,9 +37,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 
 ![インデックス画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_index.png)
 
-タイムラインについて詳しく見ていきます。
-タイムラインには先述のとおり、紐付けたtwitterのtweetやアプリ内で投稿したメッセージが表示されます。デフォルトでは、「public」という名前のグループが表示されています。
-![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_timeline.png)
+いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側にあるピンク色のメニューバーをクリックしてください。
+![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
 次にタイムライン上のメッセージについて、「good」「shre」「add friend」機能について紹介します。
 以下のメッセージについてみることにします。
