@@ -57,6 +57,9 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 「find new friends」をクリックすると以下のような画面に遷移します。
 ![新しいフレンドを見つける](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
 
+画面上方にある検索ボックスに名前を入力すると、以下のように該当するユーザーが検索されます。
+![新しいフレンドを検索する](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_search.png)
+
 画面右側にある、新しくフレンドに加えたいユーザーの「add friend」をすると、自分のフレンドに登録されます！試しに何人か追加してみます。
 ![自分のフレンドにする](https://github.com/kyotoman-koshida/image_files/blob/main/short_addfriend.png)
 
