@@ -38,11 +38,11 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![インデックス画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_index.png)
 
 いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側のピンク色のメニューバーをクリックしてください。（→）
-![タイムライン](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
+![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
-次にタイムライン上のメッセージについて、「good」「shre」「add friend」機能について紹介します。
-以下のメッセージについてみることにします。
-![メッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_message.png)
+「group」を入力すると以下のような画面に遷移します。
+
+![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 * まず「share」機能についてみます。
 このメッセージを「test_group」にshareします。shareの時には自分のコメントを付加できます。
