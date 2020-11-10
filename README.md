@@ -76,8 +76,8 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 次にDM機能について紹介します。メニューバーから「DM」を選択してみてください。
 ![ダイレクトメッセージ](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm.png)
 
-ユーザーを探して新しくフレンドに加えることもできます。上の画像に「新しいフレンドを見つける」というリンクがあるので、それをクリックしてみて下さい。すべての（異性の）ユーザーが表示されます。
-![全ユーザー](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
+contentにDMの内容、userにDMをしたい相手を選ぶことで以下の様にDMができます！
+![全ユーザー](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm_done.png)
 ここで各レコードの隣にある「add friend」を押すと新しくフレンドに登録することができます。
 
 自分の登録しているフレンドの一覧をみることもできます。全ユーザー一覧でも、全フレンド一覧でもユーザー検索をすることができます。
