@@ -79,11 +79,11 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 contentにDMの内容、userにDMをしたい相手を選ぶことで以下の様にDMができます！
 ![DM完了](https://github.com/kyotoman-koshida/image_files/blob/main/short_dm_done.png)
 
-ちなみにDMはユーザーページからもすることができます。さきほどの「check your friends」をみてください。
+ちなみにDMはユーザーページからもすることができます。さきほどの「check your friends」をみてください。名前のよこに「マイページ」というリンクがあります。
 ![全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
 
-実際に登録しているフレンドのうち「まり」さんを検索すると、「該当するユーザー」に表示されて以下のようになる。
-![ユーザー検索](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_search.png)
+このリンクからフレンドのマイページに移ることができます。
+![フレンドのマイページ](https://github.com/kyotoman-koshida/image_files/blob/main/short_otherspage.png)
 
 またグループごとにフレンドを表示したい場合は、プルダウンメニューから目的のグループ名をいれて「Select Group」を押すことで表示させることができます。
 ![ユーザーグループ表示](https://github.com/kyotoman-koshida/image_files/blob/main/short_friend_group.png)
