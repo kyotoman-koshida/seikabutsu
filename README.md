@@ -50,7 +50,10 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 ![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 試しにメニューバーの「check your friends」をクリックしてください。いま自分が追加しているフレンドの一覧が表示されます。
-![すべてのフレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
+![全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
+
+さらにグループを選択するプルダウンがあるので、そこで自分の選択したグループの全フレンドを参照できます。
+![グループの全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_group_allfriend.png)
 
 *このメッセージで「good」機能を使ってみます。「good」ボタンを押すとgoodカウントが0から1になります。
 ![メッセージグッド](https://github.com/kyotoman-koshida/image_files/blob/main/short_good_done.png)
