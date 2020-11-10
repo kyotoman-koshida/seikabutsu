@@ -115,14 +115,6 @@ Twitterの紐付けを行うと、メニューバーの「Twitter timeline」か
 ![ツイッターログイン](https://github.com/kyotoman-koshida/image_files/blob/main/short_login2.png)
 
 
-## 改善点・発展させたい点
-* マイページにプロフィール画像やひとこと紹介を表示させたい。
-* 検索機能を充実させたい。居住地や身長などでも検索できるようにしたい。
-* Twitterだけでなく、他のSNSのAPIも利用したい。
-* CSSやJavaScriptの理解を深めて、もっとデザインや操作性を向上させたい。
-* ユーザーをブロックしたり、ブロックを解除させたりできるようにしたい。
-* グループやフレンドなど一度登録したものの削除をユーザーが自由に行えるようにしたい。
-
 ## Requirement
 * asgiref==3.2.10
 * astroid==2.4.2
