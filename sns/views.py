@@ -141,7 +141,7 @@ def groups(request):
                 try:   
                    item.save()
                     # メッセージを設定
-                   messages.success(request, ' チェックされたFriendを' + \
+                   messages.success(request, ' チェックされたフレンドを' + \
                     sel_group + 'に登録しました。')  
                 except :
                     messages.error(request,'!!!グループを選択してください!!!')   

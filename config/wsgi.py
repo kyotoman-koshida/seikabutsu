@@ -9,10 +9,12 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 
 import os
 from django.core.wsgi import get_wsgi_application
-
-#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_app2.settings')
+"""
+#settings.pyをテストと本番環境用に区別するため変更
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_app2.settings')
+"""
+#新settings
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.production")
-
 application = get_wsgi_application()
 
 from whitenoise.django import DjangoWhiteNoise

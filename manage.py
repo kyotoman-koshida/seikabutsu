@@ -6,7 +6,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    """
+    #settings.pyをテストと本番環境用に区別するため変更
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_app2.settings')
+    """
+    #新settings
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
