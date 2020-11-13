@@ -106,13 +106,7 @@ AUTH_USER_MODEL = 'account.User'
 
 STATIC_URL = '/sns/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# メール送信の設定
-EMAIL_BACKEND = env('EMAIL_BACKEND')
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_PORT = env('EMAIL_PORT')
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+
 #エラーの内容を送信
 ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
 MANAGERS = ADMINSEMAIL_HOST = 'host'
