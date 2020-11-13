@@ -129,27 +129,3 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-"""
-#ローカルへ移す
-DATABASES['default'].update(db_from_env)
-"""
-
-"""
-#githubに上げたくないものはlocal_settingsから持ってくる
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-"""
-"""
-#ローカルへ移す
-if not DEBUG:    
-   SECRET_KEY = os.environ['SECRET_KEY']
-   EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-   SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
-   SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
-   AUTHENTICATION_TOKEN = os.environ['AUTHENTICATION_TOKEN']
-   AUTHENTICATION_SECRET = os.environ['AUTHENTICATION_SECRET']
-   django_heroku.settings(locals())
-   """
-
