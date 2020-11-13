@@ -6,17 +6,12 @@ INSTALLED_APPS += (
 
 DEBUG = True
 
-#以下local_settingsとの区別は？
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+DATABASE_URL = env('DATEBASE_URL')
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default' : env.db(),
 }
-
-DATABASES['default'].update(db_from_env)
 
 #twitter関連
 SOCIAL_AUTH_TWITTER_KEY = env('SOCIAL_AUTH_TWITTER_KEY')

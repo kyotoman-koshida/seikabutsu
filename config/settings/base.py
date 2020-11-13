@@ -5,7 +5,7 @@ import django_heroku
 
 import environ
 
-"""ここからが.envのため"""
+
 ROOT_DIR = environ.Path(__file__) - 3  # (django_app2/config/settings/base.py - 3 = modern-django/)
 
 env = environ.Env()
@@ -14,7 +14,7 @@ READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', default=False)
 if READ_DOT_ENV_FILE:
     # OS environment variables take precedence over variables from .env
     env.read_env(str(ROOT_DIR.path('.env')))
-"""ここまで"""    
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -23,6 +23,10 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com',  'kyotoman-app.hero
 SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', False)
+
+DATABASES = {
+    'default': env.db()
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -129,27 +133,5 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-"""
-#ローカルへ移す
-DATABASES['default'].update(db_from_env)
-"""
 
-"""
-#githubに上げたくないものはlocal_settingsから持ってくる
-try:
-    from .local_settings import *
-except ImportError:
-    pass
-"""
-"""
-#ローカルへ移す
-if not DEBUG:    
-   SECRET_KEY = os.environ['SECRET_KEY']
-   EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
-   SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
-   SOCIAL_AUTH_TWITTER_SECRET = os.environ['SOCIAL_AUTH_TWITTER_SECRET']
-   AUTHENTICATION_TOKEN = os.environ['AUTHENTICATION_TOKEN']
-   AUTHENTICATION_SECRET = os.environ['AUTHENTICATION_SECRET']
-   django_heroku.settings(locals())
-   """
 
