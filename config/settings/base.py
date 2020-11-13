@@ -103,12 +103,12 @@ AUTH_USER_MODEL = 'account.User'
 STATIC_URL = '/sns/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # メール送信の設定
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'heiheibonbon20120426@gmail.com'
+EMAIL_BACKEND = env('EMAIL_BACKEND') #'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env('EMAIL_HOST')#'smtp.gmail.com'
+EMAIL_PORT = env('EMAIL_PORT')#587
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')#heiheibonbon20120426@gmail.com'
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')#True
 #エラーの内容を送信
 ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
 MANAGERS = ADMINSEMAIL_HOST = 'host'
