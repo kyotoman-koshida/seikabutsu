@@ -127,8 +127,5 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 9bb4864da2f8778b1a0f53a463bb4c6fa512354f
