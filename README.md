@@ -3,7 +3,7 @@
 低身長男性用マッチングアプリ「short」の紹介。
 
 身長170cm未満の男性と身長不問の女性が交流できるように設計したウェブアプリケーションです。
-会員登録の必須入力項目に身長欄が設けられており、そこで男性は170cm未満に限定されます。普段は低い身長のゆえにハンデを負っている男性も、ここではそれを気にする必要はありません！
+会員登録の必須入力項目に身長欄が設けられており、そこで男性は170cm未満に限定されます。普段は低い身長のゆえにハンデを負っている男性も、ここでは二重の意味で「背伸び」する必要はありません！
 「short」の名前の由来は「背が低い」という意味の英単語です。
 
 ## こだわりポイント・工夫したポイント
@@ -57,17 +57,20 @@ https://kyotoman-app.herokuapp.com/　より「short」のページに進めま�
 「find new friends」をクリックすると以下のような画面に遷移します。
 ![新しいフレンドを見つける](https://github.com/kyotoman-koshida/image_files/blob/main/short_alluser.png)
 
+画面上方にある検索ボックスに名前を入力すると、以下のように該当するユーザーが検索されます。
+![新しいフレンドを検索する](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_search.png)
+
 画面右側にある、新しくフレンドに加えたいユーザーの「add friend」をすると、自分のフレンドに登録されます！試しに何人か追加してみます。
 ![自分のフレンドにする](https://github.com/kyotoman-koshida/image_files/blob/main/short_addfriend.png)
 
-さて、新しく追加したフレンドはデフォルトの「public」というグループに追加されます。しかし、自分で新しく他のグループを作ることもできます！さきほどのメニューバーから「group」をクリックすると以下のような画面に遷移します。新しくグループに加えたいユーザーにチェックをいれて、グループ名を入れれば新しいグループを作ることができます！
+さて、新しく追加したフレンドはデフォルトの「public」というグループに追加されます。しかし、自分で新しく他のグループを作ることもできます！さきほどのメニューバーから「group」をクリックすると以下のような画面に遷移します。新しいグループ名を入れて、その下にあるプルダウンメニューからフレンドを追加したいグループとして今作ったグループを選択し、新しくグループに加えたいユーザーにチェックをいれれば完了です！
 ![グループ](https://github.com/kyotoman-koshida/image_files/blob/main/short_group.png)
 
 試しにメニューバーの「check your friends」をクリックしてください。いま自分が追加しているフレンドの一覧が表示されます。
 ![全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend.png)
 
 さらにグループを選択するプルダウンがあるので、そこで自分の選択したグループの全フレンドを参照できます。
-![グループの全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_group_allfriend.png)
+![グループの全フレンド](https://github.com/kyotoman-koshida/image_files/blob/main/short_allfriend_group.png)
 
 次にこの新しく作成したグループのタイムラインにメッセージを投稿をします！メニューバーから「post」をクリックしてください。投稿したメッセージをcontentに、投稿したいグループをgroupsのプルダウンから選びます！
 ![メッセージ投稿](https://github.com/kyotoman-koshida/image_files/blob/main/short_post.png)
