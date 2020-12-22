@@ -3,14 +3,14 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from .models import User
 
-
+#ユーザーを新しく作成するためのクラス
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'birthday', 'gender', 'place', 'height' )
+        fields = ('email', 'username', 'birthday', 'gender', 'place', 'height', 'user_icon')
         
         def clean(self):
             if self.username == 'dst':#'dst'はDMの送り方を識別するために使うので予約語としておく。
@@ -33,14 +33,14 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user  
 
-
+#ユーザーの登録情報を変更するためのフォーム
 class UserChangeForm(forms.ModelForm):
     password = ReadOnlyPasswordHashField()
 
     class Meta:
         model = User
         fields = ('email', 'password', 'username', 'birthday', 'gender', 'place',
-                  'height', 'is_active', 'is_admin')              
+                  'height', 'user_icon', 'is_active', 'is_admin')              
 
     def clean_password(self):
         return self.initial["password"]

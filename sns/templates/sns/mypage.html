@@ -8,7 +8,13 @@
 <body>
 {% block content%}
 <p class="caption">{{name}}</p>
-<h1 class="dispay-4 text-primary">ユーザー情報</h1> 
+<h1 class="dispay-4 text-primary">プロフィール情報</h1>
+{% if my_user.user.icon %}
+<img src='{{ MEDIA_URL }}{{my_user.user_icon}}' width=200> 
+{% else %}
+プロフィール画像はありません
+<h2><a href="{% url 'album:upload' %}">Upload image</a></h2>
+{% endif %}
     <table class="table">
       <tr>
         <th>名前</th>
@@ -33,6 +39,6 @@
       </span>
       </tr>
     </table>
-
+<h2><a href="{% url 'account:user_change' my_user.id %}">登録情報変更</a></h2>
 {% endblock %}
 </body>

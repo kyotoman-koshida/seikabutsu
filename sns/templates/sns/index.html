@@ -4,6 +4,26 @@
 
 {% block header %}
 
+
+
+<div>
+      <ul class="slider jumbotron">
+          <li><a href="#"><img src="static/slick/fonts/capple.jpg" alt="image01"></a></li>
+          <li><a href="#"><img src="static/slick/fonts/capple2.jpg" alt="image02"></a></li>
+          <li><a href="#"><img src="static/slick/fonts/capple3.jpg" alt="image03"></a></li>
+          <li><a href="#"><img src="static/slick/fonts/capple4.jpg" alt="image04"></a></li>
+          <li><a href="#"><img src="static/slick/fonts/capple5.jpg" alt="image05"></a></li>
+      </ul>
+    </div>
+<script type="text/javascript"> 
+    $('.slider').slick({
+    autoplay:true,
+    autoplaySpeed:4000,
+    dots:true,
+    arrows:true,
+});
+    </script>
+
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}

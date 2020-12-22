@@ -1,9 +1,9 @@
 {% extends 'sns/layout.html' %}
 
-{% block title %}マイページ{% endblock%}
+{% block title %}プロフィール{% endblock%}
 
 {% block header %}
-<h1>{{friend.username}}さんのマイページ</h1>
+<h1>{{friend.username}}さんのプロフィール</h1>
 
 "{{friend.username}}"(<a href="{% url 'sns:dm' %}?name={{friend.username}}">DMする</a>)
 {% endblock %}
@@ -11,6 +11,11 @@
 
 <body>
 {% block content %}
+{% if my_user.user.icon %}
+<img src='{{ MEDIA_URL }}{{friend.user_icon}}' width=200> 
+{% else %}
+プロフィール画像はありません
+{% endif %}
 <table class="table">
       <tr>
         <th>名前</th>

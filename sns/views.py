@@ -84,8 +84,9 @@ def index(request):
         messages = get_your_group_message(request.user, glist, None)
 
     #　共通処理
+    user = User.objects.filter(email=request.user).first()
     params = {
-            'login_user':request.user,
+            'login_user':user.username,
             'contents':messages,
             'check_form':checkform,
             'search_form':searchform,
@@ -154,9 +155,10 @@ def groups(request):
                     friends=friends, vals=vlist)
      
     # 共通処理
+    user = User.objects.filter(email=request.user).first()
     createform = CreateGroupForm()
     params = {
-            'login_user':request.user,
+            'login_user':user.username,
             'groups_form':groupsform,
             'friends_form':friendsform,
             'create_form':createform,
@@ -236,8 +238,9 @@ def post(request):
         form = PostForm(request.user)
     
     # 共通処理
+    user = User.objects.filter(email=request.user).first()
     params = {
-            'login_user':request.user,
+            'login_user':user.username,
             'form':form,
         }
     return render(request, 'sns/post.html', params)
@@ -273,9 +276,10 @@ def share(request, share_id):
         return redirect(to='/sns')
     
     # 共通処理
+    user = User.objects.filter(email=request.user).first()
     form = PostForm(request.user)
     params = {
-            'login_user':request.user,
+            'login_user':user.username,
             'form':form,
             'share':share,
         }
@@ -310,20 +314,21 @@ def good(request, good_id):
 @login_required(login_url='/sns/login/')
 def mypage(request):
     #自分の情報を表示
-    me = User.objects.filter(email=request.user).first()
+    user = User.objects.filter(email=request.user).first()
     params = {
-        'login_user':request.user,
-        'my_user':me,
+        'login_user':user.username,
+        'my_user':user,
     }
     return render(request, "sns/mypage.html", params)
 
 @login_required(login_url='/sns/login/')
 def otherspage(request):
     #マイページを開きたいFriendの情報を取得
+    user = User.objects.filter(email=request.user).first()
     fri_name = request.GET['name']
     friend = User.objects.filter(username=fri_name).first()
     params = {    
-        'login_user':request.user,
+        'login_user':user.username,
         'friend':friend,
     }       
     return render(request, "sns/otherspage.html", params)
@@ -380,14 +385,12 @@ def dm(request):
         if dms.is_valid():
            dms.save()
         
-        
         form.fields['user'].choices = [
             ("----", "----")
             ] + [
             (item.username, item.username) for item in my_fri_user
             ]
         
-                
     #Friendのマイページからとんできた場合
     elif request.GET['name'] != 'dst' :#dstはdestination DMの宛先が未定のときと区別
         fri_name = request.GET['name']
@@ -404,20 +407,22 @@ def dm(request):
         #mark=1のときはプルダウンでフレンドを選ぶとき    
         mark = 1       
     
+    user = User.objects.filter(email=request.user).first()
     params = {
-        'login_user':request.user,
+        'login_user':user.username,
         'dialogs':dialogs,
         'dm_form':form,
         'mark': mark,
         'atesaki': fri_name,
-        #'friendform':friendform,
     }
     return render(request, "sns/dm.html", params)
 
 #通知ページを表示(未使用)
 @login_required(login_url='/sns/login/')
 def notifications(request):
+    user = User.objects.filter(email=request.user).first()
     params = {
+        'login_user':user.username,
         'note':request.user,
     }
     return render(request, "sns/notifications.html", params)
@@ -425,8 +430,10 @@ def notifications(request):
 #自身の設定ページを表示(未使用)
 @login_required(login_url='/sns/login/')
 def settings(request):
+    user = User.objects.filter(email=request.user).first()
     params = {
-          'name':request.user,
+        'login_user':user.username,
+        'name':request.user,
     }   
     return render(request, "sns/settings.html", params)
 
@@ -467,8 +474,9 @@ def all_users(request):
         else:
             users = User.objects.filter(gender=1)
 
+    user = User.objects.filter(email=request.user).first()
     params = {
-        'login_user':request.user,
+        'login_user':user.username,
         'usersform':usersform,
         'users':users,
         'me':me,
@@ -525,8 +533,9 @@ def all_friends(request):
         gp = Group.objects.all()
         sel_group = '-'
     
+    user = User.objects.filter(email=request.user).first()
     params = {
-            'login_user':request.user,
+            'login_user':user.username,
             'groups_form':groupsform,
             'group':gp,
             'friends':fri_user_list,
@@ -611,8 +620,9 @@ def twitter(request):
                 #Cre_at_list.append(Created_at)
         
     #表示するtweet情報のまとめ
+    user = User.objects.filter(email=request.user).first()
     params = {
-        'login_user':request.user,
+        'login_user':user.username,
         'Words': msg,
         'timeline': timeline,
         'API_limit': limit,

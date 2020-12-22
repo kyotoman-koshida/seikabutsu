@@ -1,0 +1,39 @@
+#jumbotron-extend { 
+    background:url(images/capple.jpg) center no-repeat; 
+    background-size: cover;
+}
+
+#jumbotron-extend2 { 
+    background:url(images/capple2.jpg) center no-repeat; 
+    background-size: cover;
+}
+
+#jumbotron-extend3 { 
+    background:url(images/capple3.jpg) center no-repeat; 
+    background-size: cover;
+}
+
+#jumbotron-extend4 { 
+    background:url(images/capple4.jpg) center no-repeat; 
+    background-size: cover;
+}
+
+#jumbotron-extend5 { 
+    background:url(images/capple5.jpg) center no-repeat; 
+    background-size: cover;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 40px;
+    width: 80%;
+    color: #333;
+    background: #419be0;
+  }
+  
+  .slick-slide {
+    text-align: center;
+    color: #419be0;
+    background: white;
+  }
+  

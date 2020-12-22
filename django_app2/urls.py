@@ -2,12 +2,15 @@ from django.contrib import admin
 from django.urls import path, include
 from sns.views import index
 from django.conf.urls import url
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    #/login/twitter/, /complete/twitter/, /disconnect/twitter/に対応
-    url('', include('social_django.urls', namespace='social')),
+    
+    path('admin/', admin.site.urls),
+    path('account/', include('account.urls', namespace='account')),    
+    path('sns/', include('sns.urls', namespace='sns')),
+    path('album/', include('album.urls')),
+    path('', include('social_django.urls', namespace='social')),
 
-    url('admin/', admin.site.urls),    
-    url('sns/',include('sns.urls', namespace='sns')),
-    url('', index, name='index'),
-    ]
+    ] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

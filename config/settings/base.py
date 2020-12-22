@@ -17,6 +17,8 @@ if READ_DOT_ENV_FILE:
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com',  'kyotoman-app.herokuapp.com']
 
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'social_django',
     'sns',
     'account',
+    'album',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +71,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends', 
                 'social_django.context_processors.login_redirect',
+                'django.template.context_processors.media',
             ]
         },
     },

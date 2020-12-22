@@ -83,7 +83,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     place = models.CharField(max_length=100, verbose_name='居住地', null=True)
     height =models.FloatField(help_text=_('男性は170cm未満のかた限定です。'), verbose_name='身長')
     date_joined = models.DateTimeField(default=timezone.now, verbose_name='登録日')
-
+    user_icon = models.ImageField('画像', upload_to = 'images/', blank=True, null=True)
     #男性限定の身長バリデーションとメール
     def clean(self):
         super().clean()

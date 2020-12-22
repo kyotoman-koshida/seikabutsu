@@ -1,0 +1,19 @@
+{% extends 'sns/layout.html' %}
+
+{% block title %}Your Album{% endblock %}
+
+{% block header %}
+<h1>Your Album</h1>
+
+{% if images %}
+{% for image in images %}
+    <img src='{{ MEDIA_URL }}{{image.picture}}' width=200>
+    <h2>{{ image.title }}</h2>
+{% endfor %}
+{% else %}
+<p  class="caption">画像がまだありません。下の「Upload more」から画像をアップしてください</p>
+{% endif %}
+
+<h2><a href="{% url 'album:upload' %}">Upload more</a></h2>
+
+{% endblock %}
