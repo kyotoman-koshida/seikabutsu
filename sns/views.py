@@ -660,7 +660,7 @@ def addtweet(request):
     msg.group = group
     msg.save()
     messages.success(request, group.title +'のタイムラインにツイートを反映しました！')
-    return redirect(to='/sns/tweets.html')    
+    return redirect(to='/sns')    
 
 #トップページを表示(未使用)
 @login_required(login_url='/sns/login/')

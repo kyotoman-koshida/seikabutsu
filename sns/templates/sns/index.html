@@ -4,26 +4,6 @@
 
 {% block header %}
 
-
-
-<div>
-      <ul class="slider jumbotron">
-          <li><a href="#"><img src="static/slick/fonts/capple.jpg" alt="image01"></a></li>
-          <li><a href="#"><img src="static/slick/fonts/capple2.jpg" alt="image02"></a></li>
-          <li><a href="#"><img src="static/slick/fonts/capple3.jpg" alt="image03"></a></li>
-          <li><a href="#"><img src="static/slick/fonts/capple4.jpg" alt="image04"></a></li>
-          <li><a href="#"><img src="static/slick/fonts/capple5.jpg" alt="image05"></a></li>
-      </ul>
-    </div>
-<script type="text/javascript"> 
-    $('.slider').slick({
-    autoplay:true,
-    autoplaySpeed:4000,
-    dots:true,
-    arrows:true,
-});
-    </script>
-
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -35,6 +15,27 @@
 {% endblock %}
 
 {% block content %}
+      <ul class="slider jumbotron" id="jumbotron-extend">
+          <li><a href="#"><img src="/media/images/capple.jpg" alt="image01"></a></li>
+          <li><a href="#"><img src="/media/images/capple2.jpg" alt="image02"></a></li>
+          <li><a href="#"><img src="/media/images/capple3.jpg" alt="image03"></a></li>
+          <li><a href="#"><img src="/media/images/capple4.jpg" alt="image04"></a></li>
+          <li><a href="#"><img src="/media/images/capple5.jpg" alt="image05"></a></li>
+      </ul>
+{% comment %}
+    <script src="static/js/common.js"></script>
+{% endcomment %}
+
+<script type="text/javascript"> 
+    $('.slider').slick({
+    autoplay:true,
+    autoplaySpeed:4000,
+    dots:true,
+    arrows:true,
+    centerMode: true,
+    centerPadding: '12%',
+});
+</script>
 
 <hr>
 <p class="caption">※グループのチェックをONにしてupdateすると、

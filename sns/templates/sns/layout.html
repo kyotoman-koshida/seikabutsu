@@ -10,15 +10,18 @@
     crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href='{% static "css/nav_sidebar.css" %}'>
     <link rel="stylesheet" type="text/css" href='{% static "slick/slick.css" %}' media="screen" />
-<link rel="stylesheet" type="text/css" href='{% static "slick/slick-theme.css" %}' media="screen" />
-<link rel="stylesheet"  type="text/css" href='{% static "css/style.css" %}'>
-<script type="text/javascript" src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="static/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href='{% static "slick/slick-theme.css" %}' media="screen" />
+    <link rel="stylesheet"  type="text/css" href='{% static "css/base.css" %}'>
+    <link rel="stylesheet"  type="text/css" href='{% static "css/style.css" %}'>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
 </head>
 
 <body>
-
+  <header  id="header-style">
+  {% comment %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <div class="body_content">
@@ -59,8 +62,53 @@
         </div>
   </div>   
     </nav>
+    {% endcomment %}
+  <div class="inline-block_test">
+      <div class="w1000">
+        <div class="menubtn">
+          <div id="humberger">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'sns:index' %}"><font size="5">index</font></a></li>
+                <li><a href="{% url 'sns:post' %}"><font size="5">post</font></a></li>
+                <li><a href="{% url 'sns:groups' %}"><font size="5">group</font></a></li>
+                <li><a href="{% url 'sns:mypage' %}"><font size="5">mypage</font></a></li>
+                <li><a href="{% url 'sns:all_friends' %}"><font size="5">check your friends</font></a></li>
+                <li><a href="{% url 'sns:all_users' %}"><font size="5">find new friends</font></a></li>
+                <li><a href="{% url 'sns:dm' %}?name=dst"><font size="5">DM</font></a></li>
+                <li><a href="{% url 'album:showall' %}"><font size="5">images</font></a></li>
+                <li><a href="{% url 'sns:twitter' %}"><font size="5">twitter timeline</font></a></li>
+            </ul>  
+        </nav>
+      
+        <div class="content">
+            <p>ここにコンテンツが入ります。</p>
+            <p>ここにコンテンツが入ります。</p>
+        </div>
+        
+      </div>
+  </div>
+  
+  <div class="banner-font inline-block_test">Short</div>
+  
+  <div class="inline-block_test right">
+      <div>
+        <button class="aline" type="button" onclick="location.href='{% url 'social:begin' 'twitter' %}'">Twitterを紐付け</button>
+      </div>
+      <div>
+          <table class="login_table" width="100%"> 
+              <tr><th width="150px">login user:</th>
+                <td>"{{login_user}}"</td>
+                <td><a class="nav-link" href="{% url 'sns:logout' %}">ログアウト</a></td><tr>
+          </table>    
+      </div>
+  </div>  
 
-    <header>
       <!--<h1 class="display-4 text-primary">Short</h1>-->
       {% comment %}
       <div class="jumbotron jumbotron-extend">
@@ -95,10 +143,8 @@
     </div>
     {% endcomment %}
     
-    </header> 
+  </header> 
 
-  
-  
     <!-- メインコンテント -->
     <div>
         {% block header %}{% endblock  %}

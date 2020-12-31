@@ -72,6 +72,7 @@ TEMPLATES = [
                 'social_django.context_processors.backends', 
                 'social_django.context_processors.login_redirect',
                 'django.template.context_processors.media',
+                'django.template.context_processors.static',
             ]
         },
     },
@@ -108,8 +109,12 @@ FILE_CHARSET = 'UTF-8'
 
 AUTH_USER_MODEL = 'account.User'
 
-STATIC_URL = '/sns/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),  # プロジェクト直下のstaticディレクトリを指定
+    'static/',
+)
 
 #エラーの内容を送信
 ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
@@ -128,7 +133,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 #リダイレクトURL
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/sns'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 
