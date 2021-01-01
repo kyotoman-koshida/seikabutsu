@@ -15,26 +15,48 @@
 {% endblock %}
 
 {% block content %}
-      <ul class="slider jumbotron" id="jumbotron-extend">
-          <li><a href="#"><img src="/media/images/capple.jpg" alt="image01"></a></li>
-          <li><a href="#"><img src="/media/images/capple2.jpg" alt="image02"></a></li>
-          <li><a href="#"><img src="/media/images/capple3.jpg" alt="image03"></a></li>
-          <li><a href="#"><img src="/media/images/capple4.jpg" alt="image04"></a></li>
-          <li><a href="#"><img src="/media/images/capple5.jpg" alt="image05"></a></li>
+      <ul class="slider responsive jumbotron" id="jumbotron-extend">
+          <li><div><a href="#"><img src="/media/images/capple.jpg" alt="image01"></a></div></li>
+          <li><div><a href="#"><img src="/media/images/capple2.jpg" alt="image02"></a></div></li>
+          <li><div><a href="#"><img src="/media/images/capple3.jpg" alt="image03"></a></div></li>
+          <li><div><a href="#"><img src="/media/images/capple4.jpg" alt="image04"></a></div></li>
+          <li><div><a href="#"><img src="/media/images/capple5.jpg" alt="image05"></a></div></li>
       </ul>
 {% comment %}
-    <script src="static/js/common.js"></script>
+    <script src="{% static 'slick/slick.min.js' %}"></script>
 {% endcomment %}
 
 <script type="text/javascript"> 
-    $('.slider').slick({
+$('.responsive').slick({
+  autoplay:true,
+  autoplaySpeed:4000,
+  dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 2,
+  slidesToScroll: 2,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+  ]
+});
+{% comment %}
+ $('.slider').slick({
     autoplay:true,
     autoplaySpeed:4000,
-    dots:true,
     arrows:true,
+    dots: true,
     centerMode: true,
     centerPadding: '12%',
 });
+{% endcomment %}
 </script>
 
 <hr>
