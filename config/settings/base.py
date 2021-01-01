@@ -123,7 +123,7 @@ SEND_BROKEN_LINK_EMAILS=True
 
 #ログイン関連の設定
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = '/sns'
 
 #soxial-auth-app-django用
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
