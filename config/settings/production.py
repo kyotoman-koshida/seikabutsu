@@ -2,11 +2,6 @@ from .base import *
 
 DEBUG = False
 
-DATABASE_URL = env('DATEBASE_URL')
-DATABASES = {
-    'default': env.db()
-}
-
 #シークレットキー
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -18,6 +13,10 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS']
 
+DATABASE_URL = env('DATEBASE_URL')
+DATABASES = {
+    'default': env.db()
+}
 DATABASES = {
     'default': {
         'ENGINE': os.environ['POSTGRES_ENGINE'],
