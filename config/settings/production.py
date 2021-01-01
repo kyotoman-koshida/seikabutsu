@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-DATABASE_URL = env('PSTG_URL')
+DATABASE_URL = env('DATEBASE_URL')
 DATABASES = {
     'default': env.db()
 }
