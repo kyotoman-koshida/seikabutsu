@@ -26,8 +26,9 @@ DATABASES = {
         'PASSWORD':os.environ['POSTGRES_PASSWORD'],
         'HOST':os.environ['POSTGRES_HOST'],
         'PORT':os.environ['POSTGRES_PORT'],
-    }DATABASES['default'].update(db_from_env)
+    }
 }
+DATABASES['default'].update(db_from_env)
 
 #TwitterのAPI関連
 SOCIAL_AUTH_TWITTER_KEY = os.environ['SOCIAL_AUTH_TWITTER_KEY']
