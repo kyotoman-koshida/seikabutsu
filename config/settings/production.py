@@ -13,7 +13,7 @@ EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_USE_TLS = os.environ['EMAIL_USE_TLS']
 
-DATABASE_URL = env('DATEBASE_URL')
+DATABASE_URL = env('DATABASE_URL')
 DATABASES = {
     'default': env.db()
 }
