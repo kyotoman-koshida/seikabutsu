@@ -8,7 +8,7 @@ DEBUG = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-DATABASE_URL = env('DATEBASE_URL')
+DATABASE_URL = env('DATABASE_URL')
 DATABASES = {
     'default' : env.db(),
 }
