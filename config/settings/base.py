@@ -112,8 +112,8 @@ AUTH_USER_MODEL = 'account.User'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),  # プロジェクト直下のstaticディレクトリを指定
-    #'static/',
+    os.path.join(BASE_DIR, 'sns/static'),  # プロジェクト直下のstaticディレクトリを指定
+    'static/',
 )
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
