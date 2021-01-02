@@ -93,7 +93,7 @@ def index(request):
         }
     return render(request, 'sns/index.html', params)
 
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def groups(request):
     # 自分が登録したFriendを取得
     friends = Friend.objects.filter(owner=request.user)
@@ -167,7 +167,7 @@ def groups(request):
     return render(request, 'sns/groups.html', params)
 
 # Friendの追加処理
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def add(request):
     # 追加するUserを取得
     add_name = request.GET['name']
@@ -200,7 +200,7 @@ def add(request):
     return redirect(to='/sns')
 
 # グループの作成処理
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def creategroup(request):
     # Groupを作り、Userとtitleを設定して保存する
     gp = Group()
@@ -211,7 +211,7 @@ def creategroup(request):
     return redirect(to='/sns/groups')
 
 # メッセージのポスト処理
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def post(request):
     # POST送信の処理
     if request.method == 'POST':
@@ -246,7 +246,7 @@ def post(request):
     return render(request, 'sns/post.html', params)
 
 # 投稿をシェアする
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def share(request, share_id):
     # シェアするMessageの取得
     share = Message.objects.get(id=share_id)
@@ -286,7 +286,7 @@ def share(request, share_id):
     return render(request, 'sns/share.html', params)
 
 # goodボタンの処理
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def good(request, good_id):
     # goodするMessageを取得
     good_msg = Message.objects.get(id=good_id)
@@ -311,7 +311,7 @@ def good(request, good_id):
     return redirect(to='/sns')
 
 #自分のマイページを表示
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def mypage(request):
     #自分の情報を表示
     user = User.objects.filter(email=request.user).first()
@@ -321,7 +321,7 @@ def mypage(request):
     }
     return render(request, "sns/mypage.html", params)
 
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def otherspage(request):
     #マイページを開きたいFriendの情報を取得
     user = User.objects.filter(email=request.user).first()
@@ -334,7 +334,7 @@ def otherspage(request):
     return render(request, "sns/otherspage.html", params)
 
 #DMのための処理
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def dm(request):
     #markはDMをおくるときにプルダウンから宛先を選ぶ場合を
     #識別するためにdm.htmlに送る値
@@ -418,7 +418,7 @@ def dm(request):
     return render(request, "sns/dm.html", params)
 
 #通知ページを表示(未使用)
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def notifications(request):
     user = User.objects.filter(email=request.user).first()
     params = {
@@ -428,7 +428,7 @@ def notifications(request):
     return render(request, "sns/notifications.html", params)
 
 #自身の設定ページを表示(未使用)
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def settings(request):
     user = User.objects.filter(email=request.user).first()
     params = {
@@ -438,17 +438,17 @@ def settings(request):
     return render(request, "sns/settings.html", params)
 
 #グッドしたものの一覧を表示(未使用)
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def goods(request):
     return(request, 'sns/goods.html')
 
 #ブロックしたフレンドを表示（未使用）
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def blocks(request):
     return('sns/blocks.html')
 
 #このサービスに登録しているユーザを列挙する
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def all_users(request):
 
     if request.method == 'POST':
@@ -484,7 +484,7 @@ def all_users(request):
     return render(request, 'sns/all_users.html', params)          
 
 #自分の登録しているフレンドを列挙する
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def all_friends(request):
     fri_user_list = []
     me = User.objects.filter(email=request.user).first()
@@ -641,7 +641,7 @@ def YmdHMS(created_at):
     return int(time.strftime('%Y%m%d%H%M%S', time_local))
 
 #タイムラインに反映させたいtweetを保存
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def addtweet(request):
     #保存したいtweet情報の取得
     Text = request.GET['text']
@@ -663,7 +663,7 @@ def addtweet(request):
     return redirect(to='/sns')    
 
 #トップページを表示(未使用)
-@login_required(login_url='/sns/login/')
+@login_required(login_url='sns/login/')
 def top_page(request):
     user = UserSocialAuth.objects.get(user_id=request.user.id)
 

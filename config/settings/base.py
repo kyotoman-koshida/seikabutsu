@@ -122,8 +122,8 @@ MANAGERS = ADMINSEMAIL_HOST = 'host'
 SEND_BROKEN_LINK_EMAILS=True
 
 #ログイン関連の設定
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = '/sns'
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/index'
 
 #soxial-auth-app-django用
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
