@@ -2,7 +2,7 @@
 import os
 import dj_database_url
 import django_heroku
-
+django_heroku.settings(locals())
 import environ
 
 
