@@ -110,7 +110,7 @@ FILE_CHARSET = 'UTF-8'
 AUTH_USER_MODEL = 'account.User'
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '/static'),  # プロジェクト直下のstaticディレクトリを指定
     'static/',
