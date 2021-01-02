@@ -16,7 +16,6 @@ if READ_DOT_ENV_FILE:
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-django_heroku.settings(locals())
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com',  'kyotoman-app.herokuapp.com']
 
@@ -139,3 +138,5 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/sns'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
+
+django_heroku.settings(locals())
