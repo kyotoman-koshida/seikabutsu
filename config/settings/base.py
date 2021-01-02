@@ -16,6 +16,7 @@ if READ_DOT_ENV_FILE:
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+django_heroku.settings(locals())
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.herokuapp.com',  'kyotoman-app.herokuapp.com']
 
