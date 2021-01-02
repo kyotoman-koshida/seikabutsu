@@ -115,7 +115,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),  # プロジェクト直下のstaticディレクトリを指定
     'static/',
 )
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #エラーの内容を送信
 ADMINS = (('kyotoman', 'heiheibonbon20120426@gmail.com'),)
