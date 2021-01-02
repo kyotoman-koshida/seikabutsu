@@ -139,5 +139,3 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/sns'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-
-django_heroku.settings(locals())
