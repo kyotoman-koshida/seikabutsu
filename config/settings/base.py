@@ -113,7 +113,7 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/static'),  # プロジェクト直下のstaticディレクトリを指定
+    os.path.join(BASE_DIR, '/static','/media'),  # プロジェクト直下のstaticディレクトリを指定
     #'static/',
 )
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
