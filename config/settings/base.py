@@ -1,9 +1,8 @@
 
 import os
 import dj_database_url
-import django_heroku
-
 import environ
+import django_heroku
 
 
 ROOT_DIR = environ.Path(__file__) - 3  # (django_app2/config/settings/base.py - 3 = modern-django/)
