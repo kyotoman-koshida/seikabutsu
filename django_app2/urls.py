@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls', namespace='account')),    
     path('sns/', include('sns.urls', namespace='sns')),
-    #url('', index, name='index'),
+    path('', include('sns.urls', namespace='sns')),
     path('album/', include('album.urls')),
     path('', include('social_django.urls', namespace='social')),
 
