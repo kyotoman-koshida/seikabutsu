@@ -1,6 +1,6 @@
 /*headerについて*/
 #header-style{
-  background-image: url("/media/images/banner.jpg");
+  background-image: url("static/media/images/banner.jpg");
   background-size:100%;
 }
 
