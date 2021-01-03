@@ -1,4 +1,5 @@
 {% extends 'sns/layout.html' %}
+{% load static %}
 
 {% block title %}Index{% endblock %}
 
@@ -16,11 +17,11 @@
 
 {% block content %}
       <ul class="slider responsive jumbotron" id="jumbotron-extend">
-          <li><div><a href="#"><img src="/media/images/capple.jpg" alt="image01"></a></div></li>
-          <li><div><a href="#"><img src="/media/images/capple2.jpg" alt="image02"></a></div></li>
-          <li><div><a href="#"><img src="/media/images/capple3.jpg" alt="image03"></a></div></li>
-          <li><div><a href="#"><img src="/media/images/capple4.jpg" alt="image04"></a></div></li>
-          <li><div><a href="#"><img src="/media/images/capple5.jpg" alt="image05"></a></div></li>
+          <li><div><a href="#"><img src="{% static "media/images/capple.jpg" %}" alt="image01"></a></div></li>
+          <li><div><a href="#"><img src="{% static "media/images/capple2.jpg" %}" alt="image02"></a></div></li>
+          <li><div><a href="#"><img src="{% static "media/images/capple3.jpg" %}" alt="image03"></a></div></li>
+          <li><div><a href="#"><img src="{% static "media/images/capple4.jpg" %}" alt="image04"></a></div></li>
+          <li><div><a href="#"><img src="{% static "media/images/capple5.jpg" %}" alt="image05"></a></div></li>
       </ul>
 {% comment %}
     <script src="{% static 'slick/slick.min.js' %}"></script>
