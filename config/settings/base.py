@@ -107,6 +107,7 @@ FILE_CHARSET = 'UTF-8'
 
 AUTH_USER_MODEL = 'account.User'
 
+#mediaファイルをstaticでまとめてしまったので以下の情報はいらない？
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -137,7 +138,3 @@ AUTHENTICATION_BACKENDS = [
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/sns'
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-
-#django_heroku.settings(locals())
-#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

@@ -31,7 +31,7 @@
       <span class="float-right">
      <td>{{member.username}}(<a href="{% url 'sns:otherspage' %}?name={{member.user}}">マイページ</a>)</td>
      <td>{{member.place}}</td>
-      {% if my_user.gender == 1 %}
+      {% if my_user.gender == 2 %}
      <td>女性</td>
      {% else %}
      <td>男性</td>

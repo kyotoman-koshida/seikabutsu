@@ -23,10 +23,8 @@
           <li><div><a href="#"><img src="{% static "media/images/capple4.jpg" %}" alt="image04"></a></div></li>
           <li><div><a href="#"><img src="{% static "media/images/capple5.jpg" %}" alt="image05"></a></div></li>
       </ul>
-{% comment %}
-    <script src="{% static 'slick/slick.min.js' %}"></script>
-{% endcomment %}
 
+<!--なぜか外部jsファイルが読み込めないのでやむなく直接記述-->
 <script type="text/javascript"> 
 $('.responsive').slick({
   autoplay:true,
@@ -48,16 +46,6 @@ $('.responsive').slick({
     },
   ]
 });
-{% comment %}
- $('.slider').slick({
-    autoplay:true,
-    autoplaySpeed:4000,
-    arrows:true,
-    dots: true,
-    centerMode: true,
-    centerPadding: '12%',
-});
-{% endcomment %}
 </script>
 
 <hr>
@@ -84,10 +72,6 @@ $('.responsive').slick({
 {% endif %}
 <p class="message_owner">
     <span class="message_counter">share={{item.share_count}} good={{item.good_count}}</span>
-    {% comment %}
-    "{{item.owner}}"(<a href="{% url 'sns:add' %}?name={{item.owner}}">
-        add friend</a>)
-    {% endcomment %}
     <a href="{% url 'sns:share' item.id %}"><button>share</button></a>
     <a href="{% url 'sns:good' item.id %}"><button>good!</button></a>
 </p>
