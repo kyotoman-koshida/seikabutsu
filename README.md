@@ -19,7 +19,7 @@
 
 # 注意点
 * ローカル環境で操作するときには、まずはcreatesuperuserで管理者ユーザーを作成してください。
-* そして次に必ず、Djangoの管理ページ　(http://localhost:8000/admin)　から、username:'public'である任意のユーザーを作成し、このユーザーをownerにもつtitle:'public'のグループを作成してください。このユーザーとグループは投稿機能やフレンド追加機能を利用する際にデフォルトで扱われるものです。
+* そして次に必ず、Djangoの管理ページ　(`http://localhost:8000/admin`)　から、username:'public'である任意のユーザーを作成し、このユーザーをownerにもつtitle:'public'のグループを作成してください。このユーザーとグループは投稿機能やフレンド追加機能を利用する際にデフォルトで扱われるものです。
 * ログイン画面のtwitter認証は一度メールアドレスでログインしたあとに、ログイン状態を維持してtwitterと紐付けることによって、次回以降ご利用いただけます。
 
 ## 本番環境テストユーザー
@@ -35,7 +35,7 @@
 * 自分の登録したフレンドでグループを作ることができる。
 
 ## 具体的な使い方/チュートリアル
-https://kyotoman-app.herokuapp.com/　より「short」のページに進めます。
+`https://kyotoman-app.herokuapp.com/`　より「short」のページに進めます。
 メールアドレスとパスワード、またはすでにtwitterを紐付けている場合にはtwitterでログインをすることができます。twitterを紐付けていない状態でログインをするとエラーになりますのでご注意ください。
 
 ![ログイン画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_login.png)
