@@ -518,7 +518,12 @@ def all_friends(request):
       
     # GETアクセス時の処理  
     else:
-        myfri = Friend.objects.filter(owner=request.user)
+        # Groupに含まれるFriendを取得（デフォルトは全フレンドの表示）
+        if sel_group == '-':
+            myfri =Friend.objects.all()
+        else:
+            myfri = Friend.objects.filter(owner=request.user).filter(group=gp)
+        #myfri = Friend.objects.filter(owner=request.user)
         # FriendのUserをリストにまとめる    
         for item in myfri:
             if me.gender == 1:
