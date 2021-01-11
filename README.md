@@ -56,12 +56,12 @@
 
 本登録を行ったアカウントでログインすると、以下のようなトップページに移ります。このトップページには
 * 紐付けたtwitterのtweetや、アプリ内で投稿したメッセージを表示するタイムライン
-* 「トップページ」(index)、「グループ作成ページ」(group)、「マイページ」(mypage)、「登録しているフレンドの確認ページ」(check your friend)、「新しいフレンドを見つけるページ」(find new friend)、「DMページ」(DM)、「Twitterタイムラインページ」(Twitter timeline)へのリンクのあるメニューバー
+* 「トップページ」(index)、「グループ作成ページ」(group)、「マイページ」(mypage)、「登録しているフレンドの確認ページ」(check your friend)、「新しいフレンドを見つけるページ」(find new friend)、「DMページ」(DM)、「imagesページ」(images)、「Twitterタイムラインページ」(Twitter timeline)へのリンクのあるメニューバー
 * twitterアカウントを紐付けるボタン
 
 ![インデックス画面](https://github.com/kyotoman-koshida/image_files/blob/main/short_index.png)
 
-いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左側のピンク色のメニューバーをクリックしてください。（→）
+いまは新しく登録したばかりのユーザーを使っているので、まだフレンドがいません。新しくフレンドを探して追加しましょう！画面左上のハンバーガーメニューをクリックしてください。（→）
 ![メニュー](https://github.com/kyotoman-koshida/image_files/blob/main/short_hamburger.png)
 
 「find new friends」をクリックすると以下のような画面に遷移します。
